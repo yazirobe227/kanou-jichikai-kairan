@@ -3,48 +3,126 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>神納東区 自治会 - 情報ポータル</title>
+  <title>神納東区 自治会 情報ポータル</title>
   <style>
-    body { font-family: sans-serif; line-height: 1.8; padding: 2em; background: #f9f9f9; }
-    h1 { color: #2c3e50; }
-    h2 { margin-top: 2em; color: #34495e; }
-    ul { list-style: none; padding: 0; }
-    li { margin-bottom: 0.5em; }
-    a { text-decoration: none; color: #2980b9; }
-    a:hover { text-decoration: underline; }
-    .section { margin-bottom: 3em; }
+    body {
+      font-family: sans-serif;
+      line-height: 1.8;
+      padding: 2em;
+      background: #f9f9f9;
+      color: #333;
+      max-width: 720px; 
+      margin: auto; /* ページを中央に配置 */
+    }
+    h1 {
+      color: #2c3e50;
+      text-align: center;
+    }
+    .section {
+      margin-bottom: 2em;
+    }
+    h2 {
+      color: #2980b9;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    ul li {
+      margin: 10px 0;
+    }
+    a {
+      color: #2980b9;
+      text-decoration: none;
+      font-size: 1.1em;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9em;
+      color: #777;
+      margin-top: 2em;
+    }
+
+    /* ナビゲーション */
+    nav ul {
+      display: flex;
+      justify-content: space-around;
+      list-style: none;
+      padding: 0;
+    }
+    nav ul li a {
+      padding: 10px 15px;
+      font-size: 1.1em;
+    }
+
+    /* ハンバーガーメニュー */
+    @media (max-width: 600px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        text-align: center;
+      }
+      nav ul li {
+        margin: 10px 0;
+      }
+      nav ul.open {
+        display: block;
+      }
+      .hamburger {
+        display: block;
+        font-size: 2em;
+        cursor: pointer;
+      }
+    }
+
+    /* ハンバーガーメニューのアイコン */
+    .hamburger {
+      display: none;
+      font-size: 2em;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
-  <h1>神納東区 自治会 情報ポータル</h1>
-  <p>こちらは 神納東区 自治会 の活動や回覧板のお知らせをまとめたページです。</p>
+  <!-- ハンバーガーメニュー -->
+  <header>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <nav>
+      <ul id="menu">
+        <li><a href="/">ホーム</a></li>
+        <li><a href="/kawaraban/index.html">回覧板</a></li>
+        <li><a href="/history/index.html">神納東区の歴史</a></li>
+        <li><a href="/events/index.html">イベント情報</a></li>
+        <li><a href="/contact/index.html">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </header>
 
- <!-- このセクションは紙の回覧板を画像化して一覧できるようにするページ -->
- <!-- 画像の軽量化が大きな課題 -->
+  <h1>神納東区 自治会 情報ポータル</h1>
+  <p>こちらは神納東区自治会の活動や回覧板のお知らせをまとめたページです。</p>
+
+  <!-- 回覧板セクション -->
   <div class="section">
     <h2>▶ 回覧板</h2>
     <ul>
       <li><a href="kairan/2025-05-01/index.html">2025年5月 第1回</a></li>
       <li><a href="kairan/2025-04-01/index.html">2025年4月 第1回</a></li>
       <li><a href="kairan/2025-03-01/index.html">2025年3月 第1回</a></li>
-      <br><br>
-      <li><a href="kairan/2025-05-01/index.html">2025年5月 第1回</a></li>
-      <li><a href="kairan/2025-05-02/index.html">2025年5月 第2回</a></li>
-      <li><a href="kairan/2025-05-03/index.html">2025年5月 第3回</a></li>
     </ul>
   </div>
 
- <!-- このセクションは日常のごみ捨てを簡単に確認できるようにするページ。一斉清掃を入れても良いかも！ -->
- <!-- ごみカレンダーページの軽量化は、他のセクションと同じく一覧で月ごと、または四半期でリンクを作り、フォルダに画像でまとめるも検討 -->
+  <!-- ごみカレンダーセクション -->
   <div class="section">
-    <h2>▶　袖ケ浦市ごみ カレンダー（神納東区）</h2>
+    <h2>▶ 袖ケ浦市ごみカレンダー（神納東区）</h2>
     <ul>
-      <li><a href="kairan/2025-03-01/images/202503_kairan10-medium.jpg">神納東区　ごみ カレンダー（2025年版）</a></li>
+      <li><a href="kairan/2025-03-01/images/202503_kairan10-medium.jpg">神納東区 ごみカレンダー（2025年版）</a></li>
     </ul>
   </div>
 
- <!-- このセクションは東区の主な活動を扱うページ。規約・総会資料は要検討 -->
- <!-- 活動ページ一覧に、イベントカレンダーがあって良いかも。ソフトB・グラウンドG・総会はじめ、各分区のお祭り、率土神社の催し（神社系は地域イベントとして）に加え、回覧板で紹介されたイベントを入れても良いbut誰が指示？ -->
+  <!-- 活動セクション -->
   <div class="section">
     <h2>▶ おもな活動</h2>
     <ul>
@@ -52,12 +130,12 @@
       <li><a href="ratejinja/index.html">率土神社活動</a></li>
       <li><a href="softball/index.html">秋のソフトボール大会</a></li>
       <li><a href="groundgolf/index.html">秋のグラウンド・ゴルフ大会</a></li>
-      <li><a href="kagurabayashi/index.html">東区　規約</a></li>
-      <li><a href="kodomokai/index.html">東区　総会資料</a></li>
+      <li><a href="kagurabayashi/index.html">東区 規約</a></li>
+      <li><a href="kodomokai/index.html">東区 総会資料</a></li>
     </ul>
   </div>
 
- <!-- このセクションは東区内で活動、または区が助成・支援する団体の紹介とその活動を扱う -->
+  <!-- 団体セクション -->
   <div class="section">
     <h2>▶ 東区で活躍する団体</h2>
     <ul>
@@ -68,17 +146,25 @@
     </ul>
   </div>
 
- <!-- このセクションは主に歴史や身の回りで気づいたことなどをまとめる -->
+  <!-- 神納をもっと知るセクション -->
   <div class="section">
-    <h2>▶　神納をもっと知る </h2>
+    <h2>▶ 神納をもっと知る</h2>
     <ul>
-      <li><a href="kawaraban/index.html">かわら版　（1分区パトロール隊）</a></li>
+      <li><a href="kawaraban/index.html">かわら版（1分区パトロール隊）</a></li>
       <li><a href="history/index.html">「神納東区」誕生の経緯</a></li>
     </ul>
   </div>
 
   <footer>
-    <p style="font-size: 0.9em; color: #777;">&copy; 2025 神納東区　自治会</p>
+    <p>&copy; 2025 神納東区 自治会</p>
   </footer>
+
+  <script>
+    // ハンバーガーメニューを開閉する関数
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      menu.classList.toggle('open');
+    }
+  </script>
 </body>
 </html>
