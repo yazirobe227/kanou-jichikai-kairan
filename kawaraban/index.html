@@ -2,35 +2,185 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>かわら版 一覧</title>
-  <style>
-    body { font-family: sans-serif; background: #f9f9f9; padding: 2em; }
-    h1 { color: #2c3e50; }
-    ul { list-style: none; padding: 0; }
-    li { margin: 0.5em 0; }
-    a { text-decoration: none; color: #2980b9; }
-    a:hover { text-decoration: underline; }
-    .latest { font-weight: bold; color: #e74c3c; }
-  </style>
-</head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>神納東区 自治会 情報ポータル</title>
+  
+<style>
+/* グローバルスタイル */
+body {
+  font-family: sans-serif;
+  line-height: 1.8;
+  padding: 2em;
+  background: #f9f9f9;
+  color: #333;
+  max-width: 720px;
+  margin: auto;
+}
+
+h1 {
+  color: #2c3e50;
+}
+
+h2 {
+  color: #34495e;
+  border-bottom: 1px solid #ccc;
+  margin-top: 2em;
+  padding-bottom: 0.2em; /* 追加 */
+}
+
+img {
+  max-width: 100%;
+  margin: 1em 0;
+}
+
+.caption {
+  font-size: 0.9em;
+  color: #555;
+  margin-bottom: 1.5em;
+}
+
+.small-text {
+  font-size: 0.85em;
+}
+
+.announcement-text {
+  font-size: 1em;
+  font-weight: bold;
+  line-height: 0.9;
+}
+
+/* リストスタイル */
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+/* ナビゲーションスタイル */
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  background-color: #2c3e50;
+}
+
+nav ul li a {
+  padding: 10px 15px;
+  color: white;
+  text-decoration: none;
+}
+
+/* ハンバーガースタイル（スマホ用） */
+@media (max-width: 600px) {
+  nav ul {
+    display: block;
+    text-align: center;
+    background-color: #34495e;
+    padding: 10px 0;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+  }
+
+  nav ul li a {
+    color: #ecf0f1;
+  }
+
+  nav ul li a:hover {
+    background-color: #2980b9;
+  }
+}
+
+/* フッタースタイル */
+footer {
+  background-color: #2c3e50;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+footer h4 {
+  margin-bottom: 10px;
+  font-size: 1.2em;
+}
+
+footer p {
+  font-size: 0.9em;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* フッターノートスタイル */
+.footer-note {
+  text-align: right;
+  font-size: 0.9em;
+  color: #555;
+  margin-top: 3em;
+}
+</style>  
+
+  <link rel="stylesheet" href="style.css">  </head>
 <body>
-  <h1>かわら版（1分区パトロール隊）</h1>
-  <p>こちらでは、1分区の防犯パトロールや地域のお知らせなどを掲載しています。</p>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/kanou-jichikai-kairan/">ホーム</a></li>
+        <li><a href="/kanou-jichikai-kairan/kawaraban/index.html">回覧板</a></li>
+        <li><a href="/kanou-jichikai-kairan/history/index.html">神納東区の歴史</a></li>
+        <li><a href="/kanou-jichikai-kairan/events/index.html">イベント情報</a></li>
+        <li><a href="/kanou-jichikai-kairan/contact/index.html">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <h2>最新号</h2>
-  <ul>
-    <li><a href="048/index.html" class="latest">かわら版　048号　2025年5月</a></li>
-  </ul>
+  <main>  <h1>神納東区 自治会 情報ポータル</h1>
+    <p class="small-text">こちらは 神納東区 自治会 の活動や回覧板のお知らせをまとめたページです。</p>
 
-  <h2>過去のかわら版</h2>
-  <ul>
-    <li><a href="047/index.html">かわら版　047号　2025年2月</a></li>
-    <li><a href="#">かわら版　046号　2024年11月</a></li>
-    <li><a href="#">かわら版　045号　2024年8月</a></li>
-    <li><a href="#">かわら版　044号　2024年5月</a></li>
-    <li><a href="#">かわら版　043号　2024年2月</a></li>
-  </ul>
+    <div class="announcement area line-height-1">
+      <div class="announcement-text">
+        <p>【お知らせ】<a href="/events/index.html">　</a></p>
+      </div>
+      <div class="announcement-text">
+        <p>【お知らせ】<a href="../kairan/2025-04-01/202504_kairan11.jpg">　</a></p>
+      </div>
+    </div>
 
-  <p><a href="/kanou-jichikai-kairan/">← トップページに戻る</a></p>
+    <section>
+      <h2>かわら版（1分区パトロール隊）</h2>
+      <p>こちらでは、1分区の防犯パトロールや地域のお知らせなどを掲載しています。</p>
+
+      <h3>最新号</h3>
+      <ul>
+        <li><a href="048/index.html" class="latest">かわら版　048号　2025年5月</a></li>
+      </ul>
+
+      <h3>過去のかわら版</h3>
+      <ul>
+        <li><a href="047/index.html">かわら版　047号　2025年2月</a></li>
+        <li><a href="#">かわら版　046号　2024年11月</a></li>
+        <li><a href="#">かわら版　045号　2024年8月</a></li>
+        <li><a href="#">かわら版　044号　2024年5月</a></li>
+        <li><a href="#">かわら版　043号　2024年2月</a></li>
+      </ul>
+
+      <p><a href="/kanou-jichikai-kairan/">← トップページに戻る</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <h4>サイト情報</h4>
+    <ul>
+      <li><a href="/terms.html">利用規約</a></li>
+      <li><a href="/privacy.html">プライバシーポリシー</a></li>
+      <li><a href="/contact/index.html">お問い合わせ</a></li>
+    </ul>
+    <p>&copy; 2025 神納東区 自治会</p>
+  </footer>
 </body>
 </html>
