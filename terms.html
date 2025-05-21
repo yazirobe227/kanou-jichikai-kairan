@@ -3,244 +3,321 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>「神納東区」誕生の経緯</title>
-  
-<style>
-/* グローバルスタイル */
-body {
-  font-family: sans-serif;
-  line-height: 1.8;
-  padding: 2em;
-  background: #f9f9f9;
-  color: #333;
-  max-width: 720px;
-  margin: auto;
-}
+  <title>神納東区 ウェブサイト 利用規約</title>
+  <style>
+    /* 全体スタイル */
+    body {
+      font-family: sans-serif;
+      line-height: 1.8;
+      padding: 2em;
+      background: #f9f9f9;
+      color: #333;
+      max-width: 720px; 
+      margin: auto; /* 横幅720px制限 */
+    }
+    h1 { color: #2c3e50; }
+    h2 { color: #2c3e50; padding-bottom: 0.2em; }
+    img { max-width: 100%; margin: 1em 0; }
+    .caption { font-size: 0.9em; color: #555; margin-bottom: 1.5em; }
 
-h1 {
-  color: #2c3e50;
-}
+/* ロゴ（トップと下位の切り分け） */
+  .logo-wrapper {
+  margin: 0; /* ← 元の「1em 0」から変更、上部のスペースなくす */
+  padding-top: 0; /* 上記の実現のため、念のためパディングもゼロ */
+  }
 
-h2 {
-  color: #34495e;
-  border-bottom: 1px solid #ccc;
-  margin-top: 2em;
-  padding-bottom: 0.2em; /* 追加 */
-}
-
-img {
-  max-width: 100%;
-  margin: 1em 0;
-}
-
-.caption {
-  font-size: 0.9em;
-  color: #555;
-  margin-bottom: 1.5em;
-}
-
-.small-text {
-  font-size: 0.85em;
-}
-
-.announcement-text {
-  font-size: 1em;
-  font-weight: bold;
-  line-height: 0.9;
-}
-
-/* リストスタイル */
-ul {
-  list-style-type: none;
-  padding-left: 0;
-}
-
-/* ナビゲーションスタイル */
-nav ul {
-  display: flex;
-  justify-content: space-around;
-  background-color: #2c3e50;
-}
-
-nav ul li a {
-  padding: 10px 15px;
-  color: white;
-  text-decoration: none;
-}
-
-/* ハンバーガースタイル（スマホ用） */
-@media (max-width: 600px) {
-  nav ul {
+  .logo-wrapper img {
     display: block;
+    height: auto;
+  }
+
+  /* トップページ用ロゴ（左寄せ） */
+  .top-logo {
+    text-align: left;
+  }
+
+  .top-logo img {
+    max-width: 220px; /* ← トップページのロゴサイズ調整 150px → 220pxに拡大 */
+  }
+
+  /* 下層ページ用ロゴ（中央寄せ） */
+  .sub-logo {
     text-align: center;
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  .sub-logo img {
+  max-width: 220px;  /* ← トップ下のロゴサイズ調整 100px → 220pxに拡大 */
+  margin: 0 auto;  
+  display: block;
+  }
+
+  /* スマホ画面でさらに小さく */
+  @media (max-width: 600px) {
+    .top-logo img {
+      max-width: 180px; /* ← トップページのロゴサイズ調整 120px → 180pxに拡大 */
+    }
+    .sub-logo img {
+      max-width: 120px;  /* ← トップ下のロゴサイズ調整 80px → 120pxに拡大 */
+    }
+  }
+
+    /* 新しく追加するスタイル：リストの「・」を消す */
+    ul {
+      list-style-type: none; /* 点を消す */
+      padding-left: 0; /* 左の余白をなくす */
+    }
+
+    /* ハンバーガーメニューのスタイル */
+    nav ul {
+      display: flex;
+      justify-content: space-around;
+      list-style: none;
+      padding: 0;
+      background-color: #2c3e50; /* 背景色追加 */
+    }
+
+    nav ul li a {
+      padding: 10px 15px;
+      color: white;  /* メニュー文字色 */
+      text-decoration: none;
+    }
+
+    /* スマホ用ハンバーガーメニュー */
+    @media (max-width: 600px) {
+      nav ul {
+    display: flex;
+    flex-wrap: nowrap; /* 横並びを維持しつつ折り返しを許可 "wrap" しない"nowrap"*/
+    justify-content: flex-start; /* 折り返しの場合 "center"*/
     background-color: #34495e;
-    padding: 10px 0;
-  }
+    padding: 8px;      /* 折り返し対応 10px  → 8px */
+    overflow-x: auto;       /* nowrap対応：横スクロールを許可 */
+    -webkit-overflow-scrolling: touch; /* nowrap対応：iOS用スムーズスクロール */
+      }
+      nav ul li {
+        flex: 0 0 auto; /* 元は margin: 5px 8px; */
+        margin: 0 10px;
+      }
 
-  nav ul li {
-    margin: 10px 0;
-  }
+      nav ul li a {
+        font-size: 0.8em; /* スマホで少し文字を小さく */
+        padding: 8px 10px;
+        color: #ecf0f1; /* リンク文字色 */
+        white-space: nowrap; /* テキストも折り返さない */
+      }
+      nav ul li a:hover {
+        background-color: #2980b9; /* ホバー時の背景色 */
+      }
+    }
 
-  nav ul li a {
-    color: #ecf0f1;
-  }
+    /* back-to-top 戻るアンカーの設定 */
+      .back-to-top {
+      text-align: right;
+      margin-top: 0.5em;
+      margin-bottom: 1em;
+      }
 
-  nav ul li a:hover {
-    background-color: #2980b9;
-  }
-}
+    /* フッタースタイル */
+      footer {
+      background-color: #2c3e50;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      }
 
-/* フッタースタイル */
-footer {
-  background-color: #2c3e50;
-  color: white;
-  padding: 20px;
-  text-align: center;
-}
+      footer h4 {
+      margin-bottom: 9px;
+      font-size: 1.2em;
+      }
 
-footer h4 {
-  margin-bottom: 10px;
-  font-size: 1.2em;
-}
+      footer ul {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap; /* モバイルで折り返し */
+      }
 
-footer p {
-  font-size: 0.9em;
-}
+      footer ul li {
+      display: inline;
+      }
 
-footer a {
-  color: white;
-  text-decoration: none;
-}
+      footer p {
+      font-size: 0.8em;
+      }
 
-footer a:hover {
-  text-decoration: underline;
-}
+      footer a {
+      font-size: 0.85em;
+      color: white;
+      text-decoration: none;
+      }
 
-/* フッターノートスタイル */
-.footer-note {
-  text-align: right;
-  font-size: 0.9em;
-  color: #555;
-  margin-top: 3em;
-}
-</style>  
+      footer a:hover {
+      text-decoration: underline;
+      }
 
-  <link rel="stylesheet" href="style.css">  </head>
+      /* フッターノートスタイル history/index.htmlに適用 */
+      .footer-note {
+      text-align: right;
+      font-size: 0.9em;
+      color: #555;
+      margin-top: 3em;
+      }
+
+    /* 小さくするスタイル */
+    .small-text {
+      font-size: 0.85em;
+    }
+
+    /* お知らせ部分の文字調整 */
+    .announcement-text {
+      font-size: 1em;
+      font-weight: bold;
+      line-height: 0.9; /* 行間を詰める */
+    }
+
+    /* セクションタイトルに矢印が表示されないように */
+    .section h2 {
+      margin-left: 0; /* 矢印を消すためにマージンをリセット */
+    }
+
+  </style>
+</head>
+
 <body>
   <header>
-    <nav>
-      <ul>
-        <li><a href="/kanou-jichikai-kairan/">ホーム</a></li>
-        <li><a href="/kanou-jichikai-kairan/kawaraban/index.html">回覧板</a></li>
-        <li><a href="/kanou-jichikai-kairan/history/index.html">神納東区の歴史</a></li>
-        <li><a href="/kanou-jichikai-kairan/events/index.html">イベント情報</a></li>
-        <li><a href="/kanou-jichikai-kairan/contact/index.html">お問い合わせ</a></li>
-      </ul>
-    </nav>
-  </header>
+  <div class="logo-wrapper sub-logo">
+    <a href="/kanou-jichikai-kairan/">
+      <img src="/kanou-jichikai-kairan/images/logo.png" alt="神納東区ロゴ">
+    </a>
+  </div>
+  <nav>
+    <ul>
+      <!-- ホームは削除 -->
+      <li><a href="/kanou-jichikai-kairan/kairan/index.html">回覧板</a></li>
+      <li><a href="/kanou-jichikai-kairan/history/index.html">神納東区の歴史</a></li>
+      <li><a href="/kanou-jichikai-kairan/events/index.html">イベント情報</a></li>
+      <li><a href="/kanou-jichikai-kairan/contact/index.html">お問い合わせ</a></li>
+    </ul>
+  </nav>
+</header>
 
-  <main>  <h1>神納東区 自治会 情報ポータル</h1>
-    <p class="small-text">こちらは 神納東区 自治会 の活動や回覧板のお知らせをまとめたページです。</p>
+  <p class="small-text">こちらは 神納東区 ウェブサイトの利用規約を紹介するページです。</p>
 
-    <div class="announcement area line-height-1">
-      <div class="announcement-text">
-        <p>【お知らせ】<a href="/events/index.html">　</a></p>
-      </div>
-      <div class="announcement-text">
-        <p>【お知らせ】<a href="../kairan/2025-04-01/202504_kairan11.jpg">　</a></p>
-      </div>
+  <!-- お知らせ部分 -->
+  <!-- 
+  <div class="announcement area line-height-1">
+    <div class="announcement-text">
+      <p>【お知らせ】5月100日～103日、神納東区ソフトボール大会！詳細は<a href="/events/index.html">こちら</a></p>
     </div>
+    <div class="announcement-text">
+      <p>【お知らせ】5月25日（日）は市内一斉清掃詳細 <a href="../kairan/2025-04-01/202504_kairan11.jpg">こちら</a></p>
+    </div>
+  </div> 
+ -->
+ <!-- お知らせ部分終了 -->
 
+  <main>
+    <h2>利用規約</h2>
     <section>
-      <h2>利用規約</h2>
-      <p>この利用規約（以下「本規約」という）は、△△△神納東区自治会△△△（以下、「当会」という）が、このウェブサイト（https://www.kannou-east.jp、以下「本サイト」という）で提供するサービス（以下、「本サービス」という）の利用条件を定めるものです。<br>
-      　<br>利用する皆さま（以下、「ユーザー」）が本サイトをご利用するにあたり、本規約をお読み頂き、同意される場合にのみご利用下さい。なお、本規約は予告なく変更することがありますこと、あらかじめ御了承下さい。
-      </p>
 
-      <h2>第1条　サービス</h2>
-      <p>
-1.　本サイトの利用に際してアクセスする場合、ユーザーは自らの費用と責任に必要な機器・ソフトウェア・通信手段等を用意し適切に接続・操作することとします。
-      　<br>
-      　<br>2.　本サイトは当会に関する情報の提供を行うことを本サービスの目的とします。将来、様々なサービスを追加したり、または変更・削除することがあります。
-      　<br>
-      　<br>3.　当会は、本サイトが提供および付随するサービスに対する保証行為を一切しておりません。また、当会は、本サイトの提供するサービスの不確実性・サービス停止等に起因する利用者への損害について、一切責任を負わないものとします。詳細は、第5条「免責事項について」をご覧ください。
-      　<br><br>4.　当会は、ユーザーの個別の同意を要せず、本規約を変更することができるものとします。
-      　<br>　・本規約の変更がユーザーの一般の利益に適合するとき。
-      　<br>　・本規約の変更が本サービスの目的に反せず、かつ変更の必要性、変更後の内容の相当性<br>　その他の変更に係る事情に照らして合理的なものであるとき。
-      　<br>　・当会はユーザーに対し、本規約の変更にあたり、可能な限り事前に、本規約を変更する旨<br>　及び変更後の本規約の内容並びにその効力発生時期を通知します。
-      </p>
+      <p>この利用規約（以下「本規約」という）は、△△△神納東区自治会△△△（以下、「当会」という）が、このウェブサイト（https://www.kannou-east.jp、以下「本サイト」という）で提供するサービス（以下、「本サービス」という）の利用条件を定めるものです。</p>
+      <p>利用する皆さま（以下、「ユーザー」）が本サイトをご利用するにあたり、本規約をお読み頂き、同意される場合にのみご利用下さい。なお、本規約は予告なく変更することがありますこと、あらかじめ御了承下さい。</p>
 
-      <h2>第2条　個人情報の取り扱い</h2>
-      <p>
-1.　本サイトの利用に際して利用者から取得した氏名、メールアドレス、住所、電話番号等の個人情報は、アンケート・各種申し込み・お問合せ内容等に関する確認、回答のためにのみ利用し、その他の目的のためには利用しません。
-      　<br>2.　ユーザーは、自らの責任において、本サービスのユーザーIDおよびパスワードを適切に管理するものとします。
-      　<br><br>　また、ユーザーは、いかなる場合にも、ユーザーIDおよびパスワードを第三者に譲渡または貸与し、もしくは第三者と共用することはできません。当会は、ユーザーIDとパスワードの組み合わせが登録情報と一致してログインされた場合には、そのユーザーIDを登録しているユーザー自身による利用とみなします。
-      　<br><br>　ユーザーID及びパスワードが第三者によって使用されたことによって生じた損害は、当会に故意又は重大な過失がある場合を除き、当会は一切の責任を負わないものとします。
-      </p>
+    <h3>第1条　サービス</h3>
+      <p>1.　本サイトの利用に際してアクセスする場合、ユーザーは自らの費用と責任に必要な機器・ソフトウェア・通信手段等を用意し適切に接続・操作することとします。</p>
+      <p>2.　本サイトは当会に関する情報の提供を行うことを本サービスの目的とします。将来、様々なサービスを追加したり、または変更・削除することがあります。</p>
+      <p>3.　当会は、本サイトが提供および付随するサービスに対する保証行為を一切しておりません。また、当会は、本サイトの提供するサービスの不確実性・サービス停止等に起因する利用者への損害について、一切責任を負わないものとします。詳細は、第5条「免責事項について」をご覧ください。</p>
+      <p>4.　当会は、ユーザーの個別の同意を要せず、本規約を変更することができるものとします。</p>
+    <ul>
+      <li>・本規約の変更がユーザーの一般の利益に適合するとき。</li>
+      <li>・本規約の変更が本サービスの目的に反せず、かつ変更の必要性、変更後の内容の相当性、その他の変更に係る事情に照らして合理的なものであるとき。</li>
+      <li>・当会はユーザーに対し、本規約の変更にあたり、可能な限り事前に、本規約を変更する旨<br>　及び変更後の本規約の内容並びにその効力発生時期を通知します。</li>
+    </ul>
 
-      <h2>第3条　著作権等知的財産権</h2>
-      <p>
-      　1.　本サイト内のプログラム、写真その他の知的財産権は当会に帰属します。利用者は、当該情報を私用目的で利用される場合にかぎり使用できます。当会に無断で、それを越えて、使用（複製、送信、譲渡、二次利用等を含む）することは禁じます。<br>
-        <br>
-      　2.　当会の名称「神納東区自治会」は、当会に帰属し、無断で使用できません。
-      </p>
+    <h3>第2条　個人情報の取り扱い</h3>
+      <p>1.　本サイトの利用に際して利用者から取得した氏名、メールアドレス、住所、電話番号等の個人情報は、アンケート・各種申し込み・お問合せ内容等に関する確認、回答のためにのみ利用し、その他の目的のためには利用しません。</p>
+      <p>2.　ユーザーは、自らの責任において、本サービスのユーザーIDおよびパスワードを適切に管理するものとします。</p>
+      <p>また、ユーザーは、いかなる場合にも、ユーザーIDおよびパスワードを第三者に譲渡または貸与し、もしくは第三者と共用することはできません。当会は、ユーザーIDとパスワードの組み合わせが登録情報と一致してログインされた場合には、そのユーザーIDを登録しているユーザー自身による利用とみなします。</p>
+      <p>ユーザーID及びパスワードが第三者によって使用されたことによって生じた損害は、当会に故意又は重大な過失がある場合を除き、当会は一切の責任を負わないものとします。</p>
 
-      <h2>第4条　禁止事項</h2>
-      <p>
-      　1.　当会は、利用者が以下の行為を行うことを禁じます。
-      　<br>　　1）当会または第三者に損害を与える行為、または損害を与える恐れのある行為
-      　<br>　　2）当会または第三者の財産、名誉、プライバシー等を侵害する行為、または侵害する恐れのある行為
-      　<br>　　3）公序良俗に反する行為、またはその恐れのある行為
-      　<br>　　4）他人のメールアドレスを登録するなど、虚偽の申告、届出を行う行為
-      　<br>　　5）コンピュータウィルス等有害なプログラムを使用または提供する行為
-      　<br>　　6）迷惑メールやメールマガジン等を一方的に送付する行為
-      　<br>　　7）その他、法令に違反する行為、またはその恐れがある行為
-      　<br>　　8）その他当会または本サイトの運営を妨げる行為、当会が不適切と判断する行為<br>
-      　<br>2.　上記に違反した場合、当会は利用者に対し損害賠償請求をすることができることに利用者は同意します。
-      </p>
+    <h3>第3条　著作権等知的財産権</h3>
+      <p>1.　本サイト内のプログラム、写真その他の知的財産権は当会に帰属します。利用者は、当該情報を私用目的で利用される場合にかぎり使用できます。当会に無断で、それを越えて、使用（複製、送信、譲渡、二次利用等を含む）することは禁じます。</p>
+      <p>2.　当会の名称「神納東区自治会」は、当会に帰属し、無断で使用できません。</p>
 
-      <h2>第5条　免責事項</h2>
-      <p>
-      　1.　当会は、本サイトに掲載されている全ての情報を慎重に作成し、また管理しますが、その正確性および完全性などに関して、いかなる保証もするものではありません。<br>
-      　<br>2.　当会は、予告なしに、本サイトの運営を停止または中止し、また本サイトに掲載されている情報の全部または一部を変更する場合があります。<br>
-      　<br>3．利用者が本サイトを利用したこと、または何らかの原因によりこれを利用できなかったことにより生じる一切の損害および第三者によるデータの書き込み、不正なアクセス、発言、メールの送信等に関して生じる一切の損害について、当会は、何ら責任を負うものではありません。<br>
-      </p>
+    <h3>第4条　禁止事項</h3>
+      <p>1.　当会は、利用者が以下の行為を行うことを禁じます。</p>
+    <ul>
+      <li>1）当会または第三者に損害を与える行為、または損害を与える恐れのある行為</li>
+      <li>2）当会または第三者の財産、名誉、プライバシー等を侵害する行為、またはその恐れのある行為</li>
+      <li>3）公序良俗に反する行為、またはその恐れのある行為</li>
+      <li>4）他人のメールアドレスを登録するなど、虚偽の申告、届出を行う行為</li>
+      <li>5）コンピュータウィルス等有害なプログラムを使用または提供する行為</li>
+      <li>6）迷惑メールやメールマガジン等を一方的に送付する行為</li>
+      <li>7）その他、法令に違反する行為、またはその恐れがある行為</li>
+      <li>8）その他当会または本サイトの運営を妨げる行為、当会が不適切と判断する行為</li>
+    </ul>
 
-      <h2>第6条　契約解除</h2>
-      <p>
-      1.　当会は、利用者が本規約に反する行為をした場合、即時にサービスを停止することができます。<br>
-      　<br>2.　前項の事由が発生したとき、当会は利用者に損害賠償をすることができます。
-      </p>
+      <p>2.　上記に違反した場合、当会は利用者に対し損害賠償請求をすることができることに利用者は同意するものとします。</p>
 
-      <h2>第7条　損害賠償</h2>
-      <p>
-      　本規約に違反した場合、当会に発生した損害を賠償請求します。
-      </p>
+    <h3>第5条　免責事項</h3>
+      <p>1.　当会は、本サイトに掲載されている全ての情報を慎重に作成し、また管理しますが、その正確性および完全性などに関して、いかなる保証もするものではありません。</p>
+      <p>2.　当会は、予告なしに、本サイトの運営を停止または中止し、また本サイトに掲載されている情報の全部または一部を変更する場合があります。</p>
+      <p>3．利用者が本サイトを利用したこと、または何らかの原因によりこれを利用できなかったことにより生じる一切の損害および第三者によるデータの書き込み、不正なアクセス、発言、メールの送信等に関して生じる一切の損害について、当会は、何ら責任を負うものではありません。</p>
 
-      <h2>第8条　管轄裁判所</h2>
-      <p>
-      　本規約の解釈にあたっては、日本法を準拠法とします。<br>
-      　<br>本サービスに関して紛争が生じた場合、当会の所在地を管轄する千葉地方裁判所を専属的合意管轄とします。
-      </p>
- 
-      <h2>（附則）</h2>
-      <p>
-      　本規約は、2025年X月X0日より施行する。
-      </p>
+    <h3>第6条　契約解除</h3>
+      <p>1.　当会は、利用者が本規約に反する行為をした場合、即時にサービスを停止することができます。</p>
+      <p>2.　前項の事由が発生したとき、当会は利用者に損害賠償をすることができます。</p>
+
+    <h3>第7条　損害賠償</h3>
+      <p>本規約に違反した場合、当会に発生した損害を賠償請求します。</p>
+
+    <h3>第8条　管轄裁判所</h3>
+      <p>本規約の解釈にあたっては、日本法を準拠法とします。</p>
+      <p>本サービスに関して紛争が生じた場合、当会の所在地を管轄する千葉地方裁判所を専属的合意管轄とします。</p>
+
+    <h3>（附則）</h3>
+      <p>本規約は、2025年X月X0日より施行する。</p>
+     </section>
 
       <div class="footer-note">
-      <p>2025年X月X0日制定<br>神納東区　区長</p>
-    </div>
-  </main>
+      <p>2025年X月X0日制定</p>
+      <p>神納東区 区長</p>
+      </div>
+   </main>
 
+  <!-- フッター -->
   <footer>
-    <h4>サイト情報</h4>
+      <!-- <h4>サイト情報</h4> ここはとりあえず表示しない-->
     <ul>
-      <li><a href="/terms.html">利用規約</a></li>
-      <li><a href="/privacy.html">プライバシーポリシー</a></li>
-      <li><a href="/contact/index.html">お問い合わせ</a></li>
+      <li><a href="/kanou-jichikai-kairan/terms.html">利用規約</a></li>
+      <li><a href="/kanou-jichikai-kairan/privacy.html">プライバシーポリシー</a></li>
+      <li><a href="/kanou-jichikai-kairan//contact/index.html">お問い合わせ</a></li>
     </ul>
     <p>&copy; 2025 神納東区 自治会</p>
   </footer>
+
+  <!-- ページ内 画像制御 -->
+  <div id="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); text-align:center; z-index:9999;">
+    <span style="color:white; font-size:2em; position:absolute; top:10px; right:20px; cursor:pointer;" onclick="closeModal()">×</span>
+    <img id="modalImage" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="拡大画像" style="max-width:90%; max-height:80%; margin-top:5%;">
+    <br>
+    <a id="enlargeLink" href="#" target="_blank" style="color:white; font-size:1em;">▶ さらに拡大表示（-large）</a>
+  </div>
+
+  <script>
+    function showModal(mediumSrc, largeSrc) {
+      document.getElementById('modalImage').src = mediumSrc;
+      document.getElementById('enlargeLink').href = largeSrc;
+      document.getElementById('modal').style.display = 'block';
+    }
+
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+  </script>
 </body>
 </html>
