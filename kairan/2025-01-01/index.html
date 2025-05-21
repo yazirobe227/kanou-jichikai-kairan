@@ -20,6 +20,43 @@
     img { max-width: 100%; margin: 1em 0; }
     .caption { font-size: 0.9em; color: #555; margin-bottom: 1.5em; }
 
+/* ロゴ（トップと下位の切り分け） */
+  .logo-wrapper {
+    margin: 1em 0;
+  }
+
+  .logo-wrapper img {
+    display: block;
+    height: auto;
+  }
+
+  /* トップページ用ロゴ（左寄せ） */
+  .top-logo {
+    text-align: left;
+  }
+
+  .top-logo img {
+    max-width: 150px;
+  }
+
+  /* 下層ページ用ロゴ（中央寄せ） */
+  .sub-logo {
+    text-align: center;
+  }
+
+  .sub-logo img {
+    max-width: 100px;
+  }
+
+  /* スマホ画面でさらに小さく */
+  @media (max-width: 600px) {
+    .top-logo img {
+      max-width: 120px;
+    }
+    .sub-logo img {
+      max-width: 80px;
+    }
+  }
 
     /* 新しく追加するスタイル：リストの「・」を消す */
     ul {
@@ -112,6 +149,9 @@
 
 <body>
   <header>
+  <div class="logo-wrapper sub-logo">
+    <img src="/kanou-jichikai-kairan/images/logo.png" alt="神納東区ロゴ">
+  </div>
     <nav>
       <ul>
         <li><a href="/kanou-jichikai-kairan/">ホーム</a></li>
@@ -127,7 +167,7 @@
   <p class="small-text">こちらは 神納東区 自治会 の活動や回覧板のお知らせをまとめたページです。</p>
 
   <!-- お知らせ部分 -->
-  <div class="announcement" class="area line-height-1">
+  <div class="announcement area line-height-1">
     <div class="announcement-text">
       <p>【お知らせ】5月100日～103日、神納東区ソフトボール大会！詳細は<a href="/events/index.html">こちら</a></p>
     </div>
@@ -260,7 +300,7 @@
 
   <div id="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); text-align:center; z-index:9999;">
     <span style="color:white; font-size:2em; position:absolute; top:10px; right:20px; cursor:pointer;" onclick="closeModal()">×</span>
-    <img id="modalImage" src="" alt="拡大画像" style="max-width:90%; max-height:80%; margin-top:5%;">
+    <img id="modalImage" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="拡大画像" style="max-width:90%; max-height:80%; margin-top:5%;">
     <br>
     <a id="enlargeLink" href="#" target="_blank" style="color:white; font-size:1em;">▶ さらに拡大表示（-large）</a>
   </div>
