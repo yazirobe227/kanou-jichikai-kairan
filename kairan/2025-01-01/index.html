@@ -119,26 +119,44 @@
       }
 
     /* フッタースタイル */
-    footer {
+      footer {
       background-color: #2c3e50;
       color: white;
       padding: 20px;
       text-align: center;
-    }
-    footer h4 {
+      }
+
+      footer h4 {
       margin-bottom: 10px;
       font-size: 1.2em;
-    }
-    footer p {
+      }
+
+      footer ul {
+      list-style: none;
+      padding: 0;
+      margin: 10px 0;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap; /* モバイルで折り返し */
+      }
+
+      footer ul li {
+      display: inline;
+      }
+
+      footer p {
       font-size: 0.9em;
-    }
-    footer a {
+      }
+
+      footer a {
       color: white;
       text-decoration: none;
-    }
-    footer a:hover {
+      }
+
+      footer a:hover {
       text-decoration: underline;
-    }
+      }
 
     /* 小さくするスタイル */
     .small-text {
@@ -309,7 +327,7 @@
 
   <!-- フッター -->
   <footer>
-    <h4> </h4>
+      <!-- <h4>サイト情報</h4> ここはとりあえず表示しない-->
     <ul>
       <li><a href="/terms.html">利用規約</a></li>
       <li><a href="/privacy.html">プライバシーポリシー</a></li>
