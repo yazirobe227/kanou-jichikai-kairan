@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>神納東区 自治会 情報ポータル</title>
+  <title>かわら版（1分区パトロール隊）</title>
   <style>
     /* 全体スタイル */
     body {
@@ -19,6 +19,49 @@
     h2 { color: #2c3e50; padding-bottom: 0.2em; }
     img { max-width: 100%; margin: 1em 0; }
     .caption { font-size: 0.9em; color: #555; margin-bottom: 1.5em; }
+
+/* ロゴ（トップと下位の切り分け） */
+  .logo-wrapper {
+  margin: 0;　/* ← 元の「1em 0」から変更、上部のスペースなくす */
+  padding-top: 0;　/* 上記の実現のため、念のためパディングもゼロ */
+  }
+
+  .logo-wrapper img {
+    display: block;
+    height: auto;
+  }
+
+  /* トップページ用ロゴ（左寄せ） */
+  .top-logo {
+    text-align: left;
+  }
+
+  .top-logo img {
+    max-width: 220px;　/* ← トップページのロゴサイズ調整 150px → 220pxに拡大 */
+  }
+
+  /* 下層ページ用ロゴ（中央寄せ） */
+  .sub-logo {
+    text-align: center;
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  .sub-logo img {
+  max-width: 220px;  /* ← トップ下のロゴサイズ調整 100px → 220pxに拡大 */
+  margin: 0 auto;  
+  display: block;
+  }
+
+  /* スマホ画面でさらに小さく */
+  @media (max-width: 600px) {
+    .top-logo img {
+      max-width: 180px;　/* ← トップページのロゴサイズ調整 120px → 180pxに拡大 */
+    }
+    .sub-logo img {
+      max-width: 120px;  /* ← トップ下のロゴサイズ調整 80px → 120pxに拡大 */
+    }
+  }
 
     /* 新しく追加するスタイル：リストの「・」を消す */
     ul {
@@ -44,47 +87,83 @@
     /* スマホ用ハンバーガーメニュー */
     @media (max-width: 600px) {
       nav ul {
-        display: block;
-        text-align: center;
-        background-color: #34495e; /* 背景色を少し濃く */
-        padding: 10px 0;
+    display: flex;
+    flex-wrap: nowrap; /* 横並びを維持しつつ折り返しを許可 "wrap" しない"nowrap"*/
+    justify-content: flex-start; /* 折り返しの場合 "center"*/
+    background-color: #34495e;
+    padding: 8px;      /* 折り返し対応　10px  → 8px */
+    overflow-x: auto;       /* nowrap対応：横スクロールを許可 */
+    -webkit-overflow-scrolling: touch; /* nowrap対応：iOS用スムーズスクロール */
       }
       nav ul li {
-        margin: 10px 0;
+        flex: 0 0 auto; /* 元は　margin: 5px 8px; */
+        margin: 0 10px;
       }
+
       nav ul li a {
+        font-size: 0.8em; /* スマホで少し文字を小さく */
+        padding: 8px 10px;
         color: #ecf0f1; /* リンク文字色 */
+        white-space: nowrap; /* テキストも折り返さない */
       }
       nav ul li a:hover {
         background-color: #2980b9; /* ホバー時の背景色 */
       }
     }
 
+    /* back-to-top 戻るアンカーの設定 */
+      .back-to-top {
+      text-align: right;
+      margin-top: 0.5em;
+      margin-bottom: 1em;
+      }
+
     /* フッタースタイル */
-    footer {
+      footer {
       background-color: #2c3e50;
       color: white;
-      padding: 20px;
+      padding: 15px;
       text-align: center;
-    }
-    footer h4 {
-      margin-bottom: 10px;
+      }
+
+      footer h4 {
+      margin-bottom: 9px;
       font-size: 1.2em;
-    }
-    footer p {
-      font-size: 0.9em;
-    }
-    footer a {
+      }
+
+      footer ul {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap; /* モバイルで折り返し */
+      }
+
+      footer ul li {
+      display: inline;
+      }
+
+      footer p {
+      font-size: 0.8em;
+      }
+
+      footer a {
+      font-size: 0.85em;
       color: white;
       text-decoration: none;
-    }
-    footer a:hover {
+      }
+
+      footer a:hover {
       text-decoration: underline;
-    }
+      }
 
     /* 小さくするスタイル */
     .small-text {
       font-size: 0.85em;
+      line-height: 1.2;     /* ← 行間を詰める */
+      margin-bottom: 0.2em; /* ← 下の余白を狭くする */
     }
 
     /* お知らせ部分の文字調整 */
@@ -94,59 +173,1747 @@
       line-height: 0.9; /* 行間を詰める */
     }
 
+    /* お知らせ部分とh1部分の行間調整 */
+    .announcement {
+      margin-bottom: 0.5em; /* お知らせがあるときだけ余白 */
+    }
+
     /* セクションタイトルに矢印が表示されないように */
     .section h2 {
       margin-left: 0; /* 矢印を消すためにマージンをリセット */
     }
+
   </style>
 </head>
 
 <body>
   <header>
-    <nav>
-      <ul>
-        <li><a href="/kanou-jichikai-kairan/">ホーム</a></li>
-        <li><a href="/kanou-jichikai-kairan/kawaraban/index.html">回覧板</a></li>
-        <li><a href="/kanou-jichikai-kairan/history/index.html">神納東区の歴史</a></li>
-        <li><a href="/kanou-jichikai-kairan/events/index.html">イベント情報</a></li>
-        <li><a href="/kanou-jichikai-kairan/contact/index.html">お問い合わせ</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <h1>神納東区 自治会 情報ポータル</h1>
-  <p class="small-text">こちらは 神納東区 自治会 の活動や回覧板のお知らせをまとめたページです。</p>
-
-  <!-- お知らせ部分 -->
-  <div class="announcement" class="area line-height-1">
-    <div class="announcement-text">
-      <p>【お知らせ】5月100日～103日、神納東区ソフトボール大会！詳細は<a href="/events/index.html">こちら</a></p>
-    </div>
-    <div class="announcement-text">
-      <p>【お知らせ】5月25日（日）は市内一斉清掃詳細　<a href="../kairan/2025-04-01/202504_kairan11.jpg">こちら</a></p>
-    </div>
+  <div class="logo-wrapper sub-logo">
+    <a href="/kanou-jichikai-kairan/">
+      <!-- ホームの代わりにロゴからリンク -->
+      <img src="/kanou-jichikai-kairan/images/logo.png" alt="神納東区ロゴ">
+    </a>
   </div>
-
-  <!-- 表部分の挿入（不必要なタグは削除済み） -->
-
-  <tr><th class="row-header freezebar-origin-ltr"></th>
-  
-    <!-- セクション名 -->
-<h2>神納東区　2025年度　主なイベント予定</h2>
-
-
-<table class="c20"><tr class="c8"><td class="c21" colspan="3" rowspan="1"><p class="c4"><span class="c5">&#26085;&#20184;</span></p></td><td class="c16" colspan="2" rowspan="1"><p class="c4"><span class="c5">&#12452;&#12505;&#12531;&#12488;&#20869;&#23481;</span></p></td><td class="c14" colspan="1" rowspan="1"><p class="c2"><span class="c5">&#26178;&#38291;</span></p></td><td class="c9" colspan="1" rowspan="1"><p class="c2"><span class="c5">&#20633;&#32771;</span></p></td><td class="c11" colspan="1" rowspan="1"><p class="c2"><span class="c5">&#22580;&#25152;</span></p></td></tr><tr class="c8"><td class="c15" colspan="1" rowspan="1"><p class="c2"><span>&#20196;&#21644;5&#24180;</span></p></td><td class="c15 c13" colspan="1" rowspan="1"><p class="c2"><span>4&#26376;</span></p></td><td class="c14 c13" colspan="1" rowspan="1"><p class="c2"><span>9&#26085;(&#28779;)</span></p></td><td class="c12" colspan="2" rowspan="1"><p class="c2"><span>&#26157;&#21644;&#23567;&#23398;&#26657;&#20837;&#23398;&#24335;</span></p></td><td class="c14 c13" colspan="1" rowspan="1"><p class="c2"><span>8:00~</span></p></td><td class="c6" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c11 c13" colspan="1" rowspan="1"><p class="c2"><span>&#26157;&#21644;&#23567;&#23398;&#26657;</span></p></td></tr><tr class="c8"><td class="c7" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c7 c13" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c14 c13" colspan="1" rowspan="1"><p class="c2"><span>10&#26085;(&#27700;)</span></p></td><td class="c12" colspan="2" rowspan="1"><p class="c2"><span>&#26157;&#21644;&#20013;&#23398;&#26657;&#20837;&#23398;&#24335;</span></p></td><td class="c14 c13" colspan="1" rowspan="1"><p class="c2"><span>13:00~</span></p></td><td class="c6" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c11 c13" colspan="1" rowspan="1"><p class="c2"><span>&#26157;&#21644;&#20013;&#23398;&#26657;</span></p></td></tr><tr class="c8"><td class="c7" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c17 c13" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c14 c13" colspan="1" rowspan="1"><p class="c2"><span>15&#26085;(&#26376;)</span></p></td><td class="c12" colspan="2" rowspan="1"><p class="c2"><span>&#29378;&#29356;&#30149;&#20104;&#38450;&#25509;&#31278;&#31435;&#20250;</span></p></td><td class="c14 c13" colspan="1" rowspan="1"><p class="c2"><span>9:55~</span></p></td><td class="c6" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c11 c13" colspan="1" rowspan="1"><p class="c2"><span>&#31070;&#32013;&#20844;&#27665;&#39208;</span></p></td></tr><tr class="c8"><td class="c7" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c15" colspan="1" rowspan="1"><p class="c2"><span>5&#26376;</span></p></td><td class="c14" colspan="1" rowspan="1"><p class="c2"><span>23&#26085;(&#26408;)</span></p></td><td class="c16" colspan="2" rowspan="1"><p class="c2"><span>&#26157;&#21644;&#20013;&#23398;&#26657;&#20307;&#32946;&#31085;</span></p></td><td class="c14" colspan="1" rowspan="1"><p class="c2"><span>8:40~</span></p></td><td class="c9" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c11" colspan="1" rowspan="1"><p class="c2"><span>&#26157;&#21644;&#20013;&#23398;&#26657;</span></p></td></tr><tr class="c8"><td class="c7" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c17" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c14" colspan="1" rowspan="1"><p class="c2"><span>26&#26085;(&#26085;)</span></p></td><td class="c16" colspan="2" rowspan="1"><p class="c2"><span>&#24066;&#20869;&#19968;&#25993;&#28165;&#25475;</span></p></td><td class="c14" colspan="1" rowspan="1"><p class="c2"><span>8:00~</span></p></td><td class="c9" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c11" colspan="1" rowspan="1"><p class="c2"><span>&#20840;&#22495;</span></p></td></tr><tr class="c8"><td class="c7" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c13 c15" colspan="1" rowspan="1"><p class="c2"><span>6&#26376;</span></p></td><td class="c14 c13" colspan="1" rowspan="1"><p class="c2"><span>2&#26085;(&#26085;)</span></p></td><td class="c12" colspan="2" rowspan="1"><p class="c2"><span>&#34966;&#12534;&#28006;&#24066;&#28040;&#38450;&#22243;&#26089;&#20986;&#12375;&#31478;&#25216;&#20250;</span></p></td><td class="c14 c13" colspan="1" rowspan="1"><p class="c2"><span>9:30~</span></p></td><td class="c6" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c11 c13" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td></tr><tr class="c8"><td class="c7" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c17 c13" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c14 c13" colspan="1" rowspan="1"><p class="c2"><span>30&#26085;(&#26085;)</span></p></td><td class="c12" colspan="2" rowspan="1"><p class="c2"><span>&#31070;&#32013;&#29872;&#22659;&#20445;&#20840;&#20250; &#23567;&#24029;&#33609;&#21000;</span></p></td><td class="c14 c13" colspan="1" rowspan="1"><p class="c2"><span>8:00~</span></p></td><td class="c6" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c11 c13" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td></tr><tr class="c8"><td class="c7" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c14" colspan="1" rowspan="1"><p class="c2"><span>7&#26376;</span></p></td><td class="c14" colspan="1" rowspan="1"><p class="c2"><span>20&#26085;(&#22303;)</span></p></td><td class="c16" colspan="2" rowspan="1"><p class="c2"><span>&#34966;&#12534;&#28006;&#39640;&#26657;&#12521;&#12472;&#12458;&#20307;&#25805;&#20250; &#34966;&#26657;G&#12395;&#12390;</span></p></td><td class="c14" colspan="1" rowspan="1"><p class="c2"><span>6:00~</span></p></td><td class="c9" colspan="1" rowspan="1"><p class="c2"><span>&#21069;&#21322;&#12316;7/26&#12510;&#12487;</span></p></td><td class="c11" colspan="1" rowspan="1"><p class="c2"><span>&#34966;&#12534;&#28006;&#39640;&#26657;</span></p></td></tr><tr class="c8"><td class="c7" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c15 c13" colspan="1" rowspan="1"><p class="c2"><span>8&#26376;</span></p></td><td class="c14 c13" colspan="1" rowspan="1"><p class="c2"><span>10&#26085;(&#22303;)</span></p></td><td class="c12" colspan="2" rowspan="1"><p class="c2"><span>&#12469;&#12510;&#12540;&#12501;&#12455;&#12473;&#12486;&#12451;&#12496;&#12523; in &#26157;&#21644;</span></p></td><td class="c14 c13" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c6" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c11 c13" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td></tr><tr class="c8"><td class="c7" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c7 c13" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c14 c13" colspan="1" rowspan="1"><p class="c2"><span>21&#26085;(&#27700;)</span></p></td><td class="c12" colspan="2" rowspan="1"><p class="c2"><span>&#34966;&#12534;&#28006;&#39640;&#26657;&#12521;&#12472;&#12458;&#20307;&#25805;&#20250; &#34966;&#26657;G&#12395;&#12390;</span></p></td><td class="c14 c13" colspan="1" rowspan="1"><p class="c2"><span>6:00~</span></p></td><td class="c6" colspan="1" rowspan="1"><p class="c2"><span>&#24460;&#21322;&#12316;8/27&#12510;&#12487;</span></p></td><td class="c11 c13" colspan="1" rowspan="1"><p class="c2"><span>&#34966;&#12534;&#28006;&#39640;&#26657;</span></p></td></tr><tr class="c8"><td class="c7" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c17 c13" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c14 c13" colspan="1" rowspan="1"><p class="c2"><span>24&#26085;(&#22303;)</span></p></td><td class="c12" colspan="2" rowspan="1"><p class="c2"><span>1&#20998;&#21306;&#32013;&#28092;&#31085;</span></p></td><td class="c14 c13" colspan="1" rowspan="1"><p class="c2"><span>17:30~</span></p></td><td class="c6" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c11 c13" colspan="1" rowspan="1"><p class="c2"><span>&#31070;&#32013;&#35199;&#12494;&#19979;&#20844;&#22290;</span></p></td></tr><tr class="c8"><td class="c7" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c15" colspan="1" rowspan="1"><p class="c2"><span>9&#26376;</span></p></td><td class="c14" colspan="1" rowspan="1"><p class="c2"><span>15&#26085;(&#26085;)</span></p></td><td class="c16" colspan="2" rowspan="1"><p class="c2"><span>&#38263;&#23551;&#32773;&#12408;&#12362;&#31069;&#12356;&#21697;&#12398;&#37197;&#24067;</span></p></td><td class="c14" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c9" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c11" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td></tr><tr class="c8"><td class="c7" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c7" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c14" colspan="1" rowspan="1"><p class="c2"><span>23&#26085;(&#26376;)</span></p></td><td class="c16" colspan="2" rowspan="1"><p class="c2"><span>&#22856;&#33391;&#36650;&#21306; &#19977;&#21306;&#20849;&#26377;&#31070;&#36671;&#12398;&#31085;&#31036;&#12300;&#22856;&#33391;&#36650;&#21306;&#27665;&#12398;&#12414;&#12388;&#12426;&#12301;</span></p></td><td class="c14" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c9" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c11" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td></tr><tr class="c8"><td class="c7" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c17" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c14" colspan="1" rowspan="1"><p class="c2"><span>29&#26085;(&#26085;)</span></p></td><td class="c16" colspan="2" rowspan="1"><p class="c2"><span>&#31070;&#32013;&#29872;&#22659;&#20445;&#20840;&#20250; &#23567;&#24029;&#33609;&#21000;</span></p></td><td class="c14" colspan="1" rowspan="1"><p class="c2"><span>8:00~</span></p></td><td class="c9" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c11" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td></tr><tr class="c8"><td class="c7" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c15 c13" colspan="1" rowspan="1"><p class="c2"><span>10&#26376;</span></p></td><td class="c14 c13" colspan="1" rowspan="1"><p class="c2"><span>6&#26085;(&#26085;)</span></p></td><td class="c12" colspan="2" rowspan="1"><p class="c2"><span>2&#20998;&#21306; &#12300;&#12405;&#12428;&#21512;&#12356;&#20132;&#27969;&#20250;&#12301;</span></p></td><td class="c14 c13" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c6" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c11 c13" colspan="1" rowspan="1"><p class="c2"><span class="c5">XX&#20844;&#22290;</span></p></td></tr><tr class="c8"><td class="c7" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c7 c13" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c14 c13" colspan="1" rowspan="1"><p class="c2"><span>13&#26085;(&#26085;)</span></p></td><td class="c12" colspan="2" rowspan="1"><p class="c2"><span>&#29575;&#22303;&#31070;&#31038; &#20363;&#22823;&#31085;</span></p></td><td class="c14 c13" colspan="1" rowspan="1"><p class="c2"><span>10:00~</span></p></td><td class="c6" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c11 c13" colspan="1" rowspan="1"><p class="c2"><span>&#29575;&#22303;&#31070;&#31038;</span></p></td></tr><tr class="c8"><td class="c7" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c7 c13" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c14 c13" colspan="1" rowspan="1"><p class="c2"><span>21&#26085;(&#26085;)</span></p></td><td class="c12" colspan="2" rowspan="1"><p class="c2"><span>&#26157;&#21644;&#23567;&#23398;&#26657;&#36939;&#21205;&#20250;</span></p></td><td class="c14 c13" colspan="1" rowspan="1"><p class="c2"><span>8:20~</span></p></td><td class="c6" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c11 c13" colspan="1" rowspan="1"><p class="c2"><span>&#26157;&#21644;&#23567;&#23398;&#26657;</span></p></td></tr><tr class="c8"><td class="c7" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c13 c17" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c14 c13" colspan="1" rowspan="1"><p class="c2"><span>27&#26085;(&#26085;)</span></p></td><td class="c12" colspan="2" rowspan="1"><p class="c2"><span>&#34886;&#35696;&#38498;&#32207;&#36984;&#25369;&#12539;&#34966;&#12465;&#28006;&#24066;&#35696;&#20250;&#36984;&#25369;</span></p></td><td class="c14 c13" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c6" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c11 c13" colspan="1" rowspan="1"><p class="c2"><span>&#31070;&#32013;&#20844;&#27665;&#39208;</span></p></td></tr><tr class="c8"><td class="c7" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c15" colspan="1" rowspan="1"><p class="c2"><span>11&#26376;</span></p></td><td class="c14" colspan="1" rowspan="1"><p class="c2"><span>10&#26085;(&#26085;)</span></p></td><td class="c16" colspan="2" rowspan="1"><p class="c2"><span>&#12385;&#12400;&#12450;&#12463;&#12450;&#12521;&#12452;&#12531;&#12510;&#12521;&#12477;&#12531;2024</span></p></td><td class="c14" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c9" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c11" colspan="1" rowspan="1"><p class="c2"><span>&#20840;&#22495;&#12539;&#21335;&#32207;&#26157;&#21644;&#32218;</span></p></td></tr><tr class="c8"><td class="c7" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c7" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c14" colspan="1" rowspan="1"><p class="c2"><span>17&#26085;(&#26085;)</span></p></td><td class="c16" colspan="2" rowspan="1"><p class="c2"><span>&#24066;&#20869;&#19968;&#25993;&#28165;&#25475;</span></p></td><td class="c14" colspan="1" rowspan="1"><p class="c2"><span>8:00~</span></p></td><td class="c9" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c11" colspan="1" rowspan="1"><p class="c2"><span>&#20840;&#22495;</span></p></td></tr><tr class="c8"><td class="c7" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c17" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c14" colspan="1" rowspan="1"><p class="c2"><span>23&#26085;(&#26085;)</span></p></td><td class="c16" colspan="2" rowspan="1"><p class="c2"><span>&#29575;&#22303;&#31070;&#31038; &#26032;&#31296;&#31085;</span></p></td><td class="c14" colspan="1" rowspan="1"><p class="c2"><span>10:00~</span></p></td><td class="c9" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c11" colspan="1" rowspan="1"><p class="c2"><span>&#29575;&#22303;&#31070;&#31038;</span></p></td></tr><tr class="c8"><td class="c7" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c15 c13" colspan="1" rowspan="1"><p class="c2"><span>12&#26376;</span></p></td><td class="c14 c13" colspan="1" rowspan="1"><p class="c2"><span>1&#26085;(&#26085;)</span></p></td><td class="c12" colspan="2" rowspan="1"><p class="c2"><span>&#31532;17&#22238;&#12464;&#12521;&#12454;&#12531;&#12489;&#12468;&#12523;&#12501;&#22823;&#20250;</span></p></td><td class="c14 c13" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c6" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c11 c13" colspan="1" rowspan="1"><p class="c2"><span class="c5">&#26093;&#21270;&#25104;&#12464;&#12521;&#12454;&#12531;&#12489;</span></p></td></tr><tr class="c8"><td class="c7" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c7 c13" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c14 c13" colspan="1" rowspan="1"><p class="c2"><span>2&#26085;(&#26376;)</span></p></td><td class="c12" colspan="2" rowspan="1"><p class="c2"><span>&#12452;&#12523;&#12511;&#12493;&#12540;&#12471;&#12519;&#12531;&#28857;&#28783; &#34966;&#12465;&#28006;&#39365;&#21335;&#21475;</span></p></td><td class="c14 c13" colspan="1" rowspan="1"><p class="c2"><span>17:15~</span></p></td><td class="c6" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c11 c13" colspan="1" rowspan="1"><p class="c2"><span>&#34966;&#12465;&#28006;&#39365;</span></p></td></tr><tr class="c8"><td class="c17" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c17 c13" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c14 c13" colspan="1" rowspan="1"><p class="c2"><span>28&#26085;(&#22303;)</span></p></td><td class="c12" colspan="2" rowspan="1"><p class="c2"><span>&#28040;&#38450;&#22243;&#31532;4&#20998;&#22243;&#27507;&#26411;&#29305;&#21029;&#35686;&#25106;</span></p></td><td class="c14 c13" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c6" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c11 c13" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td></tr><tr class="c8"><td class="c15" colspan="1" rowspan="1"><p class="c2"><span>&#20196;&#21644;6&#24180;</span></p></td><td class="c15" colspan="1" rowspan="1"><p class="c2"><span>1&#26376;</span></p></td><td class="c14" colspan="1" rowspan="1"><p class="c2"><span>1&#26085;(&#26085;)</span></p></td><td class="c16" colspan="2" rowspan="1"><p class="c2"><span>&#29575;&#22303;&#31070;&#31038; &#27507;&#26086;&#31085;</span></p></td><td class="c14" colspan="1" rowspan="1"><p class="c2"><span>0:00~</span></p></td><td class="c9" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c11" colspan="1" rowspan="1"><p class="c2"><span>&#29575;&#22303;&#31070;&#31038;</span></p></td></tr><tr class="c8"><td class="c7" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c17" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c14" colspan="1" rowspan="1"><p class="c2"><span>19&#26085;(&#26085;)</span></p></td><td class="c16" colspan="2" rowspan="1"><p class="c2"><span>&#20196;&#21644;7&#24180;&#34966;&#12465;&#28006;&#24066;&#28040;&#38450;&#20986;&#21021;&#24335;</span></p></td><td class="c14" colspan="1" rowspan="1"><p class="c2"><span>10:00~</span></p></td><td class="c9" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c11" colspan="1" rowspan="1"><p class="c2"><span>&#24066;&#27665;&#20250;&#39208;&#65288;&#26157;&#21644;&#20132;&#27969;&#12475;&#12531;&#12479;&#12540;&#65289;</span></p></td></tr><tr class="c8"><td class="c7" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c15 c13" colspan="1" rowspan="1"><p class="c2"><span>2&#26376;</span></p></td><td class="c14 c13" colspan="1" rowspan="1"><p class="c2"><span>2&#26085;(&#26085;)</span></p></td><td class="c12" colspan="2" rowspan="1"><p class="c2"><span>&#20196;&#21644;6&#24180;&#24230;&#34966;&#12465;&#28006;&#24066;&#32207;&#21512;&#38450;&#28797;&#35347;&#32244;</span></p></td><td class="c14 c13" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c6" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c11 c13" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td></tr><tr class="c8"><td class="c7" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c7 c13" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c14 c13" colspan="1" rowspan="1"><p class="c2"><span>2&#26085;(&#26085;)</span></p></td><td class="c12" colspan="2" rowspan="1"><p class="c2"><span>&#29575;&#22303;&#31070;&#31038; &#31680;&#20998;&#31085;</span></p></td><td class="c14 c13" colspan="1" rowspan="1"><p class="c2"><span>15:00~</span></p></td><td class="c6" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c11 c13" colspan="1" rowspan="1"><p class="c2"><span>&#29575;&#22303;&#31070;&#31038;</span></p></td></tr><tr class="c8"><td class="c7" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c7 c13" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c14 c13" colspan="1" rowspan="1"><p class="c2"><span>9&#26085;(&#26085;)</span></p></td><td class="c12" colspan="2" rowspan="1"><p class="c2"><span>&#19977;&#21306;&#31070;&#36671;&#24341;&#32153;&#12366; &#31119;&#29579;&#31070;&#31038;</span></p></td><td class="c14 c13" colspan="1" rowspan="1"><p class="c2"><span>9:00~</span></p></td><td class="c6" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c11 c13" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td></tr><tr class="c8"><td class="c7" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c17 c13" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c14 c13" colspan="1" rowspan="1"><p class="c2"><span>9&#26085;(&#26085;)</span></p></td><td class="c12" colspan="2" rowspan="1"><p class="c2"><span>&#29575;&#22303;&#31070;&#31038; &#32257;&#36215;&#24335;</span></p></td><td class="c14 c13" colspan="1" rowspan="1"><p class="c2"><span>10:00~</span></p></td><td class="c6" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c11 c13" colspan="1" rowspan="1"><p class="c2"><span>&#29575;&#22303;&#31070;&#31038;</span></p></td></tr><tr class="c8"><td class="c7" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c15" colspan="1" rowspan="1"><p class="c2"><span>3&#26376;</span></p></td><td class="c14" colspan="1" rowspan="1"><p class="c2"><span>7&#26085;(&#37329;)</span></p></td><td class="c16" colspan="2" rowspan="1"><p class="c2"><span>&#26157;&#21644;&#20013;&#23398;&#26657;&#21330;&#26989;&#24335;</span></p></td><td class="c14" colspan="1" rowspan="1"><p class="c2"><span>9:00~</span></p></td><td class="c9" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c11" colspan="1" rowspan="1"><p class="c2"><span>&#26157;&#21644;&#20013;&#23398;&#26657;</span></p></td></tr><tr class="c8"><td class="c7" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c7" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c14" colspan="1" rowspan="1"><p class="c2"><span>16&#26085;(&#26085;)</span></p></td><td class="c16" colspan="2" rowspan="1"><p class="c2"><span>&#21315;&#33865;&#30476;&#30693;&#20107;&#36984;&#25369;</span></p></td><td class="c14" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c9" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c11" colspan="1" rowspan="1"><p class="c2"><span>&#31070;&#32013;&#20844;&#27665;&#39208;</span></p></td></tr><tr class="c8"><td class="c7" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c7" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c14" colspan="1" rowspan="1"><p class="c2"><span>18&#26085;(&#28779;)</span></p></td><td class="c16" colspan="2" rowspan="1"><p class="c2"><span>&#26157;&#21644;&#23567;&#23398;&#26657;&#21330;&#26989;&#24335;</span></p></td><td class="c14" colspan="1" rowspan="1"><p class="c2"><span>9:00~</span></p></td><td class="c9" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c11" colspan="1" rowspan="1"><p class="c2"><span>&#26157;&#21644;&#23567;&#23398;&#26657;</span></p></td></tr><tr class="c8"><td class="c17" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c17" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c14" colspan="1" rowspan="1"><p class="c2"><span>30&#26085;(&#26085;)</span></p></td><td class="c16" colspan="2" rowspan="1"><p class="c2"><span>&#31070;&#32013;&#26481;&#21306;&#23450;&#26399;&#32207;&#20250;</span></p></td><td class="c14" colspan="1" rowspan="1"><p class="c2"><span>14:00~</span></p></td><td class="c9" colspan="1" rowspan="1"><p class="c1"><span class="c5"></span></p></td><td class="c11" colspan="1" rowspan="1"><p class="c2"><span>&#31070;&#32013;&#20844;&#27665;&#39208;</span></p></td></tr></table><p class="c1 c19"><span class="c18"></span></p><p class="c1 c19"><span class="c18"></span></p>
-
-
-  <!-- フッター -->
-  <footer>
-    <h4>サイト情報</h4>
+  <nav>
     <ul>
-      <li><a href="/terms.html">利用規約</a></li>
-      <li><a href="/privacy.html">プライバシーポリシー</a></li>
-      <li><a href="/contact/index.html">お問い合わせ</a></li>
+      <!-- ホームは削除 -->
+      <li><a href="/kanou-jichikai-kairan/kairan/index.html">回覧板</a></li>
+      <li><a href="/kanou-jichikai-kairan/history/index.html">神納東区の歴史</a></li>
+      <li><a href="/kanou-jichikai-kairan/events/index.html">イベント情報</a></li>
+      <li><a href="/kanou-jichikai-kairan/contact/index.html">お問い合わせ</a></li>
     </ul>
-    <p>&copy; 2025 神納東区 自治会</p>
-  </footer>
-</body>
+  </nav>
+</header>
+
+  <p class="small-text">こちらは 神納東区 イベントの紹介ページです。</p>
+
+      <!-- お知らせ部分 -->
+      <!-- 
+      <div class="announcement area line-height-1">
+      <div class="announcement-text">
+      <p>（お知らせ内容）</p>
+      </div>
+      </div>
+      -->
+      <!-- お知らせ部分終了 -->
+
+  <main>
+      <h1>神納東区 2025年度 主なイベント予定</h1>
+
+  <!-- イベントの表などはここに挿入 -->
+
+  <table class="c20">
+<tr class="c8">
+<td class="c21" colspan="3" rowspan="1">
+<p class="c4">
+<span class="c5">
+        日付
+       </span>
+</p>
+</td>
+<td class="c12" colspan="2" rowspan="1">
+<p class="c4">
+<span class="c5">
+        イベント内容
+       </span>
+</p>
+</td>
+<td class="c14" colspan="1" rowspan="1">
+<p class="c2">
+<span class="c5">
+        時間
+       </span>
+</p>
+</td>
+<td class="c9" colspan="1" rowspan="1">
+<p class="c2">
+<span class="c5">
+        備考
+       </span>
+</p>
+</td>
+<td class="c11" colspan="1" rowspan="1">
+<p class="c2">
+<span class="c5">
+        場所
+       </span>
+</p>
+</td>
+</tr>
+<tr class="c8">
+<td class="c15" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        令和5年
+       </span>
+</p>
+</td>
+<td class="c15 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        4月
+       </span>
+</p>
+</td>
+<td class="c14 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        9日(火)
+       </span>
+</p>
+</td>
+<td class="c12" colspan="2" rowspan="1">
+<p class="c2">
+<span>
+        昭和小学校入学式
+       </span>
+</p>
+</td>
+<td class="c14 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        8:00~
+       </span>
+</p>
+</td>
+<td class="c6" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c11 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        昭和小学校
+       </span>
+</p>
+</td>
+</tr>
+<tr class="c8">
+<td class="c7" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c7 c13" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c14 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        10日(水)
+       </span>
+</p>
+</td>
+<td class="c12" colspan="2" rowspan="1">
+<p class="c2">
+<span>
+        昭和中学校入学式
+       </span>
+</p>
+</td>
+<td class="c14 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        13:00~
+       </span>
+</p>
+</td>
+<td class="c6" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c11 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        昭和中学校
+       </span>
+</p>
+</td>
+</tr>
+<tr class="c8">
+<td class="c7" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c17 c13" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c14 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        15日(月)
+       </span>
+</p>
+</td>
+<td class="c12" colspan="2" rowspan="1">
+<p class="c2">
+<span>
+        狂犬病予防接種立会
+       </span>
+</p>
+</td>
+<td class="c14 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        9:55~
+       </span>
+</p>
+</td>
+<td class="c6" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c11 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        神納公民館
+       </span>
+</p>
+</td>
+</tr>
+<tr class="c8">
+<td class="c7" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c15" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        5月
+       </span>
+</p>
+</td>
+<td class="c14" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        23日(木)
+       </span>
+</p>
+</td>
+<td class="c16" colspan="2" rowspan="1">
+<p class="c2">
+<span>
+        昭和中学校体育祭
+       </span>
+</p>
+</td>
+<td class="c14" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        8:40~
+       </span>
+</p>
+</td>
+<td class="c9" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c11" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        昭和中学校
+       </span>
+</p>
+</td>
+</tr>
+<tr class="c8">
+<td class="c7" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c17" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c14" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        26日(日)
+       </span>
+</p>
+</td>
+<td class="c16" colspan="2" rowspan="1">
+<p class="c2">
+<span>
+        市内一斉清掃
+       </span>
+</p>
+</td>
+<td class="c14" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        8:00~
+       </span>
+</p>
+</td>
+<td class="c9" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c11" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        全域
+       </span>
+</p>
+</td>
+</tr>
+<tr class="c8">
+<td class="c7" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c13 c15" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        6月
+       </span>
+</p>
+</td>
+<td class="c14 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        2日(日)
+       </span>
+</p>
+</td>
+<td class="c12" colspan="2" rowspan="1">
+<p class="c2">
+<span>
+        袖ヶ浦市消防団早出し競技会
+       </span>
+</p>
+</td>
+<td class="c14 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        9:30~
+       </span>
+</p>
+</td>
+<td class="c6" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c11 c13" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+</tr>
+<tr class="c8">
+<td class="c7" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c17 c13" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c14 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        30日(日)
+       </span>
+</p>
+</td>
+<td class="c12" colspan="2" rowspan="1">
+<p class="c2">
+<span>
+        神納環境保全会 小川草刈
+       </span>
+</p>
+</td>
+<td class="c14 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        8:00~
+       </span>
+</p>
+</td>
+<td class="c6" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c11 c13" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+</tr>
+<tr class="c8">
+<td class="c7" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c14" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        7月
+       </span>
+</p>
+</td>
+<td class="c14" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        20日(土)
+       </span>
+</p>
+</td>
+<td class="c16" colspan="2" rowspan="1">
+<p class="c2">
+<span>
+        袖ヶ浦高校ラジオ体操会 袖校Gにて
+       </span>
+</p>
+</td>
+<td class="c14" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        6:00~
+       </span>
+</p>
+</td>
+<td class="c9" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        前半〜7/26マデ
+       </span>
+</p>
+</td>
+<td class="c11" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        袖ヶ浦高校
+       </span>
+</p>
+</td>
+</tr>
+<tr class="c8">
+<td class="c7" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c15 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        8月
+       </span>
+</p>
+</td>
+<td class="c14 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        10日(土)
+       </span>
+</p>
+</td>
+<td class="c12" colspan="2" rowspan="1">
+<p class="c2">
+<span>
+        サマーフェスティバル in 昭和
+       </span>
+</p>
+</td>
+<td class="c14 c13" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c6" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c11 c13" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+</tr>
+<tr class="c8">
+<td class="c7" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c7 c13" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c14 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        21日(水)
+       </span>
+</p>
+</td>
+<td class="c12" colspan="2" rowspan="1">
+<p class="c2">
+<span>
+        袖ヶ浦高校ラジオ体操会 袖校Gにて
+       </span>
+</p>
+</td>
+<td class="c14 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        6:00~
+       </span>
+</p>
+</td>
+<td class="c6" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        後半〜8/27マデ
+       </span>
+</p>
+</td>
+<td class="c11 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        袖ヶ浦高校
+       </span>
+</p>
+</td>
+</tr>
+<tr class="c8">
+<td class="c7" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c17 c13" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c14 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        24日(土)
+       </span>
+</p>
+</td>
+<td class="c12" colspan="2" rowspan="1">
+<p class="c2">
+<span>
+        1分区納涼祭
+       </span>
+</p>
+</td>
+<td class="c14 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        17:30~
+       </span>
+</p>
+</td>
+<td class="c6" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c11 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        神納西ノ下公園
+       </span>
+</p>
+</td>
+</tr>
+<tr class="c8">
+<td class="c7" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c15" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        9月
+       </span>
+</p>
+</td>
+<td class="c14" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        15日(日)
+       </span>
+</p>
+</td>
+<td class="c16" colspan="2" rowspan="1">
+<p class="c2">
+<span>
+        長寿者へお祝い品の配布
+       </span>
+</p>
+</td>
+<td class="c14" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c9" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c11" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+</tr>
+<tr class="c8">
+<td class="c7" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c7" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c14" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        23日(月)
+       </span>
+</p>
+</td>
+<td class="c16" colspan="2" rowspan="1">
+<p class="c2">
+<span>
+        奈良輪区 三区共有神輿の祭礼「奈良輪区民のまつり」
+       </span>
+</p>
+</td>
+<td class="c14" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c9" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c11" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+</tr>
+<tr class="c8">
+<td class="c7" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c17" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c14" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        29日(日)
+       </span>
+</p>
+</td>
+<td class="c16" colspan="2" rowspan="1">
+<p class="c2">
+<span>
+        神納環境保全会 小川草刈
+       </span>
+</p>
+</td>
+<td class="c14" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        8:00~
+       </span>
+</p>
+</td>
+<td class="c9" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c11" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+</tr>
+<tr class="c8">
+<td class="c7" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c15 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        10月
+       </span>
+</p>
+</td>
+<td class="c14 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        6日(日)
+       </span>
+</p>
+</td>
+<td class="c12" colspan="2" rowspan="1">
+<p class="c2">
+<span>
+        2分区 「ふれ合い交流会」
+       </span>
+</p>
+</td>
+<td class="c14 c13" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c6" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c11 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span class="c5">
+        XX公園
+       </span>
+</p>
+</td>
+</tr>
+<tr class="c8">
+<td class="c7" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c7 c13" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c14 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        13日(日)
+       </span>
+</p>
+</td>
+<td class="c12" colspan="2" rowspan="1">
+<p class="c2">
+<span>
+        率土神社 例大祭
+       </span>
+</p>
+</td>
+<td class="c14 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        10:00~
+       </span>
+</p>
+</td>
+<td class="c6" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c11 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        率土神社
+       </span>
+</p>
+</td>
+</tr>
+<tr class="c8">
+<td class="c7" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c7 c13" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c14 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        21日(日)
+       </span>
+</p>
+</td>
+<td class="c12" colspan="2" rowspan="1">
+<p class="c2">
+<span>
+        昭和小学校運動会
+       </span>
+</p>
+</td>
+<td class="c14 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        8:20~
+       </span>
+</p>
+</td>
+<td class="c6" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c11 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        昭和小学校
+       </span>
+</p>
+</td>
+</tr>
+<tr class="c8">
+<td class="c7" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c13 c17" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c14 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        27日(日)
+       </span>
+</p>
+</td>
+<td class="c12" colspan="2" rowspan="1">
+<p class="c2">
+<span>
+        衆議院総選挙・袖ケ浦市議会選挙
+       </span>
+</p>
+</td>
+<td class="c14 c13" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c6" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c11 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        神納公民館
+       </span>
+</p>
+</td>
+</tr>
+<tr class="c8">
+<td class="c7" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c15" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        11月
+       </span>
+</p>
+</td>
+<td class="c14" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        10日(日)
+       </span>
+</p>
+</td>
+<td class="c16" colspan="2" rowspan="1">
+<p class="c2">
+<span>
+        ちばアクアラインマラソン2024
+       </span>
+</p>
+</td>
+<td class="c14" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c9" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c11" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        全域・南総昭和線
+       </span>
+</p>
+</td>
+</tr>
+<tr class="c8">
+<td class="c7" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c7" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c14" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        17日(日)
+       </span>
+</p>
+</td>
+<td class="c16" colspan="2" rowspan="1">
+<p class="c2">
+<span>
+        市内一斉清掃
+       </span>
+</p>
+</td>
+<td class="c14" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        8:00~
+       </span>
+</p>
+</td>
+<td class="c9" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c11" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        全域
+       </span>
+</p>
+</td>
+</tr>
+<tr class="c8">
+<td class="c7" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c17" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c14" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        23日(日)
+       </span>
+</p>
+</td>
+<td class="c16" colspan="2" rowspan="1">
+<p class="c2">
+<span>
+        率土神社 新穀祭
+       </span>
+</p>
+</td>
+<td class="c14" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        10:00~
+       </span>
+</p>
+</td>
+<td class="c9" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c11" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        率土神社
+       </span>
+</p>
+</td>
+</tr>
+<tr class="c8">
+<td class="c7" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c15 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        12月
+       </span>
+</p>
+</td>
+<td class="c14 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        1日(日)
+       </span>
+</p>
+</td>
+<td class="c12" colspan="2" rowspan="1">
+<p class="c2">
+<span>
+        第17回グラウンドゴルフ大会
+       </span>
+</p>
+</td>
+<td class="c14 c13" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c6" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c11 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span class="c5">
+        旭化成グラウンド
+       </span>
+</p>
+</td>
+</tr>
+<tr class="c8">
+<td class="c7" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c7 c13" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c14 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        2日(月)
+       </span>
+</p>
+</td>
+<td class="c12" colspan="2" rowspan="1">
+<p class="c2">
+<span>
+        イルミネーション点灯 袖ケ浦駅南口
+       </span>
+</p>
+</td>
+<td class="c14 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        17:15~
+       </span>
+</p>
+</td>
+<td class="c6" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c11 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        袖ケ浦駅
+       </span>
+</p>
+</td>
+</tr>
+<tr class="c8">
+<td class="c17" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c17 c13" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c14 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        28日(土)
+       </span>
+</p>
+</td>
+<td class="c12" colspan="2" rowspan="1">
+<p class="c2">
+<span>
+        消防団第4分団歳末特別警戒
+       </span>
+</p>
+</td>
+<td class="c14 c13" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c6" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c11 c13" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+</tr>
+<tr class="c8">
+<td class="c15" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        令和6年
+       </span>
+</p>
+</td>
+<td class="c15" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        1月
+       </span>
+</p>
+</td>
+<td class="c14" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        1日(日)
+       </span>
+</p>
+</td>
+<td class="c16" colspan="2" rowspan="1">
+<p class="c2">
+<span>
+        率土神社 歳旦祭
+       </span>
+</p>
+</td>
+<td class="c14" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        0:00~
+       </span>
+</p>
+</td>
+<td class="c9" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c11" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        率土神社
+       </span>
+</p>
+</td>
+</tr>
+<tr class="c8">
+<td class="c7" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c17" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c14" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        19日(日)
+       </span>
+</p>
+</td>
+<td class="c16" colspan="2" rowspan="1">
+<p class="c2">
+<span>
+        令和7年袖ケ浦市消防出初式
+       </span>
+</p>
+</td>
+<td class="c14" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        10:00~
+       </span>
+</p>
+</td>
+<td class="c9" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c11" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        市民会館（昭和交流センター）
+       </span>
+</p>
+</td>
+</tr>
+<tr class="c8">
+<td class="c7" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c15 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        2月
+       </span>
+</p>
+</td>
+<td class="c14 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        2日(日)
+       </span>
+</p>
+</td>
+<td class="c12" colspan="2" rowspan="1">
+<p class="c2">
+<span>
+        令和6年度袖ケ浦市総合防災訓練
+       </span>
+</p>
+</td>
+<td class="c14 c13" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c6" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c11 c13" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+</tr>
+<tr class="c8">
+<td class="c7" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c7 c13" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c14 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        2日(日)
+       </span>
+</p>
+</td>
+<td class="c12" colspan="2" rowspan="1">
+<p class="c2">
+<span>
+        率土神社 節分祭
+       </span>
+</p>
+</td>
+<td class="c14 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        15:00~
+       </span>
+</p>
+</td>
+<td class="c6" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c11 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        率土神社
+       </span>
+</p>
+</td>
+</tr>
+<tr class="c8">
+<td class="c7" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c7 c13" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c14 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        9日(日)
+       </span>
+</p>
+</td>
+<td class="c12" colspan="2" rowspan="1">
+<p class="c2">
+<span>
+        三区神輿引継ぎ 福王神社
+       </span>
+</p>
+</td>
+<td class="c14 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        9:00~
+       </span>
+</p>
+</td>
+<td class="c6" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c11 c13" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+</tr>
+<tr class="c8">
+<td class="c7" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c17 c13" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c14 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        9日(日)
+       </span>
+</p>
+</td>
+<td class="c12" colspan="2" rowspan="1">
+<p class="c2">
+<span>
+        率土神社 縁起式
+       </span>
+</p>
+</td>
+<td class="c14 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        10:00~
+       </span>
+</p>
+</td>
+<td class="c6" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c11 c13" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        率土神社
+       </span>
+</p>
+</td>
+</tr>
+<tr class="c8">
+<td class="c7" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c15" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        3月
+       </span>
+</p>
+</td>
+<td class="c14" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        7日(金)
+       </span>
+</p>
+</td>
+<td class="c16" colspan="2" rowspan="1">
+<p class="c2">
+<span>
+        昭和中学校卒業式
+       </span>
+</p>
+</td>
+<td class="c14" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        9:00~
+       </span>
+</p>
+</td>
+<td class="c9" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c11" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        昭和中学校
+       </span>
+</p>
+</td>
+</tr>
+<tr class="c8">
+<td class="c7" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c7" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c14" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        16日(日)
+       </span>
+</p>
+</td>
+<td class="c16" colspan="2" rowspan="1">
+<p class="c2">
+<span>
+        千葉県知事選挙
+       </span>
+</p>
+</td>
+<td class="c14" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c9" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c11" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        神納公民館
+       </span>
+</p>
+</td>
+</tr>
+<tr class="c8">
+<td class="c7" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c7" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c14" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        18日(火)
+       </span>
+</p>
+</td>
+<td class="c16" colspan="2" rowspan="1">
+<p class="c2">
+<span>
+        昭和小学校卒業式
+       </span>
+</p>
+</td>
+<td class="c14" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        9:00~
+       </span>
+</p>
+</td>
+<td class="c9" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c11" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        昭和小学校
+       </span>
+</p>
+</td>
+</tr>
+<tr class="c8">
+<td class="c17" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c17" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c14" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        30日(日)
+       </span>
+</p>
+</td>
+<td class="c16" colspan="2" rowspan="1">
+<p class="c2">
+<span>
+        神納東区定期総会
+       </span>
+</p>
+</td>
+<td class="c14" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        14:00~
+       </span>
+</p>
+</td>
+<td class="c9" colspan="1" rowspan="1">
+<p class="c1">
+<span class="c5">
+</span>
+</p>
+</td>
+<td class="c11" colspan="1" rowspan="1">
+<p class="c2">
+<span>
+        神納公民館
+       </span>
+</p>
+</td>
+</tr>
+</table>
+<p class="c1 c19">
+<span class="c18">
+</span>
+</p>
+<p class="c1 c19">
+<span class="c18">
+</span>
+</p>
+<!-- イベント詳細 終了 -->
+    <ul>
+    <li><small>注1）予定の記載があります</small></li>
+    <li><small>注2）予告なく中止、順延等の可能性があります</small></li>
+    <li><small>注3）情報の掲載は細心の注意を払っておりますが、最終確認はご自身でお願いいたします</small></li>
+    </ul>
+  </main>
+
+  <!-- フッター部分 -->
+    <footer>
+    <ul>
+      <li><a href="/kanou-jichikai-kairan/terms.html">利用規約</a></li>
+      <li><a href="/kanou-jichikai-kairan/privacy.html">プライバシーポリシー</a></li>
+      <li><a href="/kanou-jichikai-kairan/contact/index.html">お問い合わせ</a></li>
+    </ul>
+    <p>© 2025 神納東区 自治会</p>
+    </footer>
+  </body>
 </html>
