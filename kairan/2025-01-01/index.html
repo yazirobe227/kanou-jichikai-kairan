@@ -22,7 +22,8 @@
 
 /* ロゴ（トップと下位の切り分け） */
   .logo-wrapper {
-    margin: 1em 0;
+  margin: 0;　/* ← 元の「1em 0」から変更、上部のスペースなくす */
+  padding-top: 0;　/* 上記の実現のため、念のためパディングもゼロ */
   }
 
   .logo-wrapper img {
@@ -36,16 +37,18 @@
   }
 
   .top-logo img {
-    max-width: 150px;
+    max-width: 220px;　/* ← トップページのロゴサイズ調整 150px → 220pxに拡大 */
   }
 
   /* 下層ページ用ロゴ（中央寄せ） */
   .sub-logo {
     text-align: center;
+    margin-top: 0;
+    padding-top: 0;
   }
 
   .sub-logo img {
-  max-width: 100px;
+  max-width: 220px;  /* ← トップ下のロゴサイズ調整 100px → 220pxに拡大 */
   margin: 0 auto;  
   display: block;
   }
@@ -53,10 +56,10 @@
   /* スマホ画面でさらに小さく */
   @media (max-width: 600px) {
     .top-logo img {
-      max-width: 120px;
+      max-width: 180px;　/* ← トップページのロゴサイズ調整 120px → 180pxに拡大 */
     }
     .sub-logo img {
-      max-width: 80px;
+      max-width: 120px;  /* ← トップ下のロゴサイズ調整 80px → 120pxに拡大 */
     }
   }
 
