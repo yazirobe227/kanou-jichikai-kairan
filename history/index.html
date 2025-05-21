@@ -3,159 +3,230 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>神納東区 自治会 情報ポータル</title>
-  
-<style>
-/* グローバルスタイル */
-body {
-  font-family: sans-serif;
-  line-height: 1.8;
-  padding: 2em;
-  background: #f9f9f9;
-  color: #333;
-  max-width: 720px;
-  margin: auto;
-}
+  <title>神納東区 2025年1月 回覧板</title>
+  <style>
+    /* 全体スタイル */
+    body {
+      font-family: sans-serif;
+      line-height: 1.8;
+      padding: 2em;
+      background: #f9f9f9;
+      color: #333;
+      max-width: 720px; 
+      margin: auto; /* 横幅720px制限 */
+    }
+    h1 { color: #2c3e50; }
+    h2 { color: #2c3e50; padding-bottom: 0.2em; }
+    img { max-width: 100%; margin: 1em 0; }
+    .caption { font-size: 0.9em; color: #555; margin-bottom: 1.5em; }
 
-h1 {
-  color: #2c3e50;
-}
+/* ロゴ（トップと下位の切り分け） */
+  .logo-wrapper {
+  margin: 0; /* ← 元の「1em 0」から変更、上部のスペースなくす */
+  padding-top: 0; /* 上記の実現のため、念のためパディングもゼロ */
+  }
 
-h2 {
-  color: #34495e;
-  border-bottom: 1px solid #ccc;
-  margin-top: 2em;
-  padding-bottom: 0.2em; /* 追加 */
-}
-
-img {
-  max-width: 100%;
-  margin: 1em 0;
-}
-
-.caption {
-  font-size: 0.9em;
-  color: #555;
-  margin-bottom: 1.5em;
-}
-
-.small-text {
-  font-size: 0.85em;
-}
-
-.announcement-text {
-  font-size: 1em;
-  font-weight: bold;
-  line-height: 0.9;
-}
-
-/* リストスタイル */
-ul {
-  list-style-type: none;
-  padding-left: 0;
-}
-
-/* ナビゲーションスタイル */
-nav ul {
-  display: flex;
-  justify-content: space-around;
-  background-color: #2c3e50;
-}
-
-nav ul li a {
-  padding: 10px 15px;
-  color: white;
-  text-decoration: none;
-}
-
-/* ハンバーガースタイル（スマホ用） */
-@media (max-width: 600px) {
-  nav ul {
+  .logo-wrapper img {
     display: block;
+    height: auto;
+  }
+
+  /* トップページ用ロゴ（左寄せ） */
+  .top-logo {
+    text-align: left;
+  }
+
+  .top-logo img {
+    max-width: 220px; /* ← トップページのロゴサイズ調整 150px → 220pxに拡大 */
+  }
+
+  /* 下層ページ用ロゴ（中央寄せ） */
+  .sub-logo {
     text-align: center;
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  .sub-logo img {
+  max-width: 220px;  /* ← トップ下のロゴサイズ調整 100px → 220pxに拡大 */
+  margin: 0 auto;  
+  display: block;
+  }
+
+  /* スマホ画面でさらに小さく */
+  @media (max-width: 600px) {
+    .top-logo img {
+      max-width: 180px; /* ← トップページのロゴサイズ調整 120px → 180pxに拡大 */
+    }
+    .sub-logo img {
+      max-width: 120px;  /* ← トップ下のロゴサイズ調整 80px → 120pxに拡大 */
+    }
+  }
+
+    /* 新しく追加するスタイル：リストの「・」を消す */
+    ul {
+      list-style-type: none; /* 点を消す */
+      padding-left: 0; /* 左の余白をなくす */
+    }
+
+    /* ハンバーガーメニューのスタイル */
+    nav ul {
+      display: flex;
+      justify-content: space-around;
+      list-style: none;
+      padding: 0;
+      background-color: #2c3e50; /* 背景色追加 */
+    }
+
+    nav ul li a {
+      padding: 10px 15px;
+      color: white;  /* メニュー文字色 */
+      text-decoration: none;
+    }
+
+    /* スマホ用ハンバーガーメニュー */
+    @media (max-width: 600px) {
+      nav ul {
+    display: flex;
+    flex-wrap: nowrap; /* 横並びを維持しつつ折り返しを許可 "wrap" しない"nowrap"*/
+    justify-content: flex-start; /* 折り返しの場合 "center"*/
     background-color: #34495e;
-    padding: 10px 0;
-  }
+    padding: 8px;      /* 折り返し対応 10px  → 8px */
+    overflow-x: auto;       /* nowrap対応：横スクロールを許可 */
+    -webkit-overflow-scrolling: touch; /* nowrap対応：iOS用スムーズスクロール */
+      }
+      nav ul li {
+        flex: 0 0 auto; /* 元は margin: 5px 8px; */
+        margin: 0 10px;
+      }
 
-  nav ul li {
-    margin: 10px 0;
-  }
+      nav ul li a {
+        font-size: 0.8em; /* スマホで少し文字を小さく */
+        padding: 8px 10px;
+        color: #ecf0f1; /* リンク文字色 */
+        white-space: nowrap; /* テキストも折り返さない */
+      }
+      nav ul li a:hover {
+        background-color: #2980b9; /* ホバー時の背景色 */
+      }
+    }
 
-  nav ul li a {
-    color: #ecf0f1;
-  }
+    /* back-to-top 戻るアンカーの設定 */
+      .back-to-top {
+      text-align: right;
+      margin-top: 0.5em;
+      margin-bottom: 1em;
+      }
 
-  nav ul li a:hover {
-    background-color: #2980b9;
-  }
-}
+    /* フッタースタイル */
+      footer {
+      background-color: #2c3e50;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      }
 
-/* フッタースタイル */
-footer {
-  background-color: #2c3e50;
-  color: white;
-  padding: 20px;
-  text-align: center;
-}
+      footer h4 {
+      margin-bottom: 9px;
+      font-size: 1.2em;
+      }
 
-footer h4 {
-  margin-bottom: 10px;
-  font-size: 1.2em;
-}
+      footer ul {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap; /* モバイルで折り返し */
+      }
 
-footer p {
-  font-size: 0.9em;
-}
+      footer ul li {
+      display: inline;
+      }
 
-footer a {
-  color: white;
-  text-decoration: none;
-}
+      footer p {
+      font-size: 0.8em;
+      }
 
-footer a:hover {
-  text-decoration: underline;
-}
+      footer a {
+      font-size: 0.85em;
+      color: white;
+      text-decoration: none;
+      }
 
-/* フッターノートスタイル */
-.footer-note {
-  text-align: right;
-  font-size: 0.9em;
-  color: #555;
-  margin-top: 3em;
-}
-</style>  
+      footer a:hover {
+      text-decoration: underline;
+      }
 
-  <link rel="stylesheet" href="style.css">  </head>
+      /* フッターノートスタイル history/index.htmlに適用 */
+      .footer-note {
+      text-align: right;
+      font-size: 0.9em;
+      color: #555;
+      margin-top: 3em;
+      }
+
+    /* 小さくするスタイル */
+    .small-text {
+      font-size: 0.85em;
+    }
+
+    /* お知らせ部分の文字調整 */
+    .announcement-text {
+      font-size: 1em;
+      font-weight: bold;
+      line-height: 0.9; /* 行間を詰める */
+    }
+
+    /* セクションタイトルに矢印が表示されないように */
+    .section h2 {
+      margin-left: 0; /* 矢印を消すためにマージンをリセット */
+    }
+
+  </style>
+</head>
+
 <body>
   <header>
-    <nav>
-      <ul>
-        <li><a href="/kanou-jichikai-kairan/">ホーム</a></li>
-        <li><a href="/kanou-jichikai-kairan/kawaraban/index.html">回覧板</a></li>
-        <li><a href="/kanou-jichikai-kairan/history/index.html">神納東区の歴史</a></li>
-        <li><a href="/kanou-jichikai-kairan/events/index.html">イベント情報</a></li>
-        <li><a href="/kanou-jichikai-kairan/contact/index.html">お問い合わせ</a></li>
-      </ul>
-    </nav>
-  </header>
+  <div class="logo-wrapper sub-logo">
+    <a href="/kanou-jichikai-kairan/">
+      <img src="/kanou-jichikai-kairan/images/logo.png" alt="神納東区ロゴ">
+    </a>
+  </div>
+  <nav>
+    <ul>
+      <!-- ホームは削除 -->
+      <li><a href="/kanou-jichikai-kairan/kawaraban/index.html">回覧板</a></li>
+      <li><a href="/kanou-jichikai-kairan/history/index.html">神納東区の歴史</a></li>
+      <li><a href="/kanou-jichikai-kairan/events/index.html">イベント情報</a></li>
+      <li><a href="/kanou-jichikai-kairan/contact/index.html">お問い合わせ</a></li>
+    </ul>
+  </nav>
+</header>
 
-  <main>  <h1>神納東区 自治会 情報ポータル</h1>
-    <p class="small-text">こちらは 神納東区 自治会 の活動や回覧板のお知らせをまとめたページです。</p>
+  <p class="small-text">こちらは 神納東区 の歴史を紹介するページです。</p>
 
-    <div class="announcement area line-height-1">
-      <div class="announcement-text">
-        <p>【お知らせ】<a href="/events/index.html">　</a></p>
-      </div>
-      <div class="announcement-text">
-        <p>【お知らせ】<a href="../kairan/2025-04-01/202504_kairan11.jpg">　</a></p>
-      </div>
+  <!-- お知らせ部分 -->
+  <!-- 
+  <div class="announcement area line-height-1">
+    <div class="announcement-text">
+      <p>【お知らせ】5月100日～103日、神納東区ソフトボール大会！詳細は<a href="/events/index.html">こちら</a></p>
     </div>
+    <div class="announcement-text">
+      <p>【お知らせ】5月25日（日）は市内一斉清掃詳細 <a href="../kairan/2025-04-01/202504_kairan11.jpg">こちら</a></p>
+    </div>
+  </div> 
+ -->
+ <!-- お知らせ部分終了 -->
 
-    <section>  <h2>「神納東区」誕生の経緯</h2>
+  <main>
+    <h1>「神納東区」誕生の経緯</h1>
+    <section>
 
-           <figure>
-  <a href="images/history-kannou-sign-medium.jpg" target="_blank">
-    <picture>
+      <figure>
+      <a href="images/history-kannou-sign-medium.jpg" target="_blank">
+      <picture>
       <source media="(max-width: 600px)" srcset="images/history-kannou-sign-small.jpg">
       <source media="(max-width: 1024px)" srcset="images/history-kannou-sign-medium.jpg">
       <img src="images/history-kannou-sign-medium.jpg" alt="「神納」サイン">
@@ -166,7 +237,7 @@ footer a:hover {
       
       <p>「何故1区、東区なのか？」との疑問に答える形で、神納地域の町内会の名称変更の歴史を整理した記録です。</p>
 
-      <h2>0.　はじめに</h2>
+      <h2>0. はじめに</h2>
       <p>
         “何を今さら”と思われるかも知れないが、ある会合で神納地区の町内会の名称が話題になった。「何故1区。東区なのか？」との質問が出されたが、 「いつどういう経緯で」を明確には誰も答えられなかった。<br>
         そこでいつもの出しゃばり心で調べることになった。<br>
@@ -200,7 +271,7 @@ footer a:hover {
   <figcaption>1961年〜1969年の神納東区、中央の白いラインが現在の南総昭和線 ©︎国土地理院</figcaption>
 </figure>
 
-      <h2>3.　神納区の2分割により神納1区と神納2区へ</h2>
+      <h2>3. 神納区の2分割により神納1区と神納2区へ</h2>
       <p>
         ・神納区は長らく一つの区 (昔で言えば神納村)として1,2,3分区で構成されてきた。(1分区は神納新田、2、3分区は本村)<br>
         ・その後人口が増え一つの区では管理できないとの意見が出され、昭和57年篠田区長(新田所属)の時代に神納区を2分割する案が出された。<br>
@@ -228,7 +299,7 @@ footer a:hover {
         ・これを反映して昭和63年当時区長であった多田哲郎さんを中心に区名変更に関して1区と協議したが合意に至らなかった。(神納1区、2区の役員で区名変更会議を2回ほど行った)<br>
         ・その当時会計を担当していた星野光春さんは潜在的不満を持ち続けていたが、平成15年に区長に就任したのを機に、2区を改称すべく奔走した。<br>
         ・多田憲美さんに相談したり、1区木村耕作区長のアドバイス等を受けた一方、単独でも改称は可能との行政からの確認も取り付けた。<br>
-        　但し、行政から「神納区」では通りませんよとのアドバイスを受けた。<br>
+         但し、行政から「神納区」では通りませんよとのアドバイスを受けた。<br>
         ・神納1区の有力者に対しての根回し、時の尾高幹夫1区長を含めて役員の同意を得て、平成17年4月1日から神納2区を神納東区に改称した。<br>
         ・改称を推進した星野さんは多田憲美さんの「本村が2区では沽券にかかわる」、木村耕作1区区長の「2区のままでいいんですか」、との言葉が今でも心に残っているという。<br>
         ・このような経緯を経て神納東区が誕生したが、経緯を知らない人は「同じ神納で何故1区、東区なのか?」、「何故東区、西区ではないのか?」と不思議に思う人は多いと思う。私もその中の一人ではあった。
@@ -255,12 +326,12 @@ footer a:hover {
 
       <h3>【参考資料】</h3>
       <p>
-        1.　多田憲美著「ふるさと神納」<br>
-        2.　歴代区長（神納区）名簿<br>
-        3.　歴代区長（神納東区）名簿<br>
-        4.　神納東区 第一分区 歴代分区長<br>
-        5.　その他<br>
-        　・松井泩さん、星野光春さん、他にヒアリングした。<br>
+        1. 多田憲美著「ふるさと神納」<br>
+        2. 歴代区長（神納区）名簿<br>
+        3. 歴代区長（神納東区）名簿<br>
+        4. 神納東区 第一分区 歴代分区長<br>
+        5. その他<br>
+         ・松井泩さん、星野光春さん、他にヒアリングした。<br>
       </p>
     </section>
 
@@ -269,14 +340,35 @@ footer a:hover {
     </div>
   </main>
 
+  <!-- フッター -->
   <footer>
-    <h4>サイト情報</h4>
+      <!-- <h4>サイト情報</h4> ここはとりあえず表示しない-->
     <ul>
-      <li><a href="/terms.html">利用規約</a></li>
-      <li><a href="/privacy.html">プライバシーポリシー</a></li>
-      <li><a href="/contact/index.html">お問い合わせ</a></li>
+      <li><a href="/kanou-jichikai-kairan/terms.html">利用規約</a></li>
+      <li><a href="/kanou-jichikai-kairan/privacy.html">プライバシーポリシー</a></li>
+      <li><a href="/kanou-jichikai-kairan//contact/index.html">お問い合わせ</a></li>
     </ul>
     <p>&copy; 2025 神納東区 自治会</p>
   </footer>
+
+  <!-- ページ内 画像制御 -->
+  <div id="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); text-align:center; z-index:9999;">
+    <span style="color:white; font-size:2em; position:absolute; top:10px; right:20px; cursor:pointer;" onclick="closeModal()">×</span>
+    <img id="modalImage" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="拡大画像" style="max-width:90%; max-height:80%; margin-top:5%;">
+    <br>
+    <a id="enlargeLink" href="#" target="_blank" style="color:white; font-size:1em;">▶ さらに拡大表示（-large）</a>
+  </div>
+
+  <script>
+    function showModal(mediumSrc, largeSrc) {
+      document.getElementById('modalImage').src = mediumSrc;
+      document.getElementById('enlargeLink').href = largeSrc;
+      document.getElementById('modal').style.display = 'block';
+    }
+
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+  </script>
 </body>
 </html>
