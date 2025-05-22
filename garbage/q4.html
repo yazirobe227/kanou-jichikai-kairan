@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>袖ケ浦市ごみカレンダー 神納東区版</title>
+  <title>神納東区 ごみカレンダー 1〜3月分</title>
   <style>
     /* 全体スタイル */
     body {
@@ -162,20 +162,16 @@
     /* 小さくするスタイル */
     .small-text {
       font-size: 0.85em;
-      line-height: 1.2;     /* ← 行間を詰める */
-      margin-bottom: 0.2em; /* ← 下の余白を狭くする */
     }
 
     /* お知らせ部分の文字調整 */
     .announcement-text {
-      font-size: 1em;
+      font-size: 0.9em;
       font-weight: bold;
-      line-height: 0.9; /* 行間を詰める */
-    }
-
-    /* お知らせ部分とh1部分の行間調整 */
-    .announcement {
-      margin-bottom: 0.5em; /* お知らせがあるときだけ余白 */
+      line-height: 1.3;        /* 行間調整 標準〜やや狭めに修正 0.7は文字が重なる */
+      word-break: break-word;  /* 長いURLや単語が折り返されるように */
+      overflow-wrap: break-word; /* 同上、互換性のため追加 */
+      margin-bottom: 0.5em;     /* 各お知らせの間に余白を追加（任意） */
     }
 
     /* セクションタイトルに矢印が表示されないように */
@@ -205,43 +201,33 @@
   </nav>
 </header>
 
-  <p class="small-text">こちらは 神納東区 ゴミ収集カレンダーのページです。</p>
+  <p class="small-text">こちらは 神納東区 ごみカレンダー 1〜3月分を掲載するページです。</p>
 
-      <!-- お知らせ部分 -->
-      <!-- 
-      <div class="announcement area line-height-1">
-      <div class="announcement-text">
-      <p>（お知らせ内容）</p>
-      </div>
-      </div>
-      -->
-      <!-- お知らせ部分終了 -->
-
-  <main>
-      <h1>神納東区 ゴミ収集カレンダー</h1>
-
-    <div class="section">
-      <h2>＜2025年度版＞</h2>
-      <ul>
-        <li><a href="q1.html">4月、5月、6月</a></li>
-        <li><a href="q2.html">7月、8月、9月</a></li>
-        <li><a href="q3.html">10月、11月、12月</a></li>
-        <li><a href="q4.html">1月、2月、3月</a></li>
-        <li><a href="full.html">2025年度 すべて</a></li>
-      </ul>
+  <!-- お知らせ部分 -->
+  <!-- 
+  <div class="announcement area line-height-1">
+    <div class="announcement-text">
+      <p>【お知らせ】5月100日～103日、神納東区ソフトボール大会！詳細は<a href="/events/index.html">こちら</a></p>
     </div>
-
-    <div class="section">
-     <h3>袖ケ浦市 ごみ出しルール</h3>
-      <ul>
-        <li><a href="https://www.city.sodegaura.lg.jp/soshiki/haikibutsu/gomi-dashikata-top.html">ごみと資源物の正しい分け方・出し方（袖ケ浦市）</a></li>
-        <li><a href="https://www.city.sodegaura.lg.jp/uploaded/attachment/7932.pdf">ごみと資源物の出し方（日常用）リーフレット（袖ケ浦市）</a></li>
-        <li><a href="../kairan/2025-03-01/images/202503_kairan27-large.jpg">ごみと資源物ガイドブックのご案内（袖ケ浦市）</a></li>
-      </ul>
+    <div class="announcement-text">
+      <p>【お知らせ】5月25日（日）は市内一斉清掃詳細　<a href="../kairan/2025-04-01/202504_kairan11.jpg">こちら</a></p>
     </div>
+  </div>　
+　-->
+　<!-- お知らせ部分終了 -->
 
-      <p><a href="/kanou-jichikai-kairan/">← トップページに戻る</a></p>
-  </main>
+ <main>
+  <h1>神納東区 ごみカレンダー 1〜3月分</h1>
+
+  <p>以下の画像をクリックすると拡大表示できます。</p>
+
+  <img src="images/garbage_2025_q4-small.jpg" 
+       alt="神納東区 ごみカレンダー 2026年1〜3月分" 
+       onclick="showModal('images/garbage_2025_q4-medium.jpg', 'images/garbage_2025_q4-large.jpg')">
+
+
+  <p><a href="/kanou-jichikai-kairan/garbage/index.html">← ごみカレンダー 一覧に戻る</a></p>
+ </main>
 
   <!-- フッター -->
   <footer>
