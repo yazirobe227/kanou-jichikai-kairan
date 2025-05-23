@@ -1,4 +1,3 @@
-  <script>
     function showModal(mediumSrc, largeSrc) {
       document.getElementById('modalImage').src = mediumSrc;
       document.getElementById('enlargeLink').href = largeSrc;
