@@ -3,182 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>神納東区 2025年1月 回覧板</title>
-  <style>
-    /* 全体スタイル */
-    body {
-      font-family: sans-serif;
-      line-height: 1.8;
-      padding: 2em;
-      background: #f9f9f9;
-      color: #333;
-      max-width: 720px; 
-      margin: auto; /* 横幅720px制限 */
-    }
-    h1 { color: #2c3e50; }
-    h2 { color: #2c3e50; padding-bottom: 0.2em; }
-    img { max-width: 100%; margin: 1em 0; }
-    .caption { font-size: 0.9em; color: #555; margin-bottom: 1.5em; }
-
-/* ロゴ（トップと下位の切り分け） */
-  .logo-wrapper {
-  margin: 0;　/* ← 元の「1em 0」から変更、上部のスペースなくす */
-  padding-top: 0;　/* 上記の実現のため、念のためパディングもゼロ */
-  }
-
-  .logo-wrapper img {
-    display: block;
-    height: auto;
-  }
-
-  /* トップページ用ロゴ（左寄せ） */
-  .top-logo {
-    text-align: left;
-  }
-
-  .top-logo img {
-    max-width: 220px;　/* ← トップページのロゴサイズ調整 150px → 220pxに拡大 */
-  }
-
-  /* 下層ページ用ロゴ（中央寄せ） */
-  .sub-logo {
-    text-align: center;
-    margin-top: 0;
-    padding-top: 0;
-  }
-
-  .sub-logo img {
-  max-width: 220px;  /* ← トップ下のロゴサイズ調整 100px → 220pxに拡大 */
-  margin: 0 auto;  
-  display: block;
-  }
-
-  /* スマホ画面でさらに小さく */
-  @media (max-width: 600px) {
-    .top-logo img {
-      max-width: 180px;　/* ← トップページのロゴサイズ調整 120px → 180pxに拡大 */
-    }
-    .sub-logo img {
-      max-width: 120px;  /* ← トップ下のロゴサイズ調整 80px → 120pxに拡大 */
-    }
-  }
-
-    /* 新しく追加するスタイル：リストの「・」を消す */
-    ul {
-      list-style-type: none; /* 点を消す */
-      padding-left: 0; /* 左の余白をなくす */
-    }
-
-    /* ハンバーガーメニューのスタイル */
-    nav ul {
-      display: flex;
-      justify-content: space-around;
-      list-style: none;
-      padding: 0;
-      background-color: #2c3e50; /* 背景色追加 */
-    }
-
-    nav ul li a {
-      padding: 10px 15px;
-      color: white;  /* メニュー文字色 */
-      text-decoration: none;
-    }
-
-    /* スマホ用ハンバーガーメニュー */
-    @media (max-width: 600px) {
-      nav ul {
-    display: flex;
-    flex-wrap: nowrap; /* 横並びを維持しつつ折り返しを許可 "wrap" しない"nowrap"*/
-    justify-content: flex-start; /* 折り返しの場合 "center"*/
-    background-color: #34495e;
-    padding: 8px;      /* 折り返し対応　10px  → 8px */
-    overflow-x: auto;       /* nowrap対応：横スクロールを許可 */
-    -webkit-overflow-scrolling: touch; /* nowrap対応：iOS用スムーズスクロール */
-      }
-      nav ul li {
-        flex: 0 0 auto; /* 元は　margin: 5px 8px; */
-        margin: 0 10px;
-      }
-
-      nav ul li a {
-        font-size: 0.8em; /* スマホで少し文字を小さく */
-        padding: 8px 10px;
-        color: #ecf0f1; /* リンク文字色 */
-        white-space: nowrap; /* テキストも折り返さない */
-      }
-      nav ul li a:hover {
-        background-color: #2980b9; /* ホバー時の背景色 */
-      }
-    }
-
-    /* back-to-top 戻るアンカーの設定 */
-      .back-to-top {
-      text-align: right;
-      margin-top: 0.5em;
-      margin-bottom: 1em;
-      }
-
-    /* フッタースタイル */
-      footer {
-      background-color: #2c3e50;
-      color: white;
-      padding: 15px;
-      text-align: center;
-      }
-
-      footer h4 {
-      margin-bottom: 9px;
-      font-size: 1.2em;
-      }
-
-      footer ul {
-      list-style: none;
-      padding: 0;
-      margin: 8px 0;
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap; /* モバイルで折り返し */
-      }
-
-      footer ul li {
-      display: inline;
-      }
-
-      footer p {
-      font-size: 0.8em;
-      }
-
-      footer a {
-      font-size: 0.85em;
-      color: white;
-      text-decoration: none;
-      }
-
-      footer a:hover {
-      text-decoration: underline;
-      }
-
-    /* 小さくするスタイル */
-    .small-text {
-      font-size: 0.85em;
-    }
-
-    /* お知らせ部分の文字調整 */
-    .announcement-text {
-      font-size: 0.9em;
-      font-weight: bold;
-      line-height: 1.3;        /* 行間調整 標準〜やや狭めに修正 0.7は文字が重なる */
-      word-break: break-word;  /* 長いURLや単語が折り返されるように */
-      overflow-wrap: break-word; /* 同上、互換性のため追加 */
-      margin-bottom: 0.5em;     /* 各お知らせの間に余白を追加（任意） */
-
-    /* セクションタイトルに矢印が表示されないように */
-    .section h2 {
-      margin-left: 0; /* 矢印を消すためにマージンをリセット */
-    }
-
-  </style>
+  <title>神納東区 2025年5月 回覧板</title>
+  <link rel="stylesheet" href="/kanou-jichikai-kairan/css/style.css">
 </head>
 
 <body>
@@ -216,119 +42,428 @@
 　<!-- お知らせ部分終了 -->
 
   <main>
-    <h1>2025年1月 回覧板</h1>
+    <h1>2025年5月 回覧板</h1>
     <a id="top"></a>
 
 	<h2>目次</h2>
 		<ul>
-			<li><a href="#item1">1.　「地域安全ニュースふれあい第３４６号」及び「犯罪発生地図」</a></li>
-			<li><a href="#item2">2.　「国勢調査の調査員募集」リーフレット</a></li>
-			<li><a href="#item3">3.　「シネマザガウラ上映会」チラシ</a></li>
-			<li><a href="#item4">4.　「自転車乗車用ヘルメット購入費補助金」チラシ</a></li>
-			<li><a href="#item5">5.　「第２回 市民三学大学講座」チラシ</a></li>
-			<li><a href="#item6">6.　「シルバー人材センター会員募集」チラシ</a></li>
-			<li><a href="#item7">7.　袖ケ浦市総合防災訓練に併せた「いっせい行動訓練」の実施について（お願い）</a></li>
-			<li><a href="#item8">8.　昭和中学校校舎増築工事の実施について（お知らせ）</a></li>
+			<li>1. 市内一斉清掃用ごみ袋</li>
+			<li><a href="#item2">2. 「正しく猫を飼いましょう」チラシ</a></li>
+			<li><a href="#item3">3. 「袖ケ浦市国際交流協会会報誌」Ｎｏ.５１</a></li>
+			<li><a href="#item4">4. 「第２８回ミュージアムフェスティバル」及び 企画展 Ⅰ「村のくらしと一大事」チラシ</a></li>
+			<li><a href="#item5">5. 「成年後見制度」及び「講演会」チラシ</a></li>
+			<li><a href="#item6">6. 「自転車マナーアップ強化月間」及び「電話de詐欺被害状況」チラシ</a></li>
+			<li><a href="#item7">7. 「地域安全ニュースふれあい」第３５０号及び「犯罪発生地図」</a></li>
+			<li><a href="#item8">8. 「家族介護教室（６月分）」チラシ</a></li>
+			<li><a href="#item9">9. 「袖ケ浦市アドバイザーバンク制度」チラシ</a></li>
+			<li><a href="#item10">10. 「耐震・空き家・住宅の合同相談会」チラシ</a></li>
+			<li><a href="#item11">11. 「そでがうらアーリーサマーフェスト２０２５」チラシ</a></li>
+			<li><a href="#item12">12. 男女共同参画情報誌「パートナー」第２５号</a></li>
+			<li><a href="#item13">13. ドクターヘリ飛来に伴う離着場所の安全管理について（お知らせ）</a></li>
+			<li><a href="#item14">14. 「令和７年度袖ケ浦市職員出前講座」チラシ</a></li>
+			<li><a href="#item15">15. 「スマホ体験セミナー」チラシ</a></li>
+			<li><a href="#item16">16. 「そでがうらV連協会だより」第１８号</a></li>
+			<li><a href="#item17">17. 「袖ケ浦市青少年相談員だより」第５１号</a></li>
+			<li><a href="#item18">18. 「交通安全ニュース」No.51</a></li>
+			<li><a href="#item19">19. 「昭和・根形地区地域包括支援センター開設」チラシ</a></li>
+			<li><a href="#item20">20. 都市計画道路事業の工事実施について</a></li>
 		</ul>					
 
     <hr>
 
-    <h2>回覧文書</h2>
-
-    <!-- 回覧板の中身の差し替えはここから -->
-
-    <h3 id="item1">1. 「地域安全ニュースふれあい第３４６号」及び「犯罪発生地図」</h3>
-		<p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
-			<div class="thumbnail-container">
-			<div class="thumbnail">
-			<img src="images/202501_40679_page_001-small.jpg" alt="地域安全ニュースふれあい第３４６号」及び「犯罪発生地図 ページ1" onclick="showModal('images/202501_40679_page_001-medium.jpg', 'images/202501_40679_page_001-large.jpg')">
- 			</div>
-			<div class="thumbnail">
-			<img src="images/202501_40679_page_003-small.jpg" alt="地域安全ニュースふれあい第３４６号」及び「犯罪発生地図 ページ3" onclick="showModal('images/202501_40679_page_003-medium.jpg', 'images/202501_40679_page_003-large.jpg')">
-			</div>
-			</div>
-		<p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
-
-   <h3 id="item2">2. 「国勢調査の調査員募集」リーフレット</h3>
-   <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
-    <div class="thumbnail-container">
-    <div class="thumbnail">
-    <img src="images/202501_40679_page_007-small.jpg" alt="国勢調査の調査員募集リーフレット ページ7" onclick="showModal('images/202501_40679_page_007-medium.jpg', 'images/202501_40679_page_007-large.jpg')">
-      </div>
-    <div class="thumbnail">
-    <img src="images/202501_40679_page_008-small.jpg" alt="国勢調査の調査員募集リーフレット ページ8" onclick="showModal('images/202501_40679_page_008-medium.jpg', 'images/202501_40679_page_008-large.jpg')">
-    </div>
-    </div>
-  <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
-
-   <h3 id="item3">3. 「シネマザガウラ上映会」チラシ</h3>
-   <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
-   <div class="thumbnail-container">
-   <div class="thumbnail">
-   <img src="images/202501_40679_page_009-small.jpg" alt="シネマザガウラ上映会チラシ ページ9" onclick="showModal('images/202501_40679_page_009-medium.jpg', 'images/202501_40679_page_009-large.jpg')">
-   </div>
-   <div class="thumbnail">
-   <img src="images/202501_40679_page_010-small.jpg" alt="シネマザガウラ上映会チラシ ページ10" onclick="showModal('images/202501_40679_page_010-medium.jpg', 'images/202501_40679_page_010-large.jpg')">
-   </div>
-   </div>
-   <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
-
-   <h3 id="item4">4. 「自転車乗車用ヘルメット購入費補助金」チラシ</h3>
-   <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
-   <div class="thumbnail-container">
-   <div class="thumbnail">
-   <img src="images/202501_40679_page_011-small.jpg" alt="自転車乗車用ヘルメット購入費補助金チラシ ページ11" onclick="showModal('images/202501_40679_page_011-medium.jpg', 'images/202501_40679_page_011-large.jpg')">
-   </div>
-   <div class="thumbnail">
-   <img src="images/202501_40679_page_012-small.jpg" alt="自転車乗車用ヘルメット購入費補助金チラシ ページ12" onclick="showModal('images/202501_40679_page_012-medium.jpg', 'images/202501_40679_page_012-large.jpg')">
-   </div>
-    </div>
+<h2>回覧文書</h2>
+    <h3 id="item1">1. 市内一斉清掃用ごみ袋</h3>
+    <h3 id="item2">2. 「正しく猫を飼いましょう」チラシ</h3>
     <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
 
-    <h3 id="item5">5. 「第２回 市民三学大学講座」チラシ</h3>
-  <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
-    <div class="thumbnail-container">
-    <div class="thumbnail">
-    <img src="images/202501_40679_page_013-small.jpg" alt="第２回 市民三学大学講座チラシ ページ13" onclick="showModal('images/202501_40679_page_013-medium.jpg', 'images/202501_40679_page_013-large.jpg')">
-    </div>
-    </div>
+    <a href="images/202505_41524_page_001-large.jpg" target="_blank">
+  <picture>
+    <source media="(max-width: 600px)" srcset="images/202505_41524_page_001-small.jpg">
+    <source media="(max-width: 1024px)" srcset="images/202505_41524_page_001-medium.jpg">
+    <img src="images/202505_41524_page_001-medium.jpg" alt="「正しく猫を飼いましょう」チラシ - ページ1">
+  </picture>
+</a>
+
+
+<a href="images/202505_41524_page_002-large.jpg" target="_blank">
+  <picture>
+    <source media="(max-width: 600px)" srcset="images/202505_41524_page_002-small.jpg">
+    <source media="(max-width: 1024px)" srcset="images/202505_41524_page_002-medium.jpg">
+    <img src="images/202505_41524_page_002-medium.jpg" alt="「正しく猫を飼いましょう」チラシ - ページ2">
+  </picture>
+</a>
     <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
 
-    <h3 id="item6">6. 「シルバー人材センター会員募集」チラシ</h3>
-    <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
-    <div class="thumbnail-container">
-    <div class="thumbnail">
-    <img src="images/202501_40679_page_014-small.jpg" alt="シルバー人材センター会員募集チラシ ページ14" onclick="showModal('images/202501_40679_page_014-medium.jpg', 'images/202501_40679_page_014-large.jpg')">
-    </div>
-    </div>
+<h3 id="item3">3. 「袖ケ浦市国際交流協会会報誌」Ｎｏ.５１</h3>
     <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
 
-    <h3 id="item7">7. 袖ケ浦市総合防災訓練に併せた「いっせい行動訓練」の実施について（お願い）</h3>
-    <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
-    <div class="thumbnail-container">
-    <div class="thumbnail">
-    <img src="images/202501_40679_page_015-small.jpg" alt="袖ケ浦市総合防災訓練に併せた「いっせい行動訓練」の実施について（お願い） ページ15" onclick="showModal('images/202501_40679_page_015-medium.jpg', 'images/202501_40679_page_015-large.jpg')">
-    </div>
-    <div class="thumbnail">
-    <img src="images/202501_40679_page_016-small.jpg" alt="袖ケ浦市総合防災訓練に併せた「いっせい行動訓練」の実施について（お願い） ページ16" onclick="showModal('images/202501_40679_page_016-medium.jpg', 'images/202501_40679_page_016-large.jpg')">
-    </div>
-    </div>
+<a href="images/202505_41524_page_003-large.jpg" target="_blank">
+  <picture>
+    <source media="(max-width: 600px)" srcset="images/202505_41524_page_003-small.jpg">
+    <source media="(max-width: 1024px)" srcset="images/202505_41524_page_003-medium.jpg">
+    <img src="images/202505_41524_page_003-medium.jpg" alt="「袖ケ浦市国際交流協会会報誌」Ｎｏ.５１ - ページ3">
+  </picture>
+</a>
+
+
+<a href="images/202505_41524_page_004-large.jpg" target="_blank">
+  <picture>
+    <source media="(max-width: 600px)" srcset="images/202505_41524_page_004-small.jpg">
+    <source media="(max-width: 1024px)" srcset="images/202505_41524_page_004-medium.jpg">
+    <img src="images/202505_41524_page_004-medium.jpg" alt="「袖ケ浦市国際交流協会会報誌」Ｎｏ.５１ - ページ4">
+  </picture>
+</a>
+
+
+<a href="images/202505_41524_page_005-large.jpg" target="_blank">
+  <picture>
+    <source media="(max-width: 600px)" srcset="images/202505_41524_page_005-small.jpg">
+    <source media="(max-width: 1024px)" srcset="images/202505_41524_page_005-medium.jpg">
+    <img src="images/202505_41524_page_005-medium.jpg" alt="「袖ケ浦市国際交流協会会報誌」Ｎｏ.５１ - ページ5">
+  </picture>
+</a>
     <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
 
-    <h3 id="item8">8. 昭和中学校校舎増築工事の実施について（お知らせ）</h3>
+<h3 id="item4">4. 「第２８回ミュージアムフェスティバル」及び 企画展 Ⅰ「村のくらしと一大事」チラシ</h3>
     <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
-    <div class="thumbnail-container">
-    <div class="thumbnail">
-    <img src="images/202501_40679_page_020-small.jpg" alt="昭和中学校校舎増築工事の実施について（お知らせ） ページ20" onclick="showModal('images/202501_40679_page_020-medium.jpg', 'images/202501_40679_page_020-large.jpg')">
-    </div>
-    <div class="thumbnail">
-    <img src="images/202501_40679_page_021-small.jpg" alt="昭和中学校校舎増築工事の実施について（お知らせ） ページ21" onclick="showModal('images/202501_40679_page_021-medium.jpg', 'images/202501_40679_page_021-large.jpg')">
-    </div>
-    </div>
+
+<a href="images/202505_41524_page_006-large.jpg" target="_blank">
+  <picture>
+    <source media="(max-width: 600px)" srcset="images/202505_41524_page_006-small.jpg">
+    <source media="(max-width: 1024px)" srcset="images/202505_41524_page_006-medium.jpg">
+    <img src="images/202505_41524_page_006-medium.jpg" alt="「第２８回ミュージアムフェスティバル」及び 企画展 Ⅰ「村のくらしと一大事」チラシ - ページ6">
+  </picture>
+</a>
+
+
+<a href="images/202505_41524_page_007-large.jpg" target="_blank">
+  <picture>
+    <source media="(max-width: 600px)" srcset="images/202505_41524_page_007-small.jpg">
+    <source media="(max-width: 1024px)" srcset="images/202505_41524_page_007-medium.jpg">
+    <img src="images/202505_41524_page_007-medium.jpg" alt="「第２８回ミュージアムフェスティバル」及び 企画展 Ⅰ「村のくらしと一大事」チラシ - ページ7">
+  </picture>
+</a>
+
+
+<a href="images/202505_41524_page_008-large.jpg" target="_blank">
+  <picture>
+    <source media="(max-width: 600px)" srcset="images/202505_41524_page_008-small.jpg">
+    <source media="(max-width: 1024px)" srcset="images/202505_41524_page_008-medium.jpg">
+    <img src="images/202505_41524_page_008-medium.jpg" alt="「第２８回ミュージアムフェスティバル」及び 企画展 Ⅰ「村のくらしと一大事」チラシ - ページ8">
+  </picture>
+</a>
+
+
+<a href="images/202505_41524_page_009-large.jpg" target="_blank">
+  <picture>
+    <source media="(max-width: 600px)" srcset="images/202505_41524_page_009-small.jpg">
+    <source media="(max-width: 1024px)" srcset="images/202505_41524_page_009-medium.jpg">
+    <img src="images/202505_41524_page_009-medium.jpg" alt="「第２８回ミュージアムフェスティバル」及び 企画展 Ⅰ「村のくらしと一大事」チラシ - ページ9">
+  </picture>
+</a>
+    <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
+
+<h3 id="item5">5. 「成年後見制度」及び「講演会」チラシ</h3>
+    <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
+
+<a href="images/202505_41524_page_010-large.jpg" target="_blank">
+  <picture>
+    <source media="(max-width: 600px)" srcset="images/202505_41524_page_010-small.jpg">
+    <source media="(max-width: 1024px)" srcset="images/202505_41524_page_010-medium.jpg">
+    <img src="images/202505_41524_page_010-medium.jpg" alt="「成年後見制度」及び「講演会」チラシ - ページ10">
+  </picture>
+</a>
+
+
+<a href="images/202505_41524_page_011-large.jpg" target="_blank">
+  <picture>
+    <source media="(max-width: 600px)" srcset="images/202505_41524_page_011-small.jpg">
+    <source media="(max-width: 1024px)" srcset="images/202505_41524_page_011-medium.jpg">
+    <img src="images/202505_41524_page_011-medium.jpg" alt="「成年後見制度」及び「講演会」チラシ - ページ11">
+  </picture>
+</a>
+
+
+<a href="images/202505_41524_page_012-large.jpg" target="_blank">
+  <picture>
+    <source media="(max-width: 600px)" srcset="images/202505_41524_page_012-small.jpg">
+    <source media="(max-width: 1024px)" srcset="images/202505_41524_page_012-medium.jpg">
+    <img src="images/202505_41524_page_012-medium.jpg" alt="「成年後見制度」及び「講演会」チラシ - ページ12">
+  </picture>
+</a>
+
+
+<a href="images/202505_41524_page_013-large.jpg" target="_blank">
+  <picture>
+    <source media="(max-width: 600px)" srcset="images/202505_41524_page_013-small.jpg">
+    <source media="(max-width: 1024px)" srcset="images/202505_41524_page_013-medium.jpg">
+    <img src="images/202505_41524_page_013-medium.jpg" alt="「成年後見制度」及び「講演会」チラシ - ページ13">
+  </picture>
+</a>
+    <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
+
+<h3 id="item6">6. 「自転車マナーアップ強化月間」及び「電話de詐欺被害状況」チラシ</h3>
+    <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
+
+<a href="images/202505_41524_page_014-large.jpg" target="_blank">
+  <picture>
+    <source media="(max-width: 600px)" srcset="images/202505_41524_page_014-small.jpg">
+    <source media="(max-width: 1024px)" srcset="images/202505_41524_page_014-medium.jpg">
+    <img src="images/202505_41524_page_014-medium.jpg" alt="「自転車マナーアップ強化月間」及び「電話de詐欺被害状況」チラシ - ページ14">
+  </picture>
+</a>
+    <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
+
+<h3 id="item7">7. 「地域安全ニュースふれあい」第３５０号及び「犯罪発生地図」</h3>
+    <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
+
+<a href="images/202505_41524_page_015-large.jpg" target="_blank">
+  <picture>
+    <source media="(max-width: 600px)" srcset="images/202505_41524_page_015-small.jpg">
+    <source media="(max-width: 1024px)" srcset="images/202505_41524_page_015-medium.jpg">
+    <img src="images/202505_41524_page_015-medium.jpg" alt="「地域安全ニュースふれあい」第３５０号及び「犯罪発生地図」 - ページ15">
+  </picture>
+</a>
+
+
+<a href="images/202505_41524_page_016-large.jpg" target="_blank">
+  <picture>
+    <source media="(max-width: 600px)" srcset="images/202505_41524_page_016-small.jpg">
+    <source media="(max-width: 1024px)" srcset="images/202505_41524_page_016-medium.jpg">
+    <img src="images/202505_41524_page_016-medium.jpg" alt="「地域安全ニュースふれあい」第３５０号及び「犯罪発生地図」 - ページ16">
+  </picture>
+</a>
+
+
+<a href="images/202505_41524_page_017-large.jpg" target="_blank">
+  <picture>
+    <source media="(max-width: 600px)" srcset="images/202505_41524_page_017-small.jpg">
+    <source media="(max-width: 1024px)" srcset="images/202505_41524_page_017-medium.jpg">
+    <img src="images/202505_41524_page_017-medium.jpg" alt="「地域安全ニュースふれあい」第３５０号及び「犯罪発生地図」 - ページ17">
+  </picture>
+</a>
+    <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
+
+<h3 id="item8">8. 「家族介護教室（６月分）」チラシ</h3>
+    <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
+
+<a href="images/202505_41524_page_022-large.jpg" target="_blank">
+  <picture>
+    <source media="(max-width: 600px)" srcset="images/202505_41524_page_022-small.jpg">
+    <source media="(max-width: 1024px)" srcset="images/202505_41524_page_022-medium.jpg">
+    <img src="images/202505_41524_page_022-medium.jpg" alt="「家族介護教室（６月分）」チラシ - ページ22">
+  </picture>
+</a>
+    <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
+
+<h3 id="item9">9. 「袖ケ浦市アドバイザーバンク制度」チラシ</h3>
+    <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
+
+<a href="images/202505_41525_page_001-large.jpg" target="_blank">
+  <picture>
+    <source media="(max-width: 600px)" srcset="images/202505_41525_page_001-small.jpg">
+    <source media="(max-width: 1024px)" srcset="images/202505_41525_page_001-medium.jpg">
+    <img src="images/202505_41525_page_001-medium.jpg" alt="「袖ケ浦市アドバイザーバンク制度」チラシ - ページ1">
+  </picture>
+</a>
+
+
+<a href="images/202505_41525_page_002-large.jpg" target="_blank">
+  <picture>
+    <source media="(max-width: 600px)" srcset="images/202505_41525_page_002-small.jpg">
+    <source media="(max-width: 1024px)" srcset="images/202505_41525_page_002-medium.jpg">
+    <img src="images/202505_41525_page_002-medium.jpg" alt="「袖ケ浦市アドバイザーバンク制度」チラシ - ページ2">
+  </picture>
+</a>
+    <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
+
+<h3 id="item10">10. 「耐震・空き家・住宅の合同相談会」チラシ</h3>
+    <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
+
+<a href="images/202505_41525_page_003-large.jpg" target="_blank">
+  <picture>
+    <source media="(max-width: 600px)" srcset="images/202505_41525_page_003-small.jpg">
+    <source media="(max-width: 1024px)" srcset="images/202505_41525_page_003-medium.jpg">
+    <img src="images/202505_41525_page_003-medium.jpg" alt="「耐震・空き家・住宅の合同相談会」チラシ - ページ3">
+  </picture>
+</a>
+    <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
+
+<h3 id="item11">11. 「そでがうらアーリーサマーフェスト２０２５」チラシ</h3>
+    <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
+
+<a href="images/202505_41525_page_004-large.jpg" target="_blank">
+  <picture>
+    <source media="(max-width: 600px)" srcset="images/202505_41525_page_004-small.jpg">
+    <source media="(max-width: 1024px)" srcset="images/202505_41525_page_004-medium.jpg">
+    <img src="images/202505_41525_page_004-medium.jpg" alt="「そでがうらアーリーサマーフェスト２０２５」チラシ - ページ4">
+  </picture>
+</a>
+    <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
+
+<h3 id="item12">12. 男女共同参画情報誌「パートナー」第２５号</h3>
+    <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
+
+<a href="images/202505_41525_page_005-large.jpg" target="_blank">
+  <picture>
+    <source media="(max-width: 600px)" srcset="images/202505_41525_page_005-small.jpg">
+    <source media="(max-width: 1024px)" srcset="images/202505_41525_page_005-medium.jpg">
+    <img src="images/202505_41525_page_005-medium.jpg" alt="男女共同参画情報誌「パートナー」第２５号 - ページ5">
+  </picture>
+</a>
+
+
+<a href="images/202505_41525_page_006-large.jpg" target="_blank">
+  <picture>
+    <source media="(max-width: 600px)" srcset="images/202505_41525_page_006-small.jpg">
+    <source media="(max-width: 1024px)" srcset="images/202505_41525_page_006-medium.jpg">
+    <img src="images/202505_41525_page_006-medium.jpg" alt="男女共同参画情報誌「パートナー」第２５号 - ページ6">
+  </picture>
+</a>
+    <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
+
+<h3 id="item13">13. ドクターヘリ飛来に伴う離着場所の安全管理について（お知らせ）</h3>
+    <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
+
+<a href="images/202505_41525_page_007-large.jpg" target="_blank">
+  <picture>
+    <source media="(max-width: 600px)" srcset="images/202505_41525_page_007-small.jpg">
+    <source media="(max-width: 1024px)" srcset="images/202505_41525_page_007-medium.jpg">
+    <img src="images/202505_41525_page_007-medium.jpg" alt="ドクターヘリ飛来に伴う離着場所の安全管理について（お知らせ） - ページ7">
+  </picture>
+</a>
+
+<a href="images/202505_41525_page_008-large.jpg" target="_blank">
+  <picture>
+    <source media="(max-width: 600px)" srcset="images/202505_41525_page_008-small.jpg">
+    <source media="(max-width: 1024px)" srcset="images/202505_41525_page_008-medium.jpg">
+    <img src="images/202505_41525_page_008-medium.jpg" alt="ドクターヘリ飛来に伴う離着場所の安全管理について（お知らせ） - ページ8">
+  </picture>
+</a>
+    <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
+
+<h3 id="item14">14. 「令和７年度袖ケ浦市職員出前講座」チラシ</h3>
+    <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
+
+<a href="images/202505_41525_page_009-large.jpg" target="_blank">
+  <picture>
+    <source media="(max-width: 600px)" srcset="images/202505_41525_page_009-small.jpg">
+    <source media="(max-width: 1024px)" srcset="images/202505_41525_page_009-medium.jpg">
+    <img src="images/202505_41525_page_009-medium.jpg" alt="「令和７年度袖ケ浦市職員出前講座」チラシ - ページ9">
+  </picture>
+</a>
+
+
+<a href="images/202505_41525_page_010-large.jpg" target="_blank">
+  <picture>
+    <source media="(max-width: 600px)" srcset="images/202505_41525_page_010-small.jpg">
+    <source media="(max-width: 1024px)" srcset="images/202505_41525_page_010-medium.jpg">
+    <img src="images/202505_41525_page_010-medium.jpg" alt="「令和７年度袖ケ浦市職員出前講座」チラシ - ページ10">
+  </picture>
+</a>
+    <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
+
+<h3 id="item15">15. 「スマホ体験セミナー」チラシ</h3>
+    <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
+
+<a href="images/202505_41525_page_011-large.jpg" target="_blank">
+  <picture>
+    <source media="(max-width: 600px)" srcset="images/202505_41525_page_011-small.jpg">
+    <source media="(max-width: 1024px)" srcset="images/202505_41525_page_011-medium.jpg">
+    <img src="images/202505_41525_page_011-medium.jpg" alt="「スマホ体験セミナー」チラシ - ページ11">
+  </picture>
+</a>
+    <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
+
+<h3 id="item16">16. 「そでがうらV連協会だより」第１８号</h3>
+    <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
+
+<a href="images/202505_41525_page_012-large.jpg" target="_blank">
+  <picture>
+    <source media="(max-width: 600px)" srcset="images/202505_41525_page_012-small.jpg">
+    <source media="(max-width: 1024px)" srcset="images/202505_41525_page_012-medium.jpg">
+    <img src="images/202505_41525_page_012-medium.jpg" alt="「そでがうらV連協会だより」第１８号 - ページ12">
+  </picture>
+</a>
+    <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
+
+<h3 id="item17">17. 「袖ケ浦市青少年相談員だより」第５１号</h3>
+    <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
+
+<a href="images/202505_41526_page_001-large.jpg" target="_blank">
+  <picture>
+    <source media="(max-width: 600px)" srcset="images/202505_41526_page_001-small.jpg">
+    <source media="(max-width: 1024px)" srcset="images/202505_41526_page_001-medium.jpg">
+    <img src="images/202505_41526_page_001-medium.jpg" alt="「袖ケ浦市青少年相談員だより」第５１号 - ページ1">
+  </picture>
+</a>
+
+
+<a href="images/202505_41526_page_002-large.jpg" target="_blank">
+  <picture>
+    <source media="(max-width: 600px)" srcset="images/202505_41526_page_002-small.jpg">
+    <source media="(max-width: 1024px)" srcset="images/202505_41526_page_002-medium.jpg">
+    <img src="images/202505_41526_page_002-medium.jpg" alt="「袖ケ浦市青少年相談員だより」第５１号 - ページ2">
+  </picture>
+</a>
+    <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
+
+<h3 id="item18">18. 「交通安全ニュース」No.51</h3>
+    <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
+
+<a href="images/202505_41526_page_003-large.jpg" target="_blank">
+  <picture>
+    <source media="(max-width: 600px)" srcset="images/202505_41526_page_003-small.jpg">
+    <source media="(max-width: 1024px)" srcset="images/202505_41526_page_003-medium.jpg">
+    <img src="images/202505_41526_page_003-medium.jpg" alt="「交通安全ニュース」No.51 - ページ3">
+  </picture>
+</a>
+    <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
+
+<h3 id="item19">19. 「昭和・根形地区地域包括支援センター開設」チラシ</h3>
+    <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
+
+<a href="images/202505_41526_page_009-large.jpg" target="_blank">
+  <picture>
+    <source media="(max-width: 600px)" srcset="images/202505_41526_page_009-small.jpg">
+    <source media="(max-width: 1024px)" srcset="images/202505_41526_page_009-medium.jpg">
+    <img src="images/202505_41526_page_009-medium.jpg" alt="「昭和・根形地区地域包括支援センター開設」チラシ - ページ9">
+  </picture>
+</a>
+    <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
+
+<h3 id="item20">20. 都市計画道路事業の工事実施について</h3>
+    <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
+
+<a href="images/202505_41526_page_015-large.jpg" target="_blank">
+  <picture>
+    <source media="(max-width: 600px)" srcset="images/202505_41526_page_015-small.jpg">
+    <source media="(max-width: 1024px)" srcset="images/202505_41526_page_015-medium.jpg">
+    <img src="images/202505_41526_page_015-medium.jpg" alt="都市計画道路事業の工事実施について - ページ15">
+  </picture>
+</a>
+
+
+<a href="images/202505_41526_page_016-large.jpg" target="_blank">
+  <picture>
+    <source media="(max-width: 600px)" srcset="images/202505_41526_page_016-small.jpg">
+    <source media="(max-width: 1024px)" srcset="images/202505_41526_page_016-medium.jpg">
+    <img src="images/202505_41526_page_016-medium.jpg" alt="都市計画道路事業の工事実施について - ページ16">
+  </picture>
+</a>
+
+
+<a href="images/202505_41526_page_017-large.jpg" target="_blank">
+  <picture>
+    <source media="(max-width: 600px)" srcset="images/202505_41526_page_017-small.jpg">
+    <source media="(max-width: 1024px)" srcset="images/202505_41526_page_017-medium.jpg">
+    <img src="images/202505_41526_page_017-medium.jpg" alt="都市計画道路事業の工事実施について - ページ17">
+  </picture>
+</a>
     <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
 
   <!-- 回覧板の中身の差し替えはここまで -->
-    <p><a href="/kanou-jichikai-kairan/kawaraban/index.html">← 回覧板トップページに戻る</a></p>
+    <p><a href="/kanou-jichikai-kairan/kairan/index.html">← 回覧板トップページに戻る</a></p>
   </main>
 
   <!-- フッター -->
@@ -350,16 +485,7 @@
     <a id="enlargeLink" href="#" target="_blank" style="color:white; font-size:1em;">▶ さらに拡大表示（-large）</a>
   </div>
 
-  <script>
-    function showModal(mediumSrc, largeSrc) {
-      document.getElementById('modalImage').src = mediumSrc;
-      document.getElementById('enlargeLink').href = largeSrc;
-      document.getElementById('modal').style.display = 'block';
-    }
+  <script src="/kanou-jichikai-kairan/js/script.js"></script>
 
-    function closeModal() {
-      document.getElementById('modal').style.display = 'none';
-    }
-  </script>
 </body>
 </html>
