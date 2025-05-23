@@ -23,6 +23,12 @@
     padding-top: 0.1em; /* 上記の実現のため、念のためパディングもゼロ */
     }
 
+    /* ロゴ 下層ページだけ中央寄せ */
+    .logo-wrapper.sub-logo {
+    display: block;
+    text-align: center;
+    }
+
     /* ロゴ画像のサイズ調整 */
     .logo-wrapper img {
     max-width: 150px;
