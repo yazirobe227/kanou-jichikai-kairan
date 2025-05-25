@@ -1,12 +1,40 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
+ <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>神納神楽ばやし</title>
-</head>
-<body>
+  <link rel="stylesheet" href="/kanou-jichikai-kairan/css/style.css">
+  <script>
+    const pageDescription = 'こちらは 神納神楽ばやしの情報ページです。';
+
+    // ヘッダーの読み込み＋差し込み処理
+    fetch('/kanou-jichikai-kairan/parts/header.html')
+    .then(res => res.text())
+    .then(html => {
+      document.body.insertAdjacentHTML('afterbegin', html);
+      const descElem = document.getElementById('page-desc');
+      if (descElem) {
+        descElem.textContent = pageDescription;
+      }
+    });
+  </script>
+
+  <script>
+  fetch('/kanou-jichikai-kairan/parts/footer.html')
+    .then(res => res.text())
+    .then(html => document.body.insertAdjacentHTML('beforeend', html));
+  </script>
+ </head>
+
+ <main>
   <h1>神納神楽ばやし</h1>
-  <p>こちらのページは「神納神楽ばやし」のコンテンツを掲載予定です。</p>
-  <p><a href="/kanou-jichikai-kairan/">← トップページに戻る</a></p>
-</body>
+    <p>こちらのページは「神納神楽ばやし」のコンテンツを掲載予定です。</p>
+    <p><a href="/kanou-jichikai-kairan/">← トップページに戻る</a></p>
+
+    <p><a href="/kanou-jichikai-kairan/">← トップページに戻る</a></p>
+   </section>
+  </main>
+
+ </body>
 </html>
