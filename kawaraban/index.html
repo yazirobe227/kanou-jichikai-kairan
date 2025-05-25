@@ -38,5 +38,18 @@
     </section>
   </main>
 
+  <script>
+    // ページごとに表示内容を定義
+    const pageDescription = 'こちらは 神納東区 で独自に発行するかわら板の掲載ページです。';
+
+    // ページが読み込まれたら差し込む
+    document.addEventListener('DOMContentLoaded', () => {
+      const descElem = document.getElementById('page-desc');
+      if (descElem) {
+        descElem.textContent = pageDescription;
+    }
+    });
+  </script>
+
  </body>
 </html>
