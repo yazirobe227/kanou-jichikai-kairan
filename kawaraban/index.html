@@ -9,18 +9,18 @@
   fetch('/kanou-jichikai-kairan/parts/header.html')
     .then(res => res.text())
     .then(html => document.body.insertAdjacentHTML('afterbegin', html));
-  </script>
 
-  <script>
-    // ページごとに表示内容を定義
     const pageDescription = 'こちらは 神納東区 で独自に発行するかわら板の掲載ページです。';
 
-    // ページが読み込まれたら差し込む
-    document.addEventListener('DOMContentLoaded', () => {
+    // ヘッダーの読み込み＋差し込み処理
+    fetch('/kanou-jichikai-kairan/parts/header.html')
+    .then(res => res.text())
+    .then(html => {
+      document.body.insertAdjacentHTML('afterbegin', html);
       const descElem = document.getElementById('page-desc');
       if (descElem) {
         descElem.textContent = pageDescription;
-    }
+      }
     });
   </script>
 
