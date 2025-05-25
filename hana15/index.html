@@ -1,61 +1,38 @@
 <!DOCTYPE html>
 <html lang="ja">
-<!DOCTYPE html>
-<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>花の15会活動</title>
   <link rel="stylesheet" href="/kanou-jichikai-kairan/css/style.css">
+  <script>
+    const pageDescription = 'こちらは 花の15会活動の紹介ページです。';
+
+    // ヘッダーの読み込み＋差し込み処理
+    fetch('/kanou-jichikai-kairan/parts/header.html')
+    .then(res => res.text())
+    .then(html => {
+      document.body.insertAdjacentHTML('afterbegin', html);
+      const descElem = document.getElementById('page-desc');
+      if (descElem) {
+        descElem.textContent = pageDescription;
+      }
+    });
+  </script>
+
+  <script>
+  fetch('/kanou-jichikai-kairan/parts/footer.html')
+    .then(res => res.text())
+    .then(html => document.body.insertAdjacentHTML('beforeend', html));
+  </script>
 </head>
 
-<body>
-  <header>
-  <div class="logo-wrapper sub-logo">
-    <a href="/kanou-jichikai-kairan/">
-      <!-- ホームの代わりにロゴからリンク -->
-      <img src="/kanou-jichikai-kairan/images/logo.png" alt="神納東区ロゴ">
-    </a>
-  </div>
-  <nav>
-    <ul>
-      <!-- ホームは削除 -->
-      <li><a href="/kanou-jichikai-kairan/kairan/index.html">回覧板</a></li>
-      <li><a href="/kanou-jichikai-kairan/history/index.html">神納東区の歴史</a></li>
-      <li><a href="/kanou-jichikai-kairan/events/index.html">イベント情報</a></li>
-      <li><a href="/kanou-jichikai-kairan/contact/index.html">お問い合わせ</a></li>
-    </ul>
-  </nav>
-</header>
+ <main>
+      <h1>花の15会活動</h1>
+      <p>こちらのページは「花の15会活動」のコンテンツを掲載予定です。</p>
+      <p><a href="/kanou-jichikai-kairan/">← トップページに戻る</a></p>
+    </section>
+  </main>
 
-  <p class="small-text">こちらは 花の15会活動の紹介ページです。</p>
-
-      <!-- お知らせ部分 -->
-      <!-- 
-      <div class="announcement area line-height-1">
-      <div class="announcement-text">
-      <p>（お知らせ内容）</p>
-      </div>
-      </div>
-      -->
-      <!-- お知らせ部分終了 -->
-
-  <h1>花の15会活動</h1>
-  <p>こちらのページは「花の15会活動」のコンテンツを掲載予定です。</p>
-  <p><a href="/kanou-jichikai-kairan/">← トップページに戻る</a></p>
-
-  <!-- フッター -->
-  <footer>
-      <!-- <h4>サイト情報</h4> ここはとりあえず表示しない-->
-    <ul>
-      <li><a href="/kanou-jichikai-kairan/terms.html">利用規約</a></li>
-      <li><a href="/kanou-jichikai-kairan/privacy.html">プライバシーポリシー</a></li>
-      <li><a href="/kanou-jichikai-kairan//contact/index.html">お問い合わせ</a></li>
-    </ul>
-    <p>&copy; 2025 神納東区 自治会</p>
-  </footer>
-
-  <script src="/kanou-jichikai-kairan/js/script.js"></script>
-
-</body>
+ </body>
 </html>
