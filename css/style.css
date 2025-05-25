@@ -178,6 +178,14 @@
       text-decoration: underline;
       }
 
+      /* フッターノートスタイル history/index.htmlに適用 */
+      .footer-note {
+      text-align: right;
+      font-size: 0.9em;
+      color: #555;
+      margin-top: 3em;
+      }
+
     /* 小さくするスタイル */
     .small-text {
       font-size: 0.85em;
