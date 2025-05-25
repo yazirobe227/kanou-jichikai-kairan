@@ -2,11 +2,27 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>率土神社活動</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>神納東区 ごみカレンダー 4〜6月分</title>
+  <link rel="stylesheet" href="/kanou-jichikai-kairan/css/style.css">
+<script>
+  fetch('/kanou-jichikai-kairan/parts/header.html')
+    .then(res => res.text())
+    .then(html => document.body.insertAdjacentHTML('afterbegin', html));
+</script>
+
+<script>
+  fetch('/kanou-jichikai-kairan/parts/footer.html')
+    .then(res => res.text())
+    .then(html => document.body.insertAdjacentHTML('beforeend', html));
+</script>
 </head>
-<body>
+
+ <main>
   <h1>率土神社活動</h1>
   <p>こちらのページは「率土神社活動」のコンテンツを掲載予定です。</p>
   <p><a href="/kanou-jichikai-kairan/">← トップページに戻る</a></p>
-</body>
+ </main>
+
+ </body>
 </html>
