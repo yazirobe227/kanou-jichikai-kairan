@@ -5,18 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>秋のソフトボール大会</title>
   <link rel="stylesheet" href="/kanou-jichikai-kairan/css/style.css">
-<script>
-  fetch('/kanou-jichikai-kairan/parts/header.html')
-    .then(res => res.text())
-    .then(html => document.body.insertAdjacentHTML('afterbegin', html));
-</script>
+  <script>
+    const pageDescription = 'こちらは 秋のソフトボール大会のページです。';
 
-<script>
+    // ヘッダーの読み込み＋差し込み処理
+    fetch('/kanou-jichikai-kairan/parts/header.html')
+    .then(res => res.text())
+    .then(html => {
+      document.body.insertAdjacentHTML('afterbegin', html);
+      const descElem = document.getElementById('page-desc');
+      if (descElem) {
+        descElem.textContent = pageDescription;
+      }
+    });
+  </script>
+
+  <script>
   fetch('/kanou-jichikai-kairan/parts/footer.html')
     .then(res => res.text())
     .then(html => document.body.insertAdjacentHTML('beforeend', html));
-</script>
-</head>
+  </script>
+ </head>
 
  <main>
   <h1>秋のソフトボール大会</h1>
