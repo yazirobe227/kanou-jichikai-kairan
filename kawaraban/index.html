@@ -5,17 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>かわら版（1分区パトロール隊）</title>
   <link rel="stylesheet" href="/kanou-jichikai-kairan/css/style.css">
-<script>
+  <script>
   fetch('/kanou-jichikai-kairan/parts/header.html')
     .then(res => res.text())
     .then(html => document.body.insertAdjacentHTML('afterbegin', html));
-</script>
+  </script>
 
-<script>
+  <script>
+    // ページごとに表示内容を定義
+    const pageDescription = 'こちらは 神納東区 で独自に発行するかわら板の掲載ページです。';
+
+    // ページが読み込まれたら差し込む
+    document.addEventListener('DOMContentLoaded', () => {
+      const descElem = document.getElementById('page-desc');
+      if (descElem) {
+        descElem.textContent = pageDescription;
+    }
+    });
+  </script>
+
+  <script>
   fetch('/kanou-jichikai-kairan/parts/footer.html')
     .then(res => res.text())
     .then(html => document.body.insertAdjacentHTML('beforeend', html));
-</script>
+  </script>
 </head>
 
  <main>
@@ -37,19 +50,6 @@
       <p><a href="/kanou-jichikai-kairan/">← トップページに戻る</a></p>
     </section>
   </main>
-
-  <script>
-    // ページごとに表示内容を定義
-    const pageDescription = 'こちらは 神納東区 で独自に発行するかわら板の掲載ページです。';
-
-    // ページが読み込まれたら差し込む
-    document.addEventListener('DOMContentLoaded', () => {
-      const descElem = document.getElementById('page-desc');
-      if (descElem) {
-        descElem.textContent = pageDescription;
-    }
-    });
-  </script>
 
  </body>
 </html>
