@@ -6,27 +6,10 @@
   <title>市内で空き巣発生中！　2025年 4月</title>
   <link rel="stylesheet" href="/kanou-jichikai-kairan/css/style.css">
   <script>
-    const pageDescription = 'こちらは 2025年4月 犯罪・交通事故の情報ページです。';
-
-    // ヘッダーの読み込み＋差し込み処理
-    fetch('/kanou-jichikai-kairan/parts/header.html')
-    .then(res => res.text())
-    .then(html => {
-      document.body.insertAdjacentHTML('afterbegin', html);
-      const descElem = document.getElementById('page-desc');
-      if (descElem) {
-        descElem.textContent = pageDescription;
-      }
-    });
+    // このページに固有の説明文（あれば）
+    window.pageDescription = 'こちらは 2025年4月 犯罪・交通事故の情報ページです。';
   </script>
-
   <script src="/kanou-jichikai-kairan/js/script.js" defer></script>
-
-  <script>
-  fetch('/kanou-jichikai-kairan/parts/footer.html')
-    .then(res => res.text())
-    .then(html => document.body.insertAdjacentHTML('beforeend', html));
-  </script>
  </head>
 
  <main>
