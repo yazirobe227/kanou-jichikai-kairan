@@ -8,6 +8,7 @@
 </head>
 
 <body>
+  <!-- トップページ専用ヘッダー：ロゴ左寄せ＋タイトルあり -->
   <header>
   <div class="logo-wrapper top-logo">
     <img src="/kanou-jichikai-kairan/images/logo.png" alt="神納東区ロゴ">
@@ -93,16 +94,11 @@
     </ul>
   </div>
 
-  <!-- フッター -->
-  <footer>
-      <!-- <h4>サイト情報</h4> ここはとりあえず表示しない-->
-    <ul>
-      <li><a href="/kanou-jichikai-kairan/terms.html">利用規約</a></li>
-      <li><a href="/kanou-jichikai-kairan/privacy.html">プライバシーポリシー</a></li>
-      <li><a href="/kanou-jichikai-kairan//contact/index.html">お問い合わせ</a></li>
-    </ul>
-    <p>&copy; 2025 神納東区 自治会</p>
-  </footer>
-
+  <!-- フッターは共通パーツとして読み込む -->
+  <script>
+    fetch('/kanou-jichikai-kairan/parts/footer.html')
+      .then(res => res.text())
+      .then(html => document.body.insertAdjacentHTML('beforeend', html));
+  </script>
 </body>
 </html>
