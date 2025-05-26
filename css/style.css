@@ -236,13 +236,23 @@
       text-decoration: underline;
     }
 
-    /* モーダル：下部に閉じるボタン */
-    #modal .close-bottom {
+    /* モーダル：上部 × 閉じるボタン */
+    #modal .modal-close-top {
+      color: white;
+      font-size: 1.4em;
+      text-align: center;
+      margin-bottom: 1em;
+      cursor: pointer;
+    }
+
+    /* モーダル：下部 ✖ 閉じるボタン */
+    #modal .modal-close-bottom {
       display: block;
       color: white;
       font-size: 1em;
       cursor: pointer;
       margin-bottom: 1.5em;
+      text-align: center;
     }
 
     /* モーダル：スマホ対応 */
