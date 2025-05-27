@@ -128,6 +128,7 @@
     /* スマホ対応：カード全体とfull-widthカードのリストを1列に */
     @media (max-width: 600px) {
       .grid-container {
+      display: grid !important;
       grid-template-columns: 1fr !important;
       }
     .card.full-width ul {
