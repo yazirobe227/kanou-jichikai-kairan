@@ -46,16 +46,12 @@
     flex-grow: 1;  /* スマホ対応で追加 */
     text-align: right;  /* スマホ対応で追加 */
     color: #2c3e50;
-    white-space: nowrap;
+    white-space: Norway;
     }
     
     /* トップページ用ロゴ（左寄せ） */
-    .top-logo {
-    text-align: left;
-    }
-
-    .top-logo img {
-    max-width: 220px; /* ← トップページのロゴサイズ調整 150px → 220pxに拡大 */
+    .top-logo { text-align: left; }
+    .top-logo img { max-width: 220px; /* ← トップページのロゴサイズ調整 150px → 220pxに拡大 */
     }
 
     /* 下層ページ用ロゴ（中央寄せ） */
@@ -80,6 +76,62 @@
     .sub-logo img {
     max-width: 120px;  /* ← トップ下のロゴサイズ調整 80px → 120pxに拡大 */
     }
+    }
+
+    /* グリッド（トップページおよび回覧板ページ） */
+    .grid-section {
+      padding: 1em 0;
+    }
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1em;
+    }
+
+    /* グリッドカード */
+    .card {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      padding: 1em;
+      border-radius: 8px;
+      box-shadow: 1px 1px 5px rgba(0,0,0,0.05);
+    }
+    .card h2 {
+      font-size: 1.2em;
+      margin-top: 0;
+      margin-bottom: 0.5em;
+    }
+    .card ul {
+      list-style: none;
+      padding-left: 1em;
+      margin: 0;
+    }
+    .card ul li {
+      margin: 0.3em 0;
+    }
+    .card.full-width ul {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5em 1em;
+      padding-left: 1em;
+      list-style-type: none;
+    }
+    .card a {
+      text-decoration: none;
+      color: #2c3e50;
+    }
+    .card a:hover {
+      text-decoration: underline;
+    }
+    .full-width {
+      grid-column: span 2;
+    }
+
+    /* スマホ用1列に戻す */
+    @media (max-width: 600px) {
+      .card.full-width ul {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* 新しく追加するスタイル：リストの「・」を消す */
