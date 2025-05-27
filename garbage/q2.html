@@ -6,25 +6,10 @@
   <title>神納東区 ごみカレンダー 7〜9月分</title>
   <link rel="stylesheet" href="/kanou-jichikai-kairan/css/style.css">
   <script>
-    const pageDescription = 'こちらは 神納東区 ごみカレンダー 7〜9月分のページです。';
-
-    // ヘッダーの読み込み＋差し込み処理
-    fetch('/kanou-jichikai-kairan/parts/header.html')
-    .then(res => res.text())
-    .then(html => {
-      document.body.insertAdjacentHTML('afterbegin', html);
-      const descElem = document.getElementById('page-desc');
-      if (descElem) {
-        descElem.textContent = pageDescription;
-      }
-    });
+    // このページに固有の説明文（あれば）
+    window.pageDescription = 'こちらは 神納東区 ごみカレンダー 7〜9月分のページです。';
   </script>
-
-  <script>
-  fetch('/kanou-jichikai-kairan/parts/footer.html')
-    .then(res => res.text())
-    .then(html => document.body.insertAdjacentHTML('beforeend', html));
-  </script>
+  <script src="/kanou-jichikai-kairan/js/script.js" defer></script>
  </head>
 
  <main>
