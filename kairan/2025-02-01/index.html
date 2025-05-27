@@ -1,141 +1,16 @@
-
 <!DOCTYPE html>
 <html lang="ja">
-<head>
+ <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>神納東区 自治会 情報ポータル</title>
-  <style>
-    /* 全体スタイル */
-    body {
-      font-family: sans-serif;
-      line-height: 1.8;
-      padding: 2em;
-      background: #f9f9f9;
-      color: #333;
-      max-width: 720px; 
-      margin: auto; /* 横幅720px制限 */
-    }
-    h1 { color: #2c3e50; }
-    h2 { color: #2c3e50; padding-bottom: 0.2em; }
-    img { max-width: 100%; margin: 1em 0; }
-    .caption { font-size: 0.9em; color: #555; margin-bottom: 1.5em; }
-
-
-    /* 新しく追加するスタイル：リストの「・」を消す */
-    ul {
-      list-style-type: none; /* 点を消す */
-      padding-left: 0; /* 左の余白をなくす */
-    }
-
-    /* ハンバーガーメニューのスタイル */
-    nav ul {
-      display: flex;
-      justify-content: space-around;
-      list-style: none;
-      padding: 0;
-      background-color: #2c3e50; /* 背景色追加 */
-    }
-
-    nav ul li a {
-      padding: 10px 15px;
-      color: white;  /* メニュー文字色 */
-      text-decoration: none;
-    }
-
-    /* スマホ用ハンバーガーメニュー */
-    @media (max-width: 600px) {
-      nav ul {
-        display: block;
-        text-align: center;
-        background-color: #34495e; /* 背景色を少し濃く */
-        padding: 10px 0;
-      }
-      nav ul li {
-        margin: 10px 0;
-      }
-      nav ul li a {
-        color: #ecf0f1; /* リンク文字色 */
-      }
-      nav ul li a:hover {
-        background-color: #2980b9; /* ホバー時の背景色 */
-      }
-    }
-
-    /* back-to-top 戻るアンカーの設定 */
-      .back-to-top {
-      text-align: right;
-      margin-top: 0.5em;
-      margin-bottom: 1em;
-      }
-
-    /* フッタースタイル */
-    footer {
-      background-color: #2c3e50;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-    footer h4 {
-      margin-bottom: 10px;
-      font-size: 1.2em;
-    }
-    footer p {
-      font-size: 0.9em;
-    }
-    footer a {
-      color: white;
-      text-decoration: none;
-    }
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    /* 小さくするスタイル */
-    .small-text {
-      font-size: 0.85em;
-    }
-
-    /* お知らせ部分の文字調整 */
-    .announcement-text {
-      font-size: 1em;
-      font-weight: bold;
-      line-height: 0.9; /* 行間を詰める */
-    }
-
-    /* セクションタイトルに矢印が表示されないように */
-    .section h2 {
-      margin-left: 0; /* 矢印を消すためにマージンをリセット */
-    }
-
-  </style>
-</head>
-
-<body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="/kanou-jichikai-kairan/">ホーム</a></li>
-        <li><a href="/kanou-jichikai-kairan/kawaraban/index.html">回覧板</a></li>
-        <li><a href="/kanou-jichikai-kairan/history/index.html">神納東区の歴史</a></li>
-        <li><a href="/kanou-jichikai-kairan/events/index.html">イベント情報</a></li>
-        <li><a href="/kanou-jichikai-kairan/contact/index.html">お問い合わせ</a></li>
-      </ul>
-    </nav>
-  </header>
-
-    <h1>神納東区 自治会 情報ポータル</h1>
-  <p class="small-text">こちらは 神納東区 自治会 の活動や回覧板のお知らせをまとめたページです。</p>
-
-  <!-- お知らせ部分 -->
-  <div class="announcement" class="area line-height-1">
-    <div class="announcement-text">
-      <p>【お知らせ】5月100日～103日、神納東区ソフトボール大会！詳細は<a href="/events/index.html">こちら</a></p>
-    </div>
-    <div class="announcement-text">
-      <p>【お知らせ】5月25日（日）は市内一斉清掃詳細　<a href="../kairan/2025-04-01/202504_kairan11.jpg">こちら</a></p>
-    </div>
-  </div>
+  <title>神納東区 2025年2月 回覧板</title>
+  <link rel="stylesheet" href="/kanou-jichikai-kairan/css/style.css">
+  <script>
+    // このページに固有の説明文（あれば）
+    window.pageDescription = 'こちらは 神納東区 2025年2月の回覧板を掲載するページです。';
+  </script>
+  <script src="/kanou-jichikai-kairan/js/script.js" defer></script>
+ </head>
 
   <main>
     <h1>2025年2月 回覧板</h1>
@@ -238,33 +113,5 @@
     <p><a href="/kanou-jichikai-kairan/kawaraban/index.html">← 回覧板トップページに戻る</a></p>
   </main>
 
-  <footer>
-    <h4>サイト情報</h4>
-    <ul>
-      <li><a href="/terms.html">利用規約</a></li>
-      <li><a href="/privacy.html">プライバシーポリシー</a></li>
-      <li><a href="/contact/index.html">お問い合わせ</a></li>
-    </ul>
-    <p>&copy; 2025 神納東区 自治会</p>
-  </footer>
-
-  <div id="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); text-align:center; z-index:9999;">
-    <span style="color:white; font-size:2em; position:absolute; top:10px; right:20px; cursor:pointer;" onclick="closeModal()">×</span>
-    <img id="modalImage" src="" alt="拡大画像" style="max-width:90%; max-height:80%; margin-top:5%;">
-    <br>
-    <a id="enlargeLink" href="#" target="_blank" style="color:white; font-size:1em;">▶ さらに拡大表示（-large）</a>
-  </div>
-
-  <script>
-    function showModal(mediumSrc, largeSrc) {
-      document.getElementById('modalImage').src = mediumSrc;
-      document.getElementById('enlargeLink').href = largeSrc;
-      document.getElementById('modal').style.display = 'block';
-    }
-
-    function closeModal() {
-      document.getElementById('modal').style.display = 'none';
-    }
-  </script>
 </body>
 </html>
