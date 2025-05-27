@@ -84,7 +84,7 @@
     }
     .grid-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1em;
     }
 
@@ -129,7 +129,7 @@
       grid-column: span 2;
     }
 
-    /* スマホ用1列 or full-width の表示が自然になるよう調整 */
+    /* スマホではカードを1列にする */
     @media (max-width: 600px) {
       .card.full-width ul {
         grid-template-columns: 1fr;
@@ -141,6 +141,13 @@
     }
     .card a:hover {
       text-decoration: underline;
+    }
+
+    /* スマホでは full-width カード内のリストも1列にする */
+    @media (max-width: 600px) {
+      .card.full-width ul {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* 新しく追加するスタイル：リストの「・」を消す */
