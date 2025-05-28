@@ -6,31 +6,32 @@
   <title>神納神楽ばやし</title>
   <link rel="stylesheet" href="/kanou-jichikai-kairan/css/style.css">
   <script>
-    const pageDescription = 'こちらは 神納神楽ばやしの情報ページです。';
-
-    // ヘッダーの読み込み＋差し込み処理
-    fetch('/kanou-jichikai-kairan/parts/header.html')
-    .then(res => res.text())
-    .then(html => {
-      document.body.insertAdjacentHTML('afterbegin', html);
-      const descElem = document.getElementById('page-desc');
-      if (descElem) {
-        descElem.textContent = pageDescription;
-      }
-    });
+    // このページに固有の説明文（あれば）
+    window.pageDescription = 'こちらは 神納神楽ばやしの情報ページです。';
   </script>
-
-  <script>
-  fetch('/kanou-jichikai-kairan/parts/footer.html')
-    .then(res => res.text())
-    .then(html => document.body.insertAdjacentHTML('beforeend', html));
-  </script>
+  <script src="/kanou-jichikai-kairan/js/script.js" defer></script>
  </head>
 
  <main>
+  <section>
   <h1>神納神楽ばやし</h1>
-    <p>こちらのページは「神納神楽ばやし」のコンテンツを掲載予定です。</p>
+    <p>「神納のあゆみ」より</p>
+    <p>神納神楽は古来から有名であり、伝統芸能を永く後世に伝えるため、「神納神楽ばやし保存会」が有志によって結成され、日夜練習に努めております。神納神楽がいつごろからか始まったのかは記するものがなく確認できませんが、わが国の神楽の歴史から考えますと室町時代末期（<small>※1</small>）から宝永時代（<small>※2</small>）にかけての時代ではないでしょうか。勿論神納の神楽は里神楽の一種で獅子神楽（<small>※3</small>）の分類に入るものであります。</p>
+    <p>この神楽は飽富神社の祭礼には、欠くことができないもので神納の神楽が出場しないうちは、神祭も取り行うことができなかったものであります。この事から「神納の神楽はあとがさき」または「神納の神楽はあとさきを知らぬ」という◯言が今日なお伝えられております。</p>
+    <p>即ち神納の神楽はいくら遅参しても常に先頭に立って舞うということで 「へそ曲がり」とか横車を押すとかいう意味に使われております。</p>
+
+   <h3>【参考資料】</h3>
+    <p>多田高明著　「神納のあゆみ」 神納二区文化誌</p>
+   </section>
+   <aside>
+    <ul>
+    <p>注）以下、注記は原文になし</p>
+    <li><small>※1：室町時代末期（1467-1573年）は、応仁の乱（1467年）から室町幕府が滅亡（1573年）するまで。戦国時代へ移行する時期。</small></li>
+    <li><small>※2：宝永時代は、江戸時代前期、1704年（元禄17年）から1711年（宝永8年）までの元号。東山天皇、中御門天皇、将軍は5代・徳川綱吉と6代・徳川家宣の時代。</small></li>
+    <li><small>※3：獅子神楽は、獅子頭をかぶり、囃子に合わせて舞を披露する神楽の一種。悪魔祓いや祈祷、奉納など、舞いに様々な意味が込められている。</small></li>
+
     <p><a href="/kanou-jichikai-kairan/">← トップページに戻る</a></p>
+   </aside>
   </main>
 
  </body>
