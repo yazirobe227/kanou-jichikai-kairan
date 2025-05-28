@@ -106,7 +106,8 @@
       margin: 0;
     }
     .card ul li {
-      margin: 0.3em 0;
+      word-break: break-word;
+      overflow-wrap: break-word;
     }
     .card.full-width ul {
       display: grid;
@@ -170,6 +171,7 @@
     background-color: #34495e;
     padding: 8px;      /* 折り返し対応 10px  → 8px */
     overflow-x: auto;       /* nowrap対応：横スクロールを許可 */
+    white-space: nowrap;
     -webkit-overflow-scrolling: touch; /* nowrap対応：iOS用スムーズスクロール */
       }
       nav ul li {
