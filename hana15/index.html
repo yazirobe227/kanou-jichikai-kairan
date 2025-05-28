@@ -1,35 +1,22 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
+ <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>花の15会活動</title>
+  <title>神納東区 ごみカレンダー</title>
   <link rel="stylesheet" href="/kanou-jichikai-kairan/css/style.css">
   <script>
-    const pageDescription = 'こちらは 花の15会活動の紹介ページです。';
-
-    // ヘッダーの読み込み＋差し込み処理
-    fetch('/kanou-jichikai-kairan/parts/header.html')
-    .then(res => res.text())
-    .then(html => {
-      document.body.insertAdjacentHTML('afterbegin', html);
-      const descElem = document.getElementById('page-desc');
-      if (descElem) {
-        descElem.textContent = pageDescription;
-      }
-    });
+    // このページに固有の説明文（あれば）
+    window.pageDescription = 'こちらは 神納東区 ごみカレンダーのページです。';
   </script>
-
-  <script>
-  fetch('/kanou-jichikai-kairan/parts/footer.html')
-    .then(res => res.text())
-    .then(html => document.body.insertAdjacentHTML('beforeend', html));
-  </script>
-</head>
+  <script src="/kanou-jichikai-kairan/js/script.js" defer></script>
+ </head>
 
  <main>
       <h1>花の15会活動</h1>
-      <p>こちらのページは「花の15会活動」のコンテンツを掲載予定です。</p>
+      <p>　当会は、“フラワーラインを季節に応じた花でいっぱいにしよう”を目的に、植栽活動に取組んでいます。平成15年11月より本格的に活動を始め、現在では56名の会員が年間を通じて活動しています。</p>
+      <p>　年2回の植栽(コスモス、ポピー)の他、花を守るための立ち入り防止柵や看板の作成を行なう一方で、活動に賛同した近接の県立袖ケ浦高校ボランティア活動クラブと協力して植栽活動を行なうなど、各種団体との連携を深め、地域一体となって環境美化向上活動を進めています。</p>
+      <p>　活動を始めて15年以上が経過し、植栽活動が発展していくと共に、会員相互のコミュニケーションを積極的に図ることで、地域の発展にも繋がっており、今後も地域の活性化に貢献していきたいと考えています。</p>
       <p><a href="/kanou-jichikai-kairan/">← トップページに戻る</a></p>
     </section>
   </main>
