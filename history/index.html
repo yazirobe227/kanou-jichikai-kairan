@@ -1,46 +1,32 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
+ <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>「神納東区」誕生の経緯</title>
   <link rel="stylesheet" href="/kanou-jichikai-kairan/css/style.css">
   <script>
-    const pageDescription = 'こちらは 神納東区 の歴史を紹介するページです。';
-
-    // ヘッダーの読み込み＋差し込み処理
-    fetch('/kanou-jichikai-kairan/parts/header.html')
-    .then(res => res.text())
-    .then(html => {
-      document.body.insertAdjacentHTML('afterbegin', html);
-      const descElem = document.getElementById('page-desc');
-      if (descElem) {
-        descElem.textContent = pageDescription;
-      }
-    });
+    // このページに固有の説明文（あれば）
+    window.pageDescription = 'こちらは 神納東区 の歴史を紹介するページです。';
   </script>
-
-  <script>
-  fetch('/kanou-jichikai-kairan/parts/footer.html')
-    .then(res => res.text())
-    .then(html => document.body.insertAdjacentHTML('beforeend', html));
-  </script>
-</head>
+  <script src="/kanou-jichikai-kairan/js/script.js" defer></script>
+ </head>
 
   <main>
     <h1>「神納東区」誕生の経緯</h1>
     <section>
-
-      <figure>
-      <a href="images/history-kannou-sign-medium.jpg" target="_blank">
-      <picture>
-      <source media="(max-width: 600px)" srcset="images/history-kannou-sign-small.jpg">
-      <source media="(max-width: 1024px)" srcset="images/history-kannou-sign-medium.jpg">
-      <img src="images/history-kannou-sign-medium.jpg" alt="「神納」サイン">
-    </picture>
-  </a>
-  <figcaption>「神納」 交差点 サイン</figcaption>
-</figure>
+     <div class="thumbnail-container">
+       <div class="thumbnail" style="text-align: center;">
+         <a href="images/history-kannou-sign-medium.jpg" target="_blank">
+           <picture>
+             <source media="(max-width: 600px)" srcset="images/history-kannou-sign-small.jpg">
+             <source media="(max-width: 1024px)" srcset="images/history-kannou-sign-medium.jpg">
+             <img src="images/history-kannou-sign-medium.jpg" alt="「神納」サイン">
+           </picture>
+         </a>
+         <p class="caption">「神納」交差点 サイン</p>
+       </div>
+     </div>
       
       <p>「何故1区、東区なのか？」との疑問に答える形で、神納地域の町内会の名称変更の歴史を整理した記録です。</p>
 
@@ -66,17 +52,18 @@
         ・区は行政機構の末端を担う組織として成立した自治体であったが、近年市政協力員制度ができて区を自治会と呼ぶ地区が多くなった。<br>
         ・しかし神納は神納区として昭和3年以降も続いてきた。
       </p>
-
-      <figure>
-  <a href="images/history-kannou-1960-1969-medium.jpg" target="_blank">
-    <picture>
-      <source media="(max-width: 600px)" srcset="images/history-kannou-1960-1969-small.jpg">
-      <source media="(max-width: 1024px)" srcset="images/history-kannou-1960-1969-medium.jpg">
-      <img src="images/history-kannou-1960-1969-medium.jpg" alt="1961年〜1969年 神納東区">
-    </picture>
-  </a>
-  <figcaption>1961年〜1969年の神納東区、中央の白いラインが現在の南総昭和線 ©︎国土地理院</figcaption>
-</figure>
+     <div class="thumbnail-container">
+       <div class="thumbnail" style="text-align: center;">
+         <a href="images/history-kannou-1960-1969-medium.jpg" target="_blank">
+           <picture>
+             <source media="(max-width: 600px)" srcset="images/history-kannou-1960-1969-small.jpg">
+             <source media="(max-width: 1024px)" srcset="images/history-kannou-1960-1969-medium.jpg">
+             <img src="images/history-kannou-1960-1969-medium.jpg" alt="1961年〜1969年 神納東区">
+           </picture>
+         </a>
+         <p class="caption">1961年〜1969年の神納東区、中央の白いラインが現在の南総昭和線 ©︎国土地理院</p>
+       </div>
+     </div>
 
       <h2>3. 神納区の2分割により神納1区と神納2区へ</h2>
       <p>
@@ -88,18 +75,19 @@
       </p>
 
       <h2>4. 神納2区から神納東区へ</h2>
-        <figure>
-  <a href="images/history-shrine-medium.jpg" target="_blank">
-    <picture>
-      <source media="(max-width: 600px)" srcset="images/history-shrine-small.jpg">
-      <source media="(max-width: 1024px)" srcset="images/history-shrine-medium.jpg">
-      <img src="images/history-shrine-medium.jpg" alt="率土神社">
-    </picture>
-  </a>
-  <figcaption>神納の氏神様、率土神社</figcaption>
-</figure>
-        
-      <p>
+     <div class="thumbnail-container">
+       <div class="thumbnail" style="text-align: center;">
+         <a href="images/history-shrine-medium.jpg" target="_blank">
+           <picture>
+             <source media="(max-width: 600px)" srcset="images/history-shrine-small.jpg">
+             <source media="(max-width: 1024px)" srcset="images/history-shrine-medium.jpg">
+             <img src="images/history-shrine-medium.jpg" alt="率土神社">
+           </picture>
+         </a>
+         <p class="caption">神納の氏神様、率土神社</p>
+       </div>
+     </div>
+        <p>
         ・元々現在の神納東区にはかつては学校や役場が存在し、また氏神様である率土神社があり、神納の中心地であったから、本村(ほんそん)との意識が強かった。(現在の1区は神納新田と呼ばれていた)<br>
 
         ・このため昭和59年、神納が1区、2区に分割された当時から2区の一部の区民には潜在的に不満があった。(“何故本村が2区なんだ”との)<br>
@@ -119,18 +107,18 @@
         一方当時を知る人は次第に少なくなり、この経緯を記録に残しておくべきと考えた。<br>
         この問題に熱意をもって当たり、本村(ほんそん)の面目を保った時の区長、星野光春さんに敬意を表し結びとする。<br>
       </p>
-
-      <figure>
-  <a href="images/history-kannou-area-medium.jpg" target="_blank">
-    <picture>
-      <source media="(max-width: 600px)" srcset="images/history-kannou-area-small.jpg">
-      <source media="(max-width: 1024px)" srcset="images/history-kannou-area-medium.jpg">
-      <img src="images/history-kannou-area-medium.jpg" alt="率土神社のある高台">
-    </picture>
-  </a>
-  <figcaption>率土神社のある高台から見下ろす、中央には袖ヶ浦高校</figcaption>
-</figure>
-
+     <div class="thumbnail-container">
+       <div class="thumbnail" style="text-align: center;">
+         <a href="images/history-kannou-area-medium.jpg" target="_blank">
+           <picture>
+             <source media="(max-width: 600px)" srcset="images/history-kannou-area-small.jpg">
+             <source media="(max-width: 1024px)" srcset="images/history-kannou-area-medium.jpg">
+             <img src="images/history-kannou-area-medium.jpg" alt="率土神社のある高台">
+           </picture>
+         </a>
+         <p class="caption">率土神社のある高台から見下ろす、中央には袖ヶ浦高校</p>
+       </div>
+     </div>
       <h3>【参考資料】</h3>
       <p>
         1. 多田憲美著「ふるさと神納」<br>
