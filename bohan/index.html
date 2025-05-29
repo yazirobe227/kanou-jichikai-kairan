@@ -3,30 +3,14 @@
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>神納東区 ごみカレンダー</title>
+  <title>神納東区 防災・防犯活動</title>
   <link rel="stylesheet" href="/kanou-jichikai-kairan/css/style.css">
   <script>
-    const pageDescription = 'こちらは 神納東区 防犯活動のページです。';
-
-    // ヘッダーの読み込み＋差し込み処理
-    fetch('/kanou-jichikai-kairan/parts/header.html')
-    .then(res => res.text())
-    .then(html => {
-      document.body.insertAdjacentHTML('afterbegin', html);
-      const descElem = document.getElementById('page-desc');
-      if (descElem) {
-        descElem.textContent = pageDescription;
-      }
-    });
+    // このページに固有の説明文（あれば）
+    window.pageDescription = 'こちらは 神納東区 防災・防犯活動のページです。';
   </script>
-
-  <script>
-  fetch('/kanou-jichikai-kairan/parts/footer.html')
-    .then(res => res.text())
-    .then(html => document.body.insertAdjacentHTML('beforeend', html));
-  </script>
+  <script src="/kanou-jichikai-kairan/js/script.js" defer></script>
  </head>
-
   <main>
       <h1>防犯活動</h1>
 
@@ -35,10 +19,10 @@
     <h2>地域活動</h2>
     <!-- 以下文言ダミー -->
      <ul>
-      <li><a href="ratejinja/index.html">防犯活動 A</a></li>
-      <li><a href="softball/index.html">防犯活動 B</a></li>
-      <li><a href="groundgolf/index.html">防犯活動 C</a></li>
-      <li><a href="kagurabayashi/index.html">防犯活動 D</a></li>
+      <li><a href="ratejinja/index.html">防災活動 A</a></li>
+      <li><a href="softball/index.html">防災活動 B</a></li>
+      <li><a href="groundgolf/index.html">防災活動 C</a></li>
+      <li><a href="kagurabayashi/index.html">防災活動 D</a></li>
      </ul>
   </div>
 
@@ -69,6 +53,5 @@
 
       <p><a href="/kanou-jichikai-kairan/">← トップページに戻る</a></p>
   </main>
-
  </body>
 </html>
