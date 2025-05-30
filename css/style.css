@@ -144,11 +144,21 @@
     @media (max-width: 600px) {
       .grid-container {
       display: grid !important;
-      grid-template-columns: repeat(auto-fit, minmax(100%, 1fr)); /* ← 幅を100%で均等に */
+      grid-template-columns: 1fr !important;
       }
-    }
+
+@media (max-width: 600px) {
+  .grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(100%, 1fr)); /* ← 幅を100%で均等に */
+  }
+}
+
+
+
+
+
     .card.full-width ul {
-      grid-column: auto; /* ← スマホでは全幅扱いを解除 */
+      grid-template-columns: 1fr;
       }
     nav ul {
       flex-wrap: wrap;
