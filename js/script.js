@@ -12,6 +12,19 @@ fetch('/kanou-jichikai-kairan/parts/header.html')
     }
   });
 
+// === カード内タブ用　開閉スクリプト（改修：addEventListener追加） ===
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.tab-button').forEach(button => {
+    button.addEventListener('click', () => {
+      document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+
+      button.classList.add('active');
+      document.getElementById(button.getAttribute('data-tab')).classList.add('active');
+    });
+  });
+});
+
 // === フッター読み込み ===
 fetch('/kanou-jichikai-kairan/parts/footer.html')
   .then(res => res.text())
