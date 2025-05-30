@@ -84,7 +84,7 @@
     }
     .grid-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(2, 1fr); /* 常に2列に固定(1821) */
       gap: 1em;
     }
     /* グリッドカード */
@@ -109,6 +109,9 @@
     }
     .card ul li {
       margin: 0.3em 0;
+    }
+    .card.full-width { /* ← 追加：full-width指定の場合2列分を使用（1821） */
+      grid-column: span 2;
     }
     .card.full-width ul {
       display: grid;
@@ -144,23 +147,13 @@
     @media (max-width: 600px) {
       .grid-container {
       display: grid !important;
-      grid-template-columns: 1fr !important;
+      grid-template-columns: repeat(2, 1fr); /* ← 変更：スマホ・これが干渉　": 1fr !important;" */
       }
-
-@media (max-width: 600px) {
-  .grid-container {
-    grid-template-columns: repeat(auto-fit, minmax(100%, 1fr)); /* ← 幅を100%で均等に */
-  }
-}
-
-
-
-
-
-    .card.full-width ul {
-      grid-template-columns: 1fr;
+      .card.full-width {
+      grid-column: span 2;
       }
-    nav ul {
+    }
+    nav ul {  /* ← スマホ・これいらないかも */
       flex-wrap: wrap;
       overflow-x: visible;
       }
