@@ -1,34 +1,357 @@
+/* 全体スタイル */
+    body {
+      font-family: sans-serif;
+      line-height: 1.8;
+      padding: 2em;
+      background: #f9f9f9;
+      color: #333;
+      max-width: 720px; 
+      margin: auto; /* 横幅720px制限 */
+    }
+    h1 { color: #2c3e50; }
+    h2 { color: #2c3e50; padding-bottom: 0.2em; }
+    img { max-width: 100%; margin: 1em 0; }
+    .caption { font-size: 0.9em; color: #555; margin-bottom: 1.5em; }
 
-/* グリッドコンテナ：2列 */
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1em;
-}
+    /* ロゴ（トップと下位の切り分け） */
+    .logo-wrapper {
+    display: flex;
+    align-items: center; /* スマホでは垂直方向の中央揃え、強制的に並べる場合は- "row" */
+    justify-content: space-between; /* 左右に分ける */
+    gap: 1em;
+    margin: 0; /* ← 元の「1em 0」から変更、上部のスペースなくす */
+    padding-top: 0.1em; /* 上記の実現のため、念のためパディングもゼロ */
+    }
 
-/* カード：左右2列並び */
-.card {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  padding: 1em;
-  border-radius: 8px;
-  box-shadow: 1px 1px 5px rgba(0,0,0,0.05);
-  box-sizing: border-box;
-  width: 100%;
-}
+    /* ロゴ 下層ページだけ中央寄せ */
+    .logo-wrapper.sub-logo {
+    display: block;
+    text-align: center;
+    }
 
-/* 幅いっぱい使うカード */
-.card.full-width {
-  grid-column: 1 / -1;
-}
+    /* ロゴ画像のサイズ調整 */
+    .logo-wrapper img {
+    max-width: 150px;
+    height: auto;
+    flex-shrink: 0;  /* margin-right: 1em; */
+    }
 
-/* スマホ表示（2列を維持） */
-@media (max-width: 600px) {
-  .grid-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
+    /* タイトル文字のスタイル */
+    .logo-wrapper h1 {
+    margin: 0;
+    font-size: clamp(1rem, 4vw, 2rem);  /* スマホ対応で追加。元は font-size: 1.8em; */
+    white-space: nowrap;  /* スマホ対応で追加 */
+    overflow: hidden;  /* スマホ対応で追加 */
+    text-overflow: ellipsis;  /* スマホ対応で追加 */
+    flex-grow: 1;  /* スマホ対応で追加 */
+    text-align: right;  /* スマホ対応で追加 */
+    color: #2c3e50;
+    white-space: Norway;
+    }
+    
+    /* トップページ用ロゴ（左寄せ） */
+    .top-logo { text-align: left; }
+    .top-logo img { max-width: 220px; /* ← トップページのロゴサイズ調整 150px → 220pxに拡大 */
+    }
 
-  .card.full-width {
-    grid-column: 1 / -1;
-  }
-}
+    /* 下層ページ用ロゴ（中央寄せ） */
+    .sub-logo {
+    text-align: center;
+    margin-top: 0;
+    padding-top: 0;
+    display: block !important; /* ← flex解除 */
+    }
+
+    .sub-logo img {
+    max-width: 220px;  /* ← トップ下のロゴサイズ調整 100px → 220pxに拡大 */
+    margin: 0 auto;
+    display: block;
+    }
+
+    /* スマホ画面でさらに小さく */
+    @media (max-width: 600px) {
+    .top-logo img {
+    max-width: 180px; /* ← トップページのロゴサイズ調整 120px → 180pxに拡大 */
+    }
+    .sub-logo img {
+    max-width: 120px;  /* ← トップ下のロゴサイズ調整 80px → 120pxに拡大 */
+    }
+    }
+
+    /* グリッド（トップページおよび回覧板ページ） */
+    .grid-section {
+      padding: 1em 0;
+    }
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1em;
+    }
+    /* グリッドカード */
+    .card {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      padding: 1em;
+      border-radius: 8px;
+      box-shadow: 1px 1px 5px rgba(0,0,0,0.05);
+      min-width: 0; /* ← 追加：グリッド内での幅の拡張を防ぐ */
+      box-sizing: border-box; /* ← 追加：padding込みで幅を制御 */
+    }
+    .card h2 {
+      font-size: 1.2em;
+      margin-top: 0;
+      margin-bottom: 0.5em;
+    }
+    .card ul {
+      list-style: none;
+      padding-left: 1em;
+      margin: 0;
+    }
+    .card ul li {
+      margin: 0.3em 0;
+    }
+    .card.full-width ul {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5em 1em;
+      padding-left: 1em;
+      list-style-type: none;
+    }
+    .card a {
+      text-decoration: none;
+      color: #2c3e50;
+    }
+    .card a:hover {
+      text-decoration: underline;
+    }
+    .full-width {
+      grid-column: span 2;
+    }
+
+    /* カード内のタブ active化(5/30追加 15:30) */
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .tab-button.active {
+      background-color: #3498db;
+      color: white;
+    }
+
+    /* スマホ対応：カード全体とfull-widthカードのリストを1列に */
+    @media (max-width: 600px) {
+      .grid-container {
+      display: grid !important;
+      grid-template-columns: repeat(auto-fit, minmax(100%, 1fr)); /* ← 幅を100%で均等に */
+      }
+    }
+    .card.full-width ul {
+      grid-column: auto; /* ← スマホでは全幅扱いを解除 */
+      }
+    nav ul {
+      flex-wrap: wrap;
+      overflow-x: visible;
+      }
+    }
+
+    /* カード：回覧板セクションのタブ&月の開閉 */
+    details summary {
+      cursor: pointer;
+      font-weight: bold;
+      background-color: #f2f2f2;
+      padding: 6px;
+      border: 1px solid #ccc;
+      margin-bottom: 4px;
+    }
+    details ul {
+      margin-left: 1rem;
+      list-style-type: disc;
+    }
+    /* ここまで */
+
+    /* 新しく追加するスタイル：リストの「・」を消す */
+    ul {
+      list-style-type: none; /* 点を消す */
+      padding-left: 0; /* 左の余白をなくす */
+    }
+
+    /* ハンバーガーメニューのスタイル */
+    nav ul {
+      display: flex;
+      justify-content: space-around;
+      list-style: none;
+      padding: 0;
+      background-color: #2c3e50; /* 背景色追加 */
+    }
+
+    nav ul li a {
+      padding: 10px 15px;
+      color: white;  /* メニュー文字色 */
+      text-decoration: none;
+    }
+
+    /* スマホ用ハンバーガーメニュー */
+    @media (max-width: 600px) {
+      nav ul {
+    display: flex;
+    flex-wrap: nowrap; /* 横並びを維持しつつ折り返しを許可 "wrap" しない"nowrap"*/
+    justify-content: flex-start; /* 折り返しの場合 "center"*/
+    background-color: #34495e;
+    padding: 8px;      /* 折り返し対応 10px  → 8px */
+    overflow-x: auto;       /* nowrap対応：横スクロールを許可 */
+    -webkit-overflow-scrolling: touch; /* nowrap対応：iOS用スムーズスクロール */
+      }
+      nav ul li {
+        flex: 0 0 auto; /* 元は margin: 5px 8px; */
+        margin: 0 10px;
+      }
+
+      nav ul li a {
+        font-size: 0.8em; /* スマホで少し文字を小さく */
+        padding: 8px 10px;
+        color: #ecf0f1; /* リンク文字色 */
+        white-space: nowrap; /* テキストも折り返さない */
+      }
+      nav ul li a:hover {
+        background-color: #2980b9; /* ホバー時の背景色 */
+      }
+    }
+
+    /* back-to-top 戻るアンカーの設定 */
+      .back-to-top {
+      text-align: right;
+      margin-top: 0.5em;
+      margin-bottom: 1em;
+      }
+
+    /* フッタースタイル */
+      footer {
+      background-color: #2c3e50;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      }
+
+      footer h4 {
+      margin-bottom: 9px;
+      font-size: 1.2em;
+      }
+
+      footer ul {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap; /* モバイルで折り返し */
+      }
+
+      footer ul li {
+      display: inline;
+      }
+
+      footer p {
+      font-size: 0.8em;
+      }
+
+      footer a {
+      font-size: 0.85em;
+      color: white;
+      text-decoration: none;
+      }
+
+      footer a:hover {
+      text-decoration: underline;
+      }
+
+      /* フッターノートスタイル history/index.htmlに適用 */
+      .footer-note {
+      text-align: right;
+      font-size: 0.9em;
+      color: #555;
+      margin-top: 3em;
+      }
+
+    /* 小さくするスタイル */
+    .small-text {
+      font-size: 0.85em;
+    }
+
+    /* お知らせ部分の文字調整 */
+    .announcement-text {
+      font-size: 0.9em;
+      font-weight: bold;
+      line-height: 1.3;        /* 行間調整 標準〜やや狭めに修正 0.7は文字が重なる */
+      word-break: break-word;  /* 長いURLや単語が折り返されるように */
+      overflow-wrap: break-word; /* 同上、互換性のため追加 */
+      margin-bottom: 0.5em;     /* 各お知らせの間に余白を追加（任意） */
+    }
+
+    /* セクションタイトルに矢印が表示されないように */
+    .section h2 {
+      margin-left: 0; /* 矢印を消すためにマージンをリセット */
+    }
+
+    /* モーダルウィンドウ全体 */
+    #modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      text-align: center;
+      z-index: 9999;
+      padding-top: 60px;
+      box-sizing: border-box;
+    }
+
+    /* モーダル内の画像 */
+    #modal img {
+      max-width: 90%;
+      max-height: 70vh;
+      margin: 1em auto;
+      display: block;
+    }
+
+    /* モーダル：拡大リンク */
+    #enlargeLink {
+      display: block;
+      color: white;
+      font-size: 1em;
+      margin: 1em 0 0.5em;
+      text-decoration: underline;
+    }
+
+    /* モーダル：上部 × 閉じるボタン */
+    #modal .modal-close-top {
+      color: white;
+      font-size: 1.4em;
+      text-align: center;
+      margin-bottom: 1em;
+      cursor: pointer;
+    }
+
+    /* モーダル：下部 ✖ 閉じるボタン */
+    #modal .modal-close-bottom {
+      display: block;
+      color: white;
+      font-size: 1em;
+      cursor: pointer;
+      margin-bottom: 1.5em;
+      text-align: center;
+    }
+
+    /* モーダル：スマホ対応 */
+    @media (max-width: 600px) {
+      #modal img {
+        max-width: 95%;
+        max-height: 60vh;
+      }
+
+      #enlargeLink, #modal .close-bottom {
+        font-size: 0.9em;
+      }
+    }
