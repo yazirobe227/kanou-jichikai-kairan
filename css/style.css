@@ -94,6 +94,8 @@
       padding: 1em;
       border-radius: 8px;
       box-shadow: 1px 1px 5px rgba(0,0,0,0.05);
+      min-width: 0; /* ← 追加：グリッド内での幅の拡張を防ぐ */
+      box-sizing: border-box; /* ← 追加：padding込みで幅を制御 */
     }
     .card h2 {
       font-size: 1.2em;
@@ -142,10 +144,11 @@
     @media (max-width: 600px) {
       .grid-container {
       display: grid !important;
-      grid-template-columns: 1fr !important;
+      grid-template-columns: repeat(auto-fit, minmax(100%, 1fr)); /* ← 幅を100%で均等に */
       }
+    }
     .card.full-width ul {
-      grid-template-columns: 1fr;
+      grid-column: auto; /* ← スマホでは全幅扱いを解除 */
       }
     nav ul {
       flex-wrap: wrap;
