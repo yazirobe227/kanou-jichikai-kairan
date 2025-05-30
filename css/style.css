@@ -84,8 +84,9 @@
     }
     .grid-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 1em;
+      box-sizing: border-box;
     }
     /* グリッドカード */
     .card {
@@ -94,9 +95,9 @@
       padding: 1em;
       border-radius: 8px;
       box-shadow: 1px 1px 5px rgba(0,0,0,0.05);
-      min-width: 0; /* ← 追加：グリッド内での幅の拡張を防ぐ */
-      box-sizing: border-box; /* ← 追加：padding込みで幅を制御 */
-    }
+      box-sizing: border-box;
+      width: 100%;
+      }
     .card h2 {
       font-size: 1.2em;
       margin-top: 0;
@@ -109,6 +110,10 @@
     }
     .card ul li {
       margin: 0.3em 0;
+    }
+    /* === full-widthカード：PCでは2列分、スマホでは解除 === */
+    .card.full-width {
+      grid-column: auto;
     }
     .card.full-width ul {
       display: grid;
@@ -143,13 +148,12 @@
     /* スマホ対応：カード全体とfull-widthカードのリストを1列に */
     @media (max-width: 600px) {
       .grid-container {
-      display: grid !important;
-      grid-template-columns: repeat(auto-fit, minmax(100%, 1fr)); /* ← 幅を100%で均等に */
+        grid-template-columns: 1fr;
+      }
+      .card.full-width {
+        grid-column: auto;
       }
     }
-    .card.full-width ul {
-      grid-column: auto; /* ← スマホでは全幅扱いを解除 */
-      }
     nav ul {
       flex-wrap: wrap;
       overflow-x: visible;
