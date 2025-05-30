@@ -82,13 +82,11 @@
     .grid-section {
       padding: 1em 0;
     }
-
     .grid-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1em;
     }
-
     /* グリッドカード */
     .card {
       background-color: #fff;
@@ -97,27 +95,19 @@
       border-radius: 8px;
       box-shadow: 1px 1px 5px rgba(0,0,0,0.05);
     }
-
     .card h2 {
       font-size: 1.2em;
       margin-top: 0;
       margin-bottom: 0.5em;
-      white-space: normal;
-      overflow-wrap: break-word;
     }
-
     .card ul {
       list-style: none;
       padding-left: 1em;
       margin: 0;
     }
-
     .card ul li {
       margin: 0.3em 0;
-      word-break: break-word;
-      overflow-wrap: break-word;
     }
-
     .card.full-width ul {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -125,39 +115,58 @@
       padding-left: 1em;
       list-style-type: none;
     }
-
     .card a {
       text-decoration: none;
       color: #2c3e50;
     }
-
     .card a:hover {
       text-decoration: underline;
     }
-
     .full-width {
       grid-column: span 2;
+    }
+
+    /* カード内のタブ active化(5/30追加 15:30) */
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .tab-button.active {
+      background-color: #3498db;
+      color: white;
     }
 
     /* スマホ対応：カード全体とfull-widthカードのリストを1列に */
     @media (max-width: 600px) {
       .grid-container {
-        grid-template-columns: 1fr !important;
+      display: grid !important;
+      grid-template-columns: 1fr !important;
       }
-
-    .card {
-       width: 100% !important;
-       box-sizing: border-box;
-      }
-
     .card.full-width ul {
-       grid-template-columns: 1fr;
+      grid-template-columns: 1fr;
       }
-
-    .full-width {
-      grid-column: span 1 !important;
+    nav ul {
+      flex-wrap: wrap;
+      overflow-x: visible;
       }
     }
+
+    /* カード：回覧板セクションのタブ&月の開閉 */
+    details summary {
+      cursor: pointer;
+      font-weight: bold;
+      background-color: #f2f2f2;
+      padding: 6px;
+      border: 1px solid #ccc;
+      margin-bottom: 4px;
+    }
+    details ul {
+      margin-left: 1rem;
+      list-style-type: disc;
+    }
+    /* ここまで */
 
     /* 新しく追加するスタイル：リストの「・」を消す */
     ul {
@@ -189,7 +198,6 @@
     background-color: #34495e;
     padding: 8px;      /* 折り返し対応 10px  → 8px */
     overflow-x: auto;       /* nowrap対応：横スクロールを許可 */
-    white-space: nowrap;
     -webkit-overflow-scrolling: touch; /* nowrap対応：iOS用スムーズスクロール */
       }
       nav ul li {
