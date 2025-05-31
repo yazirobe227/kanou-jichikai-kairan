@@ -5,18 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>神納子供会</title>
   <link rel="stylesheet" href="/kanou-jichikai-kairan/css/style.css">
-<script>
-  fetch('/kanou-jichikai-kairan/parts/header.html')
-    .then(res => res.text())
-    .then(html => document.body.insertAdjacentHTML('afterbegin', html));
-</script>
-
-<script>
-  fetch('/kanou-jichikai-kairan/parts/footer.html')
-    .then(res => res.text())
-    .then(html => document.body.insertAdjacentHTML('beforeend', html));
-</script>
-</head>
+  <script>
+    // このページに固有の説明文（あれば）
+    window.pageDescription = 'こちらは 神納子供会のページです。';
+  </script>
+  <script src="/kanou-jichikai-kairan/js/script.js" defer></script>
+ </head>
 
  <main>
   <h1>神納子供会</h1>
