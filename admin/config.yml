@@ -1,0 +1,17 @@
+backend:
+  name: git-gateway # Gitを使った認証方法
+  branch: main     # コンテンツをプッシュするブランチ名 (通常は main)
+
+media_folder: "static/images" # アップロードされたメディアファイルの保存先（サイトルートからの相対パス）
+public_folder: "/static/images" # メディアファイルへの公開URLパス（サイトルートからの相対パス）
+
+collections:
+  - name: "posts" # コレクションの内部的な名前
+    label: "投稿" # 管理画面に表示される名前
+    folder: "_posts" # コンテンツを保存するフォルダ（サイトルートからの相対パス）
+    create: true # 新しいコンテンツの作成を許可
+    slug: "{{year}}-{{month}}-{{%d}}-{{slug}}" # ファイル名の命名規則
+    fields: # 各コンテンツの入力フィールド
+      - {label: "タイトル", name: "title", widget: "string"}
+      - {label: "公開日", name: "date", widget: "datetime"}
+      - {label: "本文", name: "body", widget: "markdown"}
