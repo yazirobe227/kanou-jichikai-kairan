@@ -1,25 +1,24 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <title>{{ page.title }} - {{ site.title }}</title>
-  <meta name="description" content="{{ site.description }}">
-  <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} | 神納東区 自治会回覧板</title>
+  <link rel="stylesheet" href="{{ '/css/style.css' | relative_url }}">
+  </head>
+
 <body>
-  <header>
-    <h1><a href="{{ "/" | relative_url }}">{{ site.title }}</a></h1>
-    <nav>
-      <a href="{{ "/posts/" | relative_url }}">投稿一覧</a>
-      </nav>
-  </header>
+  {% if page.layout_type == "top" %}
+    {% include header_top.html %}
+  {% else %}
+    {% include header_sub.html %}
+  {% endif %}
 
   <main>
     {{ content }}
   </main>
 
-  <footer>
-    <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }}. All rights reserved.</p>
-  </footer>
+  {% include footer.html %}
+
 </body>
 </html>

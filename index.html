@@ -1,16 +1,84 @@
 ---
 layout: default
 title: トップページ
+layout_type: top # これを追加することで、_layouts/default.htmlでトップページ用ヘッダーが読み込まれます
 ---
 
-<h1>{{ page.title }}</h1>
-<p>これはトップページです。ここに回覧板の概要や最新情報を表示します。</p>
+<div class="announcement area line-height-1">
+  <div class="announcement-text">
+    <p>【お知らせ】50月10日～38日、ソフトボール大会！詳細は<a href="{{ '/softball/index.html' | relative_url }}">こちら</a></p>
+  </div>
+  <div class="announcement-text">
+    <p>【お知らせ】5月25日（日）は<a href="{{ '/kairan/2025-04-01/202504_kairan11.jpg' | relative_url }}">市内一斉清掃</a></p>
+  </div>
+</div>
 
-<h2>最新の投稿</h2>
-<ul>
-{% for post in site.posts limit:5 %}
-  <li>
-    <a href="{{ post.url | relative_url }}">{{ post.title }}</a> - {{ post.date | date: "%Y年%m月%d日" }}
-  </li>
-{% endfor %}
-</ul>
+<section class="grid-section">
+  <div class="grid-container">
+
+    <div class="card">
+      <h2><a href="{{ '/kairan/index.html' | relative_url }}">回覧板</a><small>＜過去分＞</small></h2>
+      <ul>
+        <li><a href="{{ '/kairan/2025-05-01/index.html' | relative_url }}">2025年5月分</a></li>
+        <li><a href="{{ '/kairan/2025-04-01/index.html' | relative_url }}">2025年4月分</a></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2><a href="{{ '/garbage/index.html' | relative_url }}">ごみカレンダー</a></h2>
+      <ul>
+        <li><a href="{{ '/garbage/full.html' | relative_url }}">2025年版</a></li>
+        <li><a href="{{ '/garbage/q1.html' | relative_url }}">4〜6月</a></li>
+      </ul>
+    </div>
+
+    <div class="card full-width">
+      <h2>防災・防犯</h2>
+      <ul>
+        <li><a href="{{ '/bohan/index.html' | relative_url }}">犯罪・交通事故</a></li>
+        <li><a href="{{ '/kawaraban/index.html' | relative_url }}">消火栓マップ</a></li>
+        <li><a href="{{ '/kawaraban/index.html' | relative_url }}">非常時の井戸情報</a></li>
+        <li><a href="{{ '/kawaraban/index.html' | relative_url }}">AED所在地</a></li>
+      </ul>
+    </div>
+
+    <div class="card full-width">
+      <h2>神納東区の運営</h2>
+      <ul>
+        <li><a href="{{ '/kairan/east/2025-05-01.html' | relative_url }}">会議録 5月分</a></li>
+        <li><a href="{{ '/kairan/east/2025-04-01.html' | relative_url }}">会議録 4月分</a></li>
+        <li><a href="{{ '/kagurabayashi/index.html' | relative_url }}">🔒 東区 規約</a></li>
+        <li><a href="{{ '/kagurabayashi/index.html' | relative_url }}">🔒 東区 総会資料</a></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>おもな活動</h2>
+      <ul>
+        <li><a href="{{ '/events/index.html' | relative_url }}">年間イベント</a></li>
+        <li><a href="{{ '/softball/index.html' | relative_url }}">ソフトボール大会</a></li>
+        <li><a href="{{ '/groundgolf/index.html' | relative_url }}">グラウンド・ゴルフ大会</a></li>
+        <li><a href="{{ '/sottojinja/index.html' | relative_url }}">率土神社 お祭り</a></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>活躍する団体</h2>
+      <ul>
+        <li><a href="{{ '/kagurabayashi/index.html' | relative_url }}">神楽ばやし</a></li>
+        <li><a href="{{ '/kodomokai/index.html' | relative_url }}">子供会</a></li>
+        <li><a href="{{ '/hana15/index.html' | relative_url }}">花の15会</a></li>
+        <li><a href="{{ '/seniorclub/index.html' | relative_url }}">シニアクラブ</a></li>
+      </ul>
+    </div>
+
+    <div class="card full-width">
+      <h2>神納をもっと知る</h2>
+      <ul>
+        <li><a href="{{ '/kawaraban/index.html' | relative_url }}">かわら版</a></li>
+        <li><a href="{{ '/history/index.html' | relative_url }}">東区誕生の経緯</a></li>
+      </ul>
+    </div>
+
+  </div>
+</section>
