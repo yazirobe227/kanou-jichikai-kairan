@@ -1,7 +1,9 @@
 title: 神納東区 自治会回覧板
 description: 神納東区 自治会の回覧板情報や活動情報をお届けします。
+url: "https://yazirobe227.github.io" # GitHub Pagesのルートドメイン
+baseurl: "/kanou-jichikai-kairan"   # GitHub Pagesのサブディレクトリ
 # baseurl: "/kanou-jichikai-kairan" # もしこの行があればコメントアウト
-baseurl: "" # GitHubとNetlifyの使用で絶対パスを使用しているための設定
+# baseurl: "" # GitHubとNetlifyの使用で絶対パスを使用しているための設定
 # baseurl: "" # サイトがサブディレクトリにある場合はここにパスを記述。通常は空欄でOK。
 # url: "https://graceful-dragon-868864.netlify.app" # NetlifyサイトのURL (GitHubと接続するNetlify CMSの管理画面URLを記述。
 
