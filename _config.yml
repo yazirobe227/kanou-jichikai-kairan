@@ -1,0 +1,17 @@
+title: 神納東区 自治会回覧板
+description: 神納東区 自治会の回覧板情報や活動情報をお届けします。
+baseurl: "" # サイトがサブディレクトリにある場合はここにパスを記述。通常は空欄でOK。
+url: "https://graceful-dragon-868864.netlify.app" # NetlifyサイトのURL (GitHubと接続するNetlify CMSの管理画面URLを記述。
+
+# Jekyll settings
+markdown: kramdown
+permalink: /:categories/:year/:month/:day/:title.html # URLの形式を定義
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /posts/:year/:month/:day/:title.html

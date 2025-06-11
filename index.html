@@ -1,124 +1,16 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>神納東区 自治会 情報ポータル</title>
-  <link rel="stylesheet" href="/kanou-jichikai-kairan/css/style.css">
-</head>
+---
+layout: default
+title: トップページ
+---
 
-<body>
-  <!-- トップページ専用ヘッダー：ロゴ左寄せ＋タイトルあり -->
-  <header>
-  <div class="logo-wrapper top-logo">
-    <img src="/kanou-jichikai-kairan/images/logo.png" alt="神納東区ロゴ">
-  <h1>神納東区 自治会 情報</h1>
-  </div>
-   <p class="small-text" style="text-align: right; line-height: 1.2; margin: 0;">神納東区 自治会のお知らせ・回覧板まとめ</p>
-    <nav>
-      <ul>
-      <!-- ホームは削除 -->
-        <li><a href="/kanou-jichikai-kairan/kairan/index.html">回覧板</a></li>
-        <li><a href="/kanou-jichikai-kairan/bohan/index.html">防災・防犯</a></li>
-        <li><a href="/kanou-jichikai-kairan/events/index.html">イベント情報</a></li>
-        <li><a href="/kanou-jichikai-kairan/history/index.html">神納東区の歴史</a></li>
-        <li><a href="/kanou-jichikai-kairan/contact/index.html">お問い合わせ</a></li>
-      </ul>
-    </nav>
-  </header>
+<h1>{{ page.title }}</h1>
+<p>これはトップページです。ここに回覧板の概要や最新情報を表示します。</p>
 
-  <!-- お知らせ部分 -->
-  <div class="announcement area line-height-1">
-    <div class="announcement-text">
-      <p>【お知らせ】50月10日～38日、ソフトボール大会！詳細は<a href="/kanou-jichikai-kairan/softball/index.html">こちら</a></p>
-    </div>
-    <div class="announcement-text">
-      <p>【お知らせ】5月25日（日）は<a href="/kanou-jichikai-kairan/kairan/2025-04-01/202504_kairan11.jpg">市内一斉清掃</a></p>
-    </div>
-  </div>
-
-  <section class="grid-section">
-   <div class="grid-container">
-
-  <!-- 回覧板セクション -->
-    <div class="card">
-      <h2><a href="/kanou-jichikai-kairan/kairan/index.html">回覧板</a><small>＜過去分＞</small></h2>
-      <ul>
-        <li><a href="kairan/2025-05-01/index.html">2025年5月分</a></li>
-        <li><a href="kairan/2025-04-01/index.html">2025年4月分</a></li>
-      </ul>
-    </div>
-
-  <!-- ごみカレンダーセクション -->
-    <div class="card">
-      <h2><a href="/kanou-jichikai-kairan/garbage/index.html">ごみカレンダー</a></h2>
-      <ul>
-        <li><a href="/kanou-jichikai-kairan/garbage/full.html">2025年版</a></li>
-        <li><a href="/kanou-jichikai-kairan/garbage/q1.html">4〜6月</a></li>
-      </ul>
-    </div>
-
-  <!-- 防災・防犯セクション -->
-    <div class="card full-width">
-      <h2>防災・防犯</h2>
-      <ul>
-        <li><a href="/kanou-jichikai-kairan/bohan/index.html">犯罪・交通事故</a></li>
-        <li><a href="kawaraban/index.html">消火栓マップ</a></li>
-        <li><a href="kawaraban/index.html">非常時の井戸情報</a></li>
-        <li><a href="kawaraban/index.html">AED所在地</a></li>
-      </ul>
-    </div>
-
-  <!-- 東区運営セクション -->
-    <div class="card full-width">
-      <h2>神納東区の運営</h2>
-      <ul>
-        <li><a href="/kanou-jichikai-kairan/kairan/east/2025-05-01.html">会議録 5月分</a></li>
-        <li><a href="/kanou-jichikai-kairan/kairan/east/2025-04-01.html">会議録 4月分</a></li>
-        <li><a href="kagurabayashi/index.html">🔒 東区 規約</a></li>
-        <li><a href="kagurabayashi/index.html">🔒 東区 総会資料</a></li>
-      </ul>
-    </div>
-
-  <!-- 主な活動セクション -->
-    <div class="card">
-      <h2>おもな活動</h2>
-      <ul>
-        <li><a href="events/index.html">年間イベント</a></li>
-        <li><a href="softball/index.html">ソフトボール大会</a></li>
-        <li><a href="groundgolf/index.html">グラウンド・ゴルフ大会</a></li>
-        <li><a href="sottojinja/index.html">率土神社 お祭り</a></li>
-      </ul>
-    </div>
-
-  <!-- 活躍する団体セクション -->
-    <div class="card">
-      <h2>活躍する団体</h2>
-      <ul>
-        <li><a href="kagurabayashi/index.html">神楽ばやし</a></li>
-        <li><a href="kodomokai/index.html">子供会</a></li>
-        <li><a href="hana15/index.html">花の15会</a></li>
-        <li><a href="seniorclub/index.html">シニアクラブ</a></li>
-        <!-- <li><a href="kodomokai/index.html">環境保全会</a></li> -->
-      </ul>
-    </div>
-
-  <!-- 神納の歴史・あれこれセクション -->
-    <div class="card full-width">
-      <h2>神納をもっと知る</h2>
-      <ul>
-        <li><a href="kawaraban/index.html">かわら版</a></li>
-        <li><a href="history/index.html">東区誕生の経緯</a></li>
-      </ul>
-    </div>
-   </div>
-  </section>
-
-  <!-- フッターは共通パーツとして読み込む -->
-  <script>
-    fetch('/kanou-jichikai-kairan/parts/footer.html')
-      .then(res => res.text())
-      .then(html => document.body.insertAdjacentHTML('beforeend', html));
-  </script>
-</body>
-</html>
+<h2>最新の投稿</h2>
+<ul>
+{% for post in site.posts limit:5 %}
+  <li>
+    <a href="{{ post.url | relative_url }}">{{ post.title }}</a> - {{ post.date | date: "%Y年%m月%d日" }}
+  </li>
+{% endfor %}
+</ul>
