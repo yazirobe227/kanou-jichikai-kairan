@@ -1,17 +1,7 @@
-<!DOCTYPE html>
-<html lang="ja">
- <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>神納東区 回覧板</title>
-  <link rel="stylesheet" href="{{ '/css/style.css' | relative_url }}">
-  <script>
-    // このページに固有の説明文（あれば）
-    window.pageDescription = 'こちらは 神納東区 回覧板のページです。';
-  </script>
-  <script src="{{ '/js/script.js' | relative_url }}" defer></script>
- </head>
-
+---
+layout: default
+title: 神納東区 回覧板
+---
  <main>
   <h1>回覧板</h1>
   <section class="grid-section">
@@ -24,8 +14,7 @@
       <button class="tab-button" data-tab="tab-2">2分区</button>
       <button class="tab-button" data-tab="tab-3">3分区</button>
     </nav>
-
-    <!-- タブ内容 -->
+    <!-- タブ内容：1分区 -->
     <section class="tab-content active" id="tab-1">
       <details open>
         <summary><strong>2025年6月</strong></summary>
@@ -52,7 +41,7 @@
         </ul>
       </details>
     </section>
-
+    <!-- タブ内容：2分区 -->
     <section class="tab-content" id="tab-2">
       <details open>
         <summary><strong>2025年6月</strong></summary>
@@ -79,7 +68,7 @@
         </ul>
       </details>
     </section>
-
+    <!-- タブ内容：3分区 -->
     <section class="tab-content" id="tab-3">
       <details open>
         <summary><strong>2025年6月</strong></summary>
@@ -107,7 +96,7 @@
       </details>
     </section>
   </div>
-
+    <!-- タブ内容：前年度 -->
   <div class="card">
     <h3>■ 前年度分（2024年度）</h3>
      <ul>
@@ -132,6 +121,3 @@
       <p><a href="{{ '/' | relative_url }}">← トップページに戻る</a></p>
     </section>
   </main>
-
- </body>
-</html>
