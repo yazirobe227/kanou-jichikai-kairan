@@ -1,28 +1,14 @@
-<!DOCTYPE html>
-<html lang="ja">
- <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>神納東区 ごみカレンダー 4〜6月分</title>
-  <link rel="stylesheet" href="/kanou-jichikai-kairan/css/style.css">
-  <script>
-    // このページに固有の説明文（あれば）
-    window.pageDescription = 'こちらは 神納東区 ごみカレンダー 4〜6月分のページです。';
-  </script>
-  <script src="/kanou-jichikai-kairan/js/script.js" defer></script>
- </head>
-
- <main>
-  <h1>神納東区 ごみカレンダー 4〜6月分</h1>
-
+---
+layout: default
+title: 神納東区 ごみカレンダー
+description: こちらは 神納東区 ごみカレンダーのページです。
+---
+<main>
+<h1>神納東区 ごみカレンダー 4〜6月分</h1>
   <p>以下の画像をクリックすると拡大表示できます。</p>
-
-  <img src="images/garbage_2025_q1-small.jpg" 
-       alt="神納東区 ごみカレンダー 2025年4〜6月分" 
-       onclick="showModal('images/garbage_2025_q1-medium.jpg', 'images/garbage_2025_q1-large.jpg')">
-
-  <p><a href="/kanou-jichikai-kairan/garbage/index.html">← ごみカレンダー 一覧に戻る</a></p>
- </main>
-
- </body>
-</html>
+  <img src="{{ '/garbage/images/garbage_2025_q1-small.jpg" 
+     alt="神納東区 ごみカレンダー 2025年4〜6月分" 
+     data-medium-src="{{ '/garbage/images/garbage_2025_q1-medium.jpg'' | relative_url }}"
+     data-large-src="{{ 'images/garbage_2025_q1-large.jpg' | relative_url }}">
+  <p><a href="{{ '/garbage/index.html' | relative_url }}">← ごみカレンダー 一覧に戻る</a></p>
+</main>
