@@ -1,47 +1,13 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>かわら版 No.047 フルページ画像</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      font-family: sans-serif;
-      background: #f9f9f9;
-      text-align: center;
-      padding: 1em;
-    }
-    h1 {
-      color: #2c3e50;
-      margin-bottom: 1.5em;
-    }
-    img {
-      max-width: 100%;
-      height: auto;
-      margin-bottom: 1.5em;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
-    }
-    .back-link {
-      margin-top: 2em;
-      display: inline-block;
-      font-size: 0.95em;
-      color: #2980b9;
-      text-decoration: none;
-    }
-  </style>
-</head>
-<body>
+---
+layout: default
+title: かわら版（1分区パトロール隊）047号
+description: こちらは かわら版 047号 2025年2月号 のページです。
+---
+ <main>
   <h1>かわら版 No.047<br>フルページ表示</h1>
-
   <!-- 画像を順番に並べます（mediumサイズ） -->
-  <img src="images/kawara-047-20250201_page-0001-medium.jpg" alt="ページ 1">
-  <img src="images/kawara-047-20250201_page-0002-medium.jpg" alt="ページ 2">
-  <img src="images/kawara-047-tohoku-shinkan-running-in-snow-large.jpg" alt="雪の中を疾駆する東北新幹線　イメージ大">
-  <img src="images/kawara-047-tohoku-shinkan-running-in-snow-medium.jpg" alt="雪の中を疾駆する東北新幹線　イメージ中">
-  <img src="images/kawara-047-tohoku-shinkan-running-in-snow-small.jpg" alt="雪の中を疾駆する東北新幹線　イメージ小">
-  <img src="images/kawara-047-20250201_page-0003-medium.jpg" alt="ページ 3">
-
-  <p><a href="../../index.html">← かわら版 まとめページに戻る</a></p>
-  <p><a href="../048/index.html">← 048号 トップページに戻る</a></p>
-</body>
-</html>
+   <img src="{{ '/kawaraban/047/images/kawara-047-20250201_page-0001-medium.jpg' | relative_url }}" alt="ページ 1">
+   <img src="{{ '/kawaraban/047/images/kawara-047-20250201_page-0002-medium.jpg' | relative_url }}" alt="ページ 2">
+   <img src="{{ '/kawaraban/047/images/kawara-047-20250201_page-0003-medium.jpg' | relative_url }}" alt="ページ 3">
+  <p><a href="{{ '/kawaraban/index.html’ | relative_url }}">← かわら版まとめページに戻る</a></p>
+  </main>
