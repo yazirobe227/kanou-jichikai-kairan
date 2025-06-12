@@ -1,49 +1,27 @@
-<!DOCTYPE html>
-<html lang="ja">
- <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>神納東区 ごみカレンダー</title>
-  <link rel="stylesheet" href="/kanou-jichikai-kairan/css/style.css">
-  <script>
-    // このページに固有の説明文（あれば）
-    window.pageDescription = 'こちらは 神納東区 ごみカレンダーのページです。';
-  </script>
-  <script src="/kanou-jichikai-kairan/js/script.js" defer></script>
- </head>
-
+---
+layout: default
+title: 神納東区 ごみカレンダー
+description: こちらは 神納東区 ごみカレンダーのページです。
+---
  <main>
   <h1>神納東区 ごみカレンダー</h1>
    <div class="section">
     <h2>＜2025年度版＞</h2>
      <ul>
-      <li><a href="q1.html">4月、5月、6月</a></li>
-      <li><a href="q2.html">7月、8月、9月</a></li>
-      <li><a href="q3.html">10月、11月、12月</a></li>
-      <li><a href="q4.html">1月、2月、3月</a></li>
-      <li><a href="full.html">2025年度 すべて</a></li>
+      <li><a href="{{ '/garbage/q1.html' | relative_url }}">4月、5月、6月</a></li>
+      <li><a href="{{ '/garbage/q2.html' | relative_url }}">7月、8月、9月</a></li>
+      <li><a href="{{ '/garbage/q3.html' | relative_url }}">10月、11月、12月</a></li>
+      <li><a href="{{ '/garbage/q4.html' | relative_url }}">1月、2月、3月</a></li>
+      <li><a href="{{ '/garbage/full.html' | relative_url }}">2025年度 すべて</a></li>
      </ul>
    </div>
-
    <div class="section">
     <h3>袖ケ浦市 ごみ出しルール</h3>
      <ul>
-      <li>
-       <a href="https://www.city.sodegaura.lg.jp/soshiki/haikibutsu/gomi-dashikata-top.html" 
-       target="_blank" rel="noopener noreferrer">ごみと資源物の正しい分け方・出し方（袖ケ浦市）</a>
-      </li>
-      <li>
-       <a href="https://www.city.sodegaura.lg.jp/uploaded/attachment/7932.pdf" 
-       target="_blank" rel="noopener noreferrer">ごみと資源物の出し方（日常用）リーフレット【PDFファイル】（袖ケ浦市）</a>
-      </li>
-      <li>
-       <a href="https://www.city.sodegaura.lg.jp/uploaded/attachment/40327.pdf" 
-       target="_blank" rel="noopener noreferrer">ごみと資源物ガイドブックのご案内【PDFファイル】（袖ケ浦市）</a>
-      </li>
+      <li><a href="https://www.city.sodegaura.lg.jp/soshiki/haikibutsu/gomi-dashikata-top.html" target="_blank" rel="noopener noreferrer">ごみと資源物の正しい分け方・出し方（袖ケ浦市）</a></li>
+      <li><a href="https://www.city.sodegaura.lg.jp/uploaded/attachment/7932.pdf" target="_blank" rel="noopener noreferrer">ごみと資源物の出し方（日常用）リーフレット【PDFファイル】（袖ケ浦市）</a></li>
+      <li><a href="https://www.city.sodegaura.lg.jp/uploaded/attachment/40327.pdf" target="_blank" rel="noopener noreferrer">ごみと資源物ガイドブックのご案内【PDFファイル】（袖ケ浦市）</a></li>
      </ul>
     </div>
-      <p><a href="/kanou-jichikai-kairan/">← トップページに戻る</a></p>
+      <p><a href="{{ '/' | relative_url }}">← トップページに戻る</a></p>
   </main>
-
- </body>
-</html>
