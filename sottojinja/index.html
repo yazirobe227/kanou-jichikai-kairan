@@ -1,24 +1,20 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-	<meta charset="UTF-8">
-	<meta content="width=device-width, initial-scale=1.0" name="viewport">
-	<title>率土神社</title>
-	<link href="/kanou-jichikai-kairan/css/style.css" rel="stylesheet">
-	<script>
-	   // このページに固有の説明文（あれば）
-	   window.pageDescription = 'こちらは 率土神社の催しを紹介するページです。';
-	</script>
-	<script defer src="/kanou-jichikai-kairan/js/script.js">
-	</script>
-</head>
-<body>
+---
+layout: default
+title: 率土神社の催し
+description: こちらは 率土神社の催し を紹介するページです。
+---
 	<main>
 		<section>
-			<h1 style="font-size: 2.5em; font-weight: bold; color: #333;">率土神社の催し</h1><small>宗教ではなく、神納に所在する施設とその催しの紹介</small>
+			<h1 style="font-size: 2.5em; font-weight: bold; color: #333;">率土神社の催し</h1>
+			<small>宗教ではなく、神納に所在する施設とその催しの紹介</small>
 			<h2>■率土神社とは</h2>
 			<div class="thumbnail-container">
-				<div class="thumbnail" style="text-align: center;"><img alt="率土神社 入り口" onclick="showModal('images/sottojinja-001-medium.jpg', 'images/sottojinja-001-large.jpg')" src="images/sottojinja-001-small.jpg"></div>
+				<div class="thumbnail" style="text-align: center;">
+				  <img src="{{ '/sottojinja/images/images/sottojinja-001-small.jpg' | relative_url }}"
+				       alt="率土神社 入り口”
+				       data-medium-src="{{ '/sottojinja/images/images/sottojinja-001-medium.jpg' | relative_url }}"
+				       data-large-src="{{ '/sottojinja/images/images/sottojinja-001-large.jpg' | relative_url }}">
+				</div>
 				<p>率土（そっと）神社は、神納村（<small>※1</small>）の鎮守様です。創建は聖武天皇の天平二（730）年10月1日と伝えられています。</p>
 				<p>御祭神は「埴安姫命（はにやすひめのみこと）」で、またの名を「埴山姫命（はにやまひめのみこと）」といわれる女神です。埴安姫は、土の神様で、農耕神から産業全体の守護神、さらに国土そのものです。</p>
 				<p>中国の詩経（しきょう）に「溥天之下莫非王土、率土之濱莫非王臣」(溥天（ふてん）のもと王土に非（あ）らざるはなく、率土の濱（ひん）王臣に非らざるはなし)という文章から取られています。天のあまねく履（おお）う所のもと、土地の続く限り津々浦々までという意味です。神納（かみおさ）まれる里の鎮守様として相応しい気宇雄大な社名です。</p>
@@ -53,7 +49,5 @@
 				<li><strong>11月中〜下旬　新穀祭（秋季大祭）</strong></li>
 			</ul>
 		</section>
-		<p><a href="/kanou-jichikai-kairan/">← トップページに戻る</a></p>
+		<p><a href="{{ '/' | relative_url }}">← トップページに戻る</a></p>
 	</main>
-</body>
-</html>
