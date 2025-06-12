@@ -1,26 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
- <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>市内で空き巣発生中！　2024年 10月</title>
-  <link rel="stylesheet" href="/kanou-jichikai-kairan/css/style.css">
-  <script>
-    // このページに固有の説明文（あれば）
-    window.pageDescription = 'こちらは 2024年10月 犯罪・交通事故の情報ページです。';
-  </script>
-  <script src="/kanou-jichikai-kairan/js/script.js" defer></script>
- </head>
-
+---
+layout: default
+title: 市内で空き巣発生中！ 2024年 10月
+description: こちらは 2024年10月 犯罪・交通事故の情報ページです。
+---
  <main>
-  <h1>空き巣発生中！　2024年 10月</h1>
+  <h1>空き巣発生中！ 2024年 10月</h1>
 
-  <img src="/kanou-jichikai-kairan/kairan/2024-11-01/images/202411_40675_page_007-small.jpg" 
-       alt="市内で空き巣発生中！　2024年 10月" 
-       onclick="showModal('/kanou-jichikai-kairan/kairan/2024-11-01/images/202411_40675_page_007-medium.jpg', '/kanou-jichikai-kairan/kairan/2024-11-01/images/202411_40675_page_007-large.jpg')">
+  <img src="{{ '/kairan/2024-11-01/images/202411_40675_page_007-small.jpg' | relative_url }}" 
+       alt="市内で空き巣発生中！ 2024年 10月" 
+       data-medium-src="{{ '/kairan/2024-11-01/images/202411_40675_page_007-medium.jpg' | relative_url }}"
+       data-large-src="{{ '/kairan/2024-11-01/images/202411_40675_page_007-large.jpg' | relative_url }}">
 
-  <p><a href="/kanou-jichikai-kairan/bohan/index.html">← 防災・防犯情報 一覧に戻る</a></p>
+  <p><a href="{{ '/bohan/index.html' | relative_url }}">← 防災・防犯情報 一覧に戻る</a></p>
  </main>
-
- </body>
-</html>

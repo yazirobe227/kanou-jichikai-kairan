@@ -1,26 +1,13 @@
-<!DOCTYPE html>
-<html lang="ja">
- <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>不審者・詐欺情報を発信！　2025年 2月</title>
-  <link rel="stylesheet" href="/kanou-jichikai-kairan/css/style.css">
-  <script>
-    // このページに固有の説明文（あれば）
-    window.pageDescription = 'こちらは 2025年2月 犯罪・交通事故の情報ページです。';
-  </script>
-  <script src="/kanou-jichikai-kairan/js/script.js" defer></script>
- </head>
-
+---
+layout: default
+title: 不審者・詐欺情報を発信！ 2025年 2月
+description: こちらは 2025年2月 犯罪・交通事故の情報ページです。
+---
  <main>
-  <h1>不審者・詐欺情報を発信！　2025年 2月</h1>
-
-  <img src="/kanou-jichikai-kairan/kairan/2025-03-01/images/202503_kairan27-small.jpg" 
-       alt="千葉県警・不審者・詐欺情報を発信！　2025年 2月" 
-       onclick="showModal('/kanou-jichikai-kairan/kairan/2025-03-01/images/202503_kairan27-medium.jpg', '/kanou-jichikai-kairan/kairan/2025-03-01/images/202503_kairan27-large.jpg')">
-
-  <p><a href="/kanou-jichikai-kairan/bohan/index.html">← 防災・防犯情報 一覧に戻る</a></p>
+  <h1>不審者・詐欺情報を発信！ 2025年 2月</h1>
+  <img src="{{ '/kairan/2025-03-01/images/202503_kairan27-small.jpg' | relative_url }}" 
+       alt="千葉県警・不審者・詐欺情報を発信！ 2025年 2月" 
+       data-medium-src="{{ '/kairan/2025-03-01/images/202503_kairan27-medium.jpg' | relative_url }}"
+       data-large-src="{{ '/kairan/2025-03-01/images/202503_kairan27-large.jpg' | relative_url }}">
+  <p><a href="{{ '/bohan/index.html' | relative_url }}">← 防災・防犯情報 一覧に戻る</a></p>
  </main>
-
- </body>
-</html>
