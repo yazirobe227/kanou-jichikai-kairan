@@ -24,22 +24,23 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // === モーダル画像表示処理のイベントリスナー ===
-    // .modal-trigger-img クラスを持つ画像を対象とする (例: <img class="modal-trigger-img" src="..." data-large-src="...">)
-    document.querySelectorAll('.grid-section img').forEach(img => {
-        // 画像をクリックした際にモーダルを表示
-        img.addEventListener('click', function() {
-            const modal = document.getElementById('modal');
-            const modalImage = document.getElementById('modalImage');
-            const enlargeLink = document.getElementById('enlargeLink');
-
-            // クリックされた画像のsrcをモーダルに設定
-            modalImage.src = this.src;
-            // 必要に応じて、data-large-src属性から高解像度画像パスを取得して設定
-            enlargeLink.href = this.dataset.largeSrc || this.src;
-            modal.style.display = 'block';
-        });
-    });
+    // === モーダル画像表示処理のイベントリスナー (HTMLのonclick属性で制御するためコメントアウト/削除) ===
+    // 元々あった .grid-section img へのイベントリスナーは、HTMLの onclick 属性と競合するため、
+    // 以下のように削除またはコメントアウトします。
+    // document.querySelectorAll('.grid-section img').forEach(img => {
+    //     img.addEventListener('click', function() {
+    //         const modal = document.getElementById('modal');
+    //         const modalImage = document.getElementById('modalImage');
+    //         const enlargeLink = document.getElementById('enlargeLink');
+    //
+    //         // クリックされた画像のsrcをモーダルに設定
+    //         modalImage.src = this.src; // ここが中サイズの画像になる
+    //         // 必要に応じて、data-large-src属性から高解像度画像パスを取得して設定
+    //         // HTML側で onclick="showModal(medium_url, large_url)" となっているため、この行は使われません
+    //         enlargeLink.href = this.dataset.largeSrc || this.src;
+    //         modal.style.display = 'block';
+    //     });
+    // });
 
     // モーダルを閉じるためのクリックイベントリスナー
     const modal = document.getElementById('modal');
@@ -58,6 +59,18 @@ function closeModal() {
     const enlargeLink = document.getElementById('enlargeLink');
 
     modal.style.display = 'none';
-    modalImage.src = ""; // 表示画像を初期化
-    enlargeLink.href = "#"; // リンクも初期化
+    modalImage.src = ''; // 画像をリセット
+    enlargeLink.href = '#'; // リンクをリセット
+}
+
+// === showModal 関数（HTMLのonclickから呼び出される） ===
+// HTMLの img タグの onclick="showModal('中サイズ画像のURL', '大サイズ画像のURL')" に対応
+function showModal(mediumImageSrc, largeImageSrc) {
+    const modal = document.getElementById('modal');
+    const modalImage = document.getElementById('modalImage');
+    const enlargeLink = document.getElementById('enlargeLink');
+
+    modalImage.src = mediumImageSrc; // モーダルには中サイズの画像を表示
+    enlargeLink.href = largeImageSrc; // 「さらに拡大表示」リンクには大サイズの画像URLを設定
+    modal.style.display = 'block'; // モーダルを表示
 }
