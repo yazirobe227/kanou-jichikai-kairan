@@ -1,62 +1,45 @@
-<!DOCTYPE html>
-<html lang="ja">
- <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>神納東区 防災・防犯活動</title>
-  <link rel="stylesheet" href="/kanou-jichikai-kairan/css/style.css">
-  <script>
-    // このページに固有の説明文（あれば）
-    window.pageDescription = 'こちらは 神納東区 防災・防犯活動のページです。';
-  </script>
-  <script src="/kanou-jichikai-kairan/js/script.js" defer></script>
- </head>
-  <main>
-      <h1>防犯活動</h1>
-
-  <!-- 主な活動セクション -->
-  <div class="section">
+---
+layout: default
+title: 防災・防犯活動
+description: こちらは 神納東区 防災・防犯活動のページです。 
+--- 
+ <main>
+  <h1>防犯活動</h1>
+    <!-- 主な活動セクション -->
+   <div class="section">
     <h2>地域活動</h2>
-    <!-- 以下文言ダミー -->
-     <ul>
-      <li><a href="ratejinja/index.html">防災活動 A</a></li>
-      <li><a href="softball/index.html">防災活動 B</a></li>
-      <li><a href="groundgolf/index.html">防災活動 C</a></li>
-      <li><a href="kagurabayashi/index.html">防災活動 D</a></li>
-     </ul>
-  </div>
-
-  <div class="section">
-    <h2>犯罪・交通事故情報</h2>
-     <p>木更津警察署・袖ケ浦交番・袖ケ浦市防災協会まとめ</p>
-     <ul>
-      <li><a href="security-measures-202504.html">市内で空き巣発生中！　2025年 4月</a></li>
-      <li><a href="security-measures-202503.html">市内で事務所荒らし発生中！　2025年 3月</a></li>
-      <li><a href="security-measures-202502.html">千葉県警・不審者・詐欺情報を発信！　2025年 2月</a></li>
-      <li><a href="security-measures-202501.html">市内で自転車盗増加！　2025年 1月</a></li>
-      <li><a href="security-measures-202412.html">自分の街は自分たちで守る！　2024年 12月</a></li>
-      <li><a href="security-measures-202411.html">市内で自転車盗増加！　2024年 11月</a></li>
-      <li><a href="security-measures-202410.html">市内で空き巣発生中！　2024年 10月</a></li>
-      <li><a href="security-measures-202409.html">市内で空き巣発生中！　2024年 9月</a></li>
-     </ul>
-  </div>
-
+     <!-- 以下文言ダミー -->
+		<ul>
+			<li><a href="{{ 'ratejinja/index.html' | relative_url }}">>防災活動 A</a></li>
+			<li><a href="{{ 'softball/index.html' | relative_url }}">>防災活動 B</a></li>
+			<li><a href="{{ 'groundgolf/index.html' | relative_url }}">>防災活動 C</a></li>
+			<li><a href="{{ 'kagurabayashi/index.html' | relative_url }}">>防災活動 D</a></li>
+    </ul>
+	 </div>
+	 <div class="section">
+			
+	 <h2>犯罪・交通事故情報</h2>
+	  <p>木更津警察署・袖ケ浦交番・袖ケ浦市防災協会まとめ</p>
+		 <ul>
+		  <li><a href="{{ 'security-measures-202504.html' | relative_url }}">>市内で空き巣発生中！ 2025年 4月</a></li>
+		  <li><a href="{{ 'security-measures-202503.html' | relative_url }}">>市内で事務所荒らし発生中！ 2025年 3月</a></li>
+		  <li><a href="{{ 'security-measures-202502.html' | relative_url }}">>千葉県警・不審者・詐欺情報を発信！ 2025年 2月</a></li>
+		  <li><a href="{{ 'security-measures-202501.html' | relative_url }}">>市内で自転車盗増加！ 2025年 1月</a></li>
+		  <li><a href="{{ 'security-measures-202412.html' | relative_url }}">>自分の街は自分たちで守る！ 2024年 12月</a></li>
+		  <li><a href="{{ 'security-measures-202411.html' | relative_url }}">>市内で自転車盗増加！ 2024年 11月</a></li>
+		  <li><a href="{{ 'security-measures-202410.html' | relative_url }}">>市内で空き巣発生中！ 2024年 10月</a></li>
+		  <li><a href="{{ 'security-measures-202409.html' | relative_url }}">>市内で空き巣発生中！ 2024年 9月</a></li>
+		 </ul>
+		</div>
 <!-- 袖ケ浦市　防災ページ -->
-  <div class="section">
-    <h4>千葉県・袖ケ浦市 防災情報</h4>
-     <ul>
-      <li><a href="https://www.city.sodegaura.lg.jp/soshiki/bousai/" 
-       target="_blank" rel="noopener noreferrer">袖ケ浦市 防災安全課</a></li>
-      <li><a href="https://www.bousai.pref.chiba.lg.jp/" 
-       target="_blank" rel="noopener noreferrer">千葉県防災ポータルサイト（緊急・地震・避難・交通・ライフライン 情報）</a></li>
-      <li><a href="https://www.city.sodegaura.lg.jp/hazardmap-web/index.html" 
-       target="_blank" rel="noopener noreferrer">袖ケ浦市ハザードマップ　ウェブ版</a></li>
-      <li><a href="https://www.city.sodegaura.lg.jp/soshiki/bousai/hazardmap.html" 
-       target="_blank" rel="noopener noreferrer">袖ケ浦市ハザードマップ【PDFファイル】</a></li>
-     </ul>
-  </div>
-
-      <p><a href="/kanou-jichikai-kairan/">← トップページに戻る</a></p>
-  </main>
- </body>
-</html>
+		<div class="section">
+			<h4>千葉県・袖ケ浦市 防災情報</h4>
+			<ul>
+				<li><a href="https://www.city.sodegaura.lg.jp/soshiki/bousai/" rel="noopener noreferrer">袖ケ浦市 防災安全課</a></li>
+				<li><a href="https://www.bousai.pref.chiba.lg.jp/" rel="noopener noreferrer">千葉県防災ポータルサイト（緊急・地震・避難・交通・ライフライン 情報）</a></li>
+				<li><a href="https://www.city.sodegaura.lg.jp/hazardmap-web/index.html" rel="noopener noreferrer">袖ケ浦市ハザードマップ　ウェブ版</a></li>
+				<li><a href="https://www.city.sodegaura.lg.jp/soshiki/bousai/hazardmap.html" rel="noopener noreferrer">袖ケ浦市ハザードマップ【PDFファイル】</a></li>
+			</ul>
+		</div>
+      <p><a href="{{ '/' | relative_url }}">← トップページに戻る</a></p>
+	</main>
