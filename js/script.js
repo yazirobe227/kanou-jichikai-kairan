@@ -70,6 +70,7 @@ function showModal(mediumImageSrc, largeImageSrc) {
     const modalImage = document.getElementById('modalImage');
     const enlargeLink = document.getElementById('enlargeLink');
 
+    // 明示的にString()コンストラクタを使用
     modalImage.src = mediumImageSrc; // モーダルには中サイズの画像を表示
     enlargeLink.href = largeImageSrc; // 「さらに拡大表示」リンクには大サイズの画像URLを設定
     modal.style.display = 'block'; // モーダルを表示
