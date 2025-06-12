@@ -1,28 +1,8 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-	<meta charset="UTF-8">
-	<meta content="width=device-width, initial-scale=1.0" name="viewport">
-	<title>かわら版　2025年 5月</title>
-	<link href="/kanou-jichikai-kairan/css/style.css" rel="stylesheet">
-	<script>
-	      // このページに固有の説明文（あれば）
-	      window.pageDescription = 'こちらは かわら版 2025年5月版のページです。';
-	</script>
-	<script defer src="/kanou-jichikai-kairan/js/script.js">
-	</script>
-	<meta charset="UTF-8">
-	<meta content="width=device-width, initial-scale=1.0" name="viewport">
-	<title>かわら版　2025年 5月</title>
-	<link href="/kanou-jichikai-kairan/css/style.css" rel="stylesheet">
-	<script>
-	      // このページに固有の説明文（あれば）
-	      window.pageDescription = 'こちらは かわら版 2025年5月版のページです。';
-	</script>
-	<script defer src="/kanou-jichikai-kairan/js/script.js">
-	</script>
-</head>
-<body>
+---
+layout: default
+title: かわら版（1分区パトロール隊）048号
+description: こちらは かわら版 048号 2025年5月号 のページです。
+---
 	<main>
 		<h1>かわら版 No.048（2025年5月）</h1>
 		<div class="footer-note">
@@ -32,22 +12,36 @@
 		<section>
 			<!-- トピック1：関税と株価 -->
 			<h2>【ちょっと気になる⾔葉】〜関税と株価〜</h2>
-				<div class="thumbnail" style="text-align: center;"><img alt="かわら版 048号 関税＆為替イメージ" onclick="showModal('images/001-tariffs-stock-prices-medium.jpg', 'images/001-tariffs-stock-prices-large.jpg')" src="images/001-tariffs-stock-prices-small.jpg"></div>
+			<div class="thumbnail-container">
+				<div class="thumbnail" style="text-align: center;">
+				  <img src="{{ '/kawaraban/048/images/001-tariffs-stock-prices-small.jpg' | relative_url }}"
+				       alt="かわら版 048号 関税＆為替イメージ”
+				       data-medium-src="{{ '/kawaraban/048/images/001-tariffs-stock-prices-medium.jpg' | relative_url }}"
+				       data-large-src="{{ '/kawaraban/048/images/001-tariffs-stock-prices-large.jpg' | relative_url }}">
+				</div>
 			<p>　トランプ大統領による貿易相手国への一方的な関税引き上げ通達とそれを引き金にした世界的株安、現在のところ日本も例外ではないようです。（その後大統領の言うことがコロコロ変わり、株価も乱高下しております。）<br>
 			<br>
 			　これを機会に「関税」と「日経平均株価」について調べてみました。</p>
 			<p>　専門的なことは別にして、関税はアメリカが輸入する海外製品に税金をかけ、国の収入を増やすというものです。税金を支払うのは輸入業者で収入が増えるのは国の税収です。例えば、トヨタ自動車の200万円の車を輸入した場合、関税率を25%とするとアメリカの輸入業者は国に50万円の税金（関税）を支払わなければならず、これが上乗せされれば販売価格は高くなり、輸入量が減って自国産の販売が増えると言う理屈です。トヨタはそれだけ輸出量が減り、売上高も減少することになります。鉄鋼製品やアルミ製品も同じことです。（自国でいい製品を作るのが最優先と思うのですが…。）</p>
 			<p>　これが実行されれば国内のGDP（国内総生産）が減少、景気が減速するとの懸念から株安になっております。</p>
+			</div>
 		</section>
 		<section>
 			<!-- トピック2：黄砂 -->
 			<h2>【気象】〜黄砂〜</h2>
-				<div class="thumbnail" style="text-align: center;"><img alt="かわら版 048号 関税＆為替イメージ" onclick="showModal('images/002-yellow-dust-medium.jpg', 'images/002-yellow-dust-large.jpg')" src="images/002-yellow-dust-small.jpg"></div>
-			<div class="caption">（イメージ：中国　都市での黄砂イメージ）</div>
+			<div class="thumbnail-container">
+				<div class="thumbnail" style="text-align: center;">
+				  <img src="{{ '/kawaraban/048/images/002-yellow-dust-small.jpg' | relative_url }}"
+				       alt="かわら版 048号 中国 都市での黄砂イメージ”
+				       data-medium-src="{{ '/kawaraban/048/images/002-yellow-dust-medium.jpg' | relative_url }}"
+				       data-large-src="{{ '/kawaraban/048/images/002-yellow-dust-large.jpg' | relative_url }}">
+         <p class="caption">（イメージ：中国 都市での黄砂イメージ）</p>
+				</div>
 			<p>　3月末、所用のため以前住んでいた信州に向かいました。毎年黄砂の飛来する時期、丁度その日は風も強くアクアラインからの富士山も見えませんでした、山梨県や長野県は通常は空気が澄んでいるため、あちらに向かえば八ヶ岳やアルプスが見えるだろうと期待していたのですが、北に八ヶ岳連山、南に南アルプス連峰が見えるはずの場所まで来ても全く山が見えないばかりか前方の視界も悪く、がっかりでした。</p>
 			<p>　「黄砂はどのくらい飛来するのだろうか？」とふと思い、調べてみました。</p>
 			<p>　黄砂の発生源はタクラマカン砂漠（中国西部 新疆）、ゴビ砂漠（中国北部内モンゴル）、黄土高原（中国北部 内モンゴル）が主な発生源で、砂塵嵐によって砂漠から巻き上げられた砂粒が強い西風に乗って日本まで飛来するとの事、１年間に飛来する量は年度によって異なりますが、概ね500万トン程度（コンピューターによるシミュレーション結果で正確には把握できない）だそうです。その全てが地上に落下する訳ではなく、約150万トンほどが日本の地上に落下しているようです。（年間に発生する黄砂の量は2～3億トン、その大きさは数ミクロン；髪の毛の太さの1/20程度といわれております。）中国西部で発生した黄砂は3～4日かけて日本に到達します。日本人が1年間に消費する米の量が700万トン程度と言いますから黄砂の量の莫大さにびっくりしました。</p>
 			<p>　黄砂は人体への健康被害が懸念されておりますが、悪いことばかりではなく、砂が自然環境の中で重要な役割を果たしていることも指摘されております。飛来する黄砂は、洪水による氾濫堆積物や火砕物と並ぶ堆積物の一種であり、土地を肥やす効果があります。また、黄砂には生物の生育に必要なミネラル分も含まれており、陸域だけではなく海域でもプランクトンの生育などにも寄与しております。</p>
+				</div>
 		</section>
 		<section>
 			<!-- トピック3：町内会の歴史 -->
@@ -66,7 +60,9 @@
 			<p>　演奏会での演目（ベートーベン・交響曲第3番「英雄」、メンデルスゾーン・バイオリン協奏曲）を1楽章ずつ演奏し、指揮者・下野竜也（NHK交響楽団正指揮者）、共演者で世界的バイオリニスト・レイ・チェンの指導の下、微調整を繰り返し最後に通し演奏するリハーサルでした。練習時間は4時間に及び見応えのあるリハーサルでした。</p>
 			<p>　特にバイオリン協奏曲はレイ・チェンのソロとオーケストラの共演で、踊るように奏でる名器・ストラデバリウスの澄んだ音色は見事なものでした。（他の楽器との違いは素人の私には判別できないとは思いますが。）</p>
 			<p>　このオーケストラは創立30年、長年小学校の音楽教育に情熱を傾けた佐治薫子（しげこ）氏が設立し、今年90歳を迎える今も矍鑠として音楽監督を務めておられます。小学校4年生から20歳までの160人が所属し、国内はもとより世界各地を演奏旅行する著名な少年少女オーケストラとのこと、ド素人の私にも大人のプロの演奏とも遜色なく聞こえました。大部分が将来の音楽家を目指している子供達、納得！</p>
-			<iframe allowfullscreen frameborder="0" height="360" src="https://www.youtube.com/embed/2_tohppqhKs?si=BHFIR3kcbt7K0in9&amp;start=132" title="YouTube video player" width="640"></iframe>
+     <div class="video-container">
+			<iframe src="https://www.youtube.com/embed/2_tohppqhKs?si=BHFIR3kcbt7K0in9&amp;start=132"title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+		 </div>
 		</section>
 		<section>
 			<!-- トピック5：知らなかった豆知識 -->
@@ -99,15 +95,8 @@
 					<div class="caption">
 						（写真：福王台中央公園）
 					</div>
-				</li><!-- 以下、省略された本文（中略） -->
+				</li>
 			</ul>
 		</section>
-		<ul>
-			<li style="list-style: none; display: inline">
-				<p><a href="../index.html">← かわら版 まとめページに戻る</a></p>
-				<p><a class="back-link" href="/kanou-jichikai-kairan/index.html">← トップページに戻る</a></p>
-			</li>
-		</ul>
+				<p><a href="{{ '/kawaraban/index.html' | relative_url }}">← かわら版まとめページに戻る</a></p>
 	</main>
-</body>
-</html>
