@@ -1,17 +1,80 @@
 backend:
-  name: git-gateway # Gitを使った認証方法
-  branch: main     # コンテンツをプッシュするブランチ名 (通常は main)
+  # GitHub Pagesでホストされているため、認証バックエンドとしてGitHubを使用します
+  name: github
+  repo: yazirobe227/kanou-jichikai-kairan
+  # ブランチを指定します（通常はmain）
+  branch: main
+  # 公開ワークフローを有効にする場合（ドラフト機能など）
+  # publish_mode: editorial_workflow
 
-media_folder: "static/images" # アップロードされたメディアファイルの保存先（サイトルートからの相対パス）
-public_folder: "/static/images" # メディアファイルへの公開URLパス（サイトルートからの相対パス）
+# メディア（画像など）の保存場所と公開URLを設定します
+# CMSからアップロードされた画像は、このフォルダに保存されます
+media_folder: "images/uploads" # Gitリポジトリのルート（/kanou-jichikai-kairan/）からの相対パス
+public_folder: "/images/uploads" # サイトのルート（/kanou-jichikai-kairan/）からの相対パスで、公開URLとして使われるパス
 
+# コレクション（管理するコンテンツの種類）を定義します
 collections:
-  - name: "posts" # コレクションの内部的な名前
-    label: "投稿" # 管理画面に表示される名前
-    folder: "_posts" # コンテンツを保存するフォルダ（サイトルートからの相対パス）
-    create: true # 新しいコンテンツの作成を許可
-    slug: "{{year}}-{{month}}-{{%d}}-{{slug}}" # ファイル名の命名規則
-    fields: # 各コンテンツの入力フィールド
-      - {label: "タイトル", name: "title", widget: "string"}
-      - {label: "公開日", name: "date", widget: "datetime"}
+  # --- 新しい「回覧板」を作成するためのコレクション ---
+  - name: "kairan_new" # コレクションの内部名（英数字、ユニークである必要があります）
+    label: "新規回覧板作成" # 管理画面で表示される名前（日本語）
+    folder: "kairan/_posts" # Jekyllのコンテンツフォルダ。新しい回覧板ファイルがここに保存されます。
+                           # 例: kairan/_posts/2025-06-13-新しい回覧板.html
+    create: true # 新しいアイテム（記事）の作成を許可します
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # 生成されるファイル名のフォーマット
+    extension: "html" # ファイルの拡張子
+    format: "frontmatter" # Jekyllのフロントマター形式で保存
+    fields: # 各アイテムの編集可能なフィールドを定義します
+      - {label: "レイアウト", name: "layout", widget: "hidden", default: "default"}
+      - {label: "タイトル", name: "title", widget: "string", required: true}
+      - {label: "ディスクリプション", name: "description", widget: "string", required: false}
+      # 新しい回覧板がどの「分区」に属するかを選択するフィールドを追加することもできます
+      # - {label: "分区", name: "division", widget: "select", options: ["east", "west", "south"], required: true}
+      # Jekyllのパーマリンク設定を必要に応じて追加できます
+      # - {label: "パーマリンク (自動生成)", name: "permalink", widget: "hidden", default: "/kairan/{{year}}-{{month}}-{{day}}-{{slug}}/"}
+      - {label: "本文", name: "body", widget: "markdown"} # Markdownエディタで本文を編集
+
+  # --- 新しい「かわら版」を作成するためのコレクション ---
+  - name: "kawaraban_new" # コレクションの内部名
+    label: "新規かわら版作成" # 管理画面で表示される名前
+    folder: "kawaraban/_posts" # 新しいかわら版ファイルがここに保存されます。
+                             # 例: kawaraban/_posts/049-新しいかわら版.html
+    create: true # 新しいアイテムの作成を許可します
+    slug: "{{slug}}" # 生成されるファイル名のフォーマット（例: 049-新しいかわら版）
+    extension: "html" # ファイルの拡張子
+    format: "frontmatter" # Jekyllのフロントマター形式で保存
+    fields: # 各アイテムの編集可能なフィールドを定義します
+      - {label: "レイアウト", name: "layout", widget: "hidden", default: "default"}
+      - {label: "タイトル", name: "title", widget: "string", required: true}
+      - {label: "ディスクリプション", name: "description", widget: "string", required: false}
       - {label: "本文", name: "body", widget: "markdown"}
+
+  # --- 防災・防犯情報を更新するためのコレクション（既存の構造を考慮） ---
+  # これは既存のファイルを参照して更新するために使用します。
+  # security-measures-202409.html などのファイルを直接編集する場合。
+  - name: "bohan_security_measures"
+    label: "防災・防犯情報 更新"
+    folder: "bohan" # ファイルが存在するフォルダ
+    filter: {field: "layout", pattern: "default"} # レイアウトがdefaultのファイルのみ表示（CMSが余計なファイルを拾わないように）
+    create: false # 新規作成は許可しない（既存ファイルの編集用）
+    slug: "{{slug}}" # ファイル名そのまま
+    extension: "html"
+    format: "frontmatter"
+    fields:
+      - {label: "レイアウト", name: "layout", widget: "hidden", default: "default"}
+      - {label: "タイトル", name: "title", widget: "string", required: true}
+      - {label: "ディスクリプション", name: "description", widget: "string", required: false}
+      - {label: "本文", name: "body", widget: "markdown"} # 本文を直接編集
+
+  # 他のコンテンツタイプも同様に追加できます
+  # 例えば、既存の「イベント情報」を編集したい場合
+  # - name: "events_existing"
+  #   label: "既存イベント情報"
+  #   folder: "events"
+  #   create: false
+  #   slug: "{{slug}}"
+  #   extension: "html"
+  #   format: "frontmatter"
+  #   fields:
+  #     - {label: "レイアウト", name: "layout", widget: "hidden", default: "default"}
+  #     - {label: "タイトル", name: "title", widget: "string", required: true}
+  #     - {label: "本文", name: "body", widget: "markdown"}
