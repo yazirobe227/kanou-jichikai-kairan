@@ -1,3 +1,13 @@
+# macOS の隠しファイル
 .DS_Store
-Gemfile.lock
+
+# Ruby Bundler のキャッシュディレクトリ
 .bundle/
+
+# Jekyll のビルド出力ディレクトリ
+_site/
+
+# エディタやIDEの一時ファイルなど、必要に応じて追加
+# .vscode/
+# *.log
+# .env
