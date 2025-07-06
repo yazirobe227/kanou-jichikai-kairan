@@ -7,7 +7,7 @@ content:
     label: 回覧板項目
     type: collection
     path: "_data/kairan_items"
-    format: json # <-- ★この行を追加します
+    format: yaml  # jsonからyamlに変更
     create: true
     slug: "{{item_number}}-{{title | slug}}"
     fields:
