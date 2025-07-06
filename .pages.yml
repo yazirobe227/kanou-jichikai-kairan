@@ -1,0 +1,12 @@
+# pagescms.yml の例
+collections:
+  - name: 'kairan_items' # コレクションの内部名 (任意)
+    label: '回覧板項目' # 管理画面に表示される名前
+    folder: 'data/kairan_items' # データを保存するフォルダ。Jekyllサイトのルートからの相対パス
+    create: true # 新しい項目を作成できるようにする
+    slug: '{{number}}-{{title | slug}}' # ファイル名のパターン (例: 1-meeting-minutes.json)
+    fields:
+      - {label: '項目番号', name: 'item_number', widget: 'number', min: 1, value: 1}
+      - {label: '目次タイトル', name: 'title', widget: 'string'}
+      - {label: 'ファイルID', name: 'file_id', widget: 'string', required: false}
+      - {label: 'ページ番号 (例: 1,3-5)', name: 'pages_str', widget: 'string', required: false}
