@@ -19,6 +19,8 @@ collections:
   posts:
     output: true
     permalink: /posts/:year/:month/:day/:title.html
+  kairan_items: # ★この部分を追記します
+    output: true # trueにするとコレクション内の各アイテムが個別のHTMLページとして生成されます
 
 # Jekyllが _redirects ファイルを _site ディレクトリにコピーするように設定
 include: ["_redirects"]
