@@ -2,7 +2,7 @@
 collections:
   - name: 'kairan_items' # コレクションの内部名 (任意)
     label: '回覧板項目' # 管理画面に表示される名前
-    folder: 'data/kairan_items' # データを保存するフォルダ。Jekyllサイトのルートからの相対パス
+    folder: '_data/kairan_items' # データを保存するフォルダ。Jekyllサイトのルートからの相対パス
     create: true # 新しい項目を作成できるようにする
     slug: '{{number}}-{{title | slug}}' # ファイル名のパターン (例: 1-meeting-minutes.json)
     fields:
