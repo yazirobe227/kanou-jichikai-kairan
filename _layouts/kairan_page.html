@@ -1,0 +1,98 @@
+---
+layout: default
+---
+<main>
+  <h1>{{ page.title }}</h1>
+  <a id="top"></a>
+  <h2>目次</h2>
+  <ul>
+  {% comment %} Page CMSで入力された回覧板項目データをループして目次を生成 {% endcomment %}
+  {% for item in site.data.kairan_items %}
+    {% comment %} Page CMSのfieldsで設定した名前（item_number, titleなど）でデータにアクセス {% endcomment %}
+    {% assign item_pages = item.pages_str | split: ',' %}
+    {% assign valid_pages = false %}
+    {% for p_part in item_pages %} {# 変数名を p から p_part に変更して衝突を避ける #}
+      {% assign p_stripped = p_part | strip %}
+      {% if p_stripped contains '-' %}
+        {% assign parts = p_stripped | split: '-' %}
+        {% if parts.size == 2 %}
+          {% assign start_num = parts[0] | plus: 0 %}
+          {% assign end_num = parts[1] | plus: 0 %}
+          {% if start_num and end_num and start_num <= end_num %} {# 数値変換が成功し、かつ範囲が正しいか確認 #}
+            {% assign valid_pages = true %}
+          {% endif %}
+        {% endif %}
+      {% elsif p_stripped != blank %} {# 空白でない文字列で、数値に変換可能か確認 #}
+        {% assign num_check = p_stripped | plus: 0 %}
+        {% if num_check %}
+          {% assign valid_pages = true %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+    {% if item.file_id and valid_pages %}
+      <li><a href="#item{{ item.item_number }}">{{ item.item_number }}. {{ item.title }}</a></li>
+    {% else %}
+      <li>{{ item.item_number }}. {{ item.title }}</li> {# 画像がない場合はリンクなし #}
+    {% endif %}
+  {% endfor %}
+  </ul>
+  <hr>
+  <h2>回覧文書</h2>
+  {% comment %} 再度データをループして、各項目の詳細と画像を表示 {% endcomment %}
+  {% for item in site.data.kairan_items %}
+    {% assign item_pages = item.pages_str | split: ',' %}
+    {% assign kairan_date_obj = page.date %} {# ページのフロントマターから日付を取得 #}
+    {% assign kairan_year_month = kairan_date_obj | date: "%Y%m" %}
+    {% comment %} base_image_url の修正点: captureタグで文字列を安全に構築 {% endcomment %}
+    {% capture base_image_url %}/kairan/{{ kairan_date_obj | date: "%Y-%m-%d" }}/images{% endcapture %}
+
+    <h3 id="item{{ item.item_number }}">{{ item.item_number }}. {{ item.title }}</h3>
+    <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
+    <div class="thumbnail-container">
+    {% if item.file_id and item.pages_str %}
+      {% assign pages_array = "" | split: '' %}
+      {% assign parts_to_process = item.pages_str | split: ',' %} {# <-- ★ここが修正点！Line 49 (修正前のLine 45/49) #}
+      {% for part_str in parts_to_process %} {# <-- ★ここが修正点！Line 50 (修正前のLine 45/50) #}
+        {% assign part_stripped = part_str | strip %}
+        {% if part_stripped contains '-' %}
+          {% assign start_val = part_stripped | split: '-' | first | plus: 0 %}
+          {% assign end_val = part_stripped | split: '-' | last | plus: 0 %}
+          {% if start_val and end_val and start_val <= end_val %}
+            {% for p_num in (start_val..end_val) %}
+              {% assign pages_array = pages_array | push: p_num %}
+            {% endfor %}
+          {% endif %}
+        {% elsif part_stripped != blank %}
+          {% assign single_page_num = part_stripped | plus: 0 %}
+          {% if single_page_num %}
+            {% assign pages_array = pages_array | push: single_page_num %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+      {% assign pages_array = pages_array | uniq | sort %}
+
+      {% for page_num in pages_array %}
+        {% comment %} ゼロパディングの修正: Liquidは文字列の連結に + ではなく append を使う {% endcomment %}
+        {% assign page_num_str = page_num | append: '' %} {# 数値を文字列に変換 #}
+        {% assign page_num_padded = page_num_str | prepend: '000' | slice: -3 %}
+        {% assign image_alt_text = item.title | append: ' ページ' | append: page_num %}
+        {% capture image_file_name_prefix %}{{ kairan_year_month }}_{{ item.file_id }}_page_{{ page_num_padded }}{% endcapture %}
+        <div class="thumbnail">
+          {% comment %} image src の URL 内の Liquid 構文の修正: captureタグを使用 {% endcomment %}
+          {% capture small_img_src %}{{ base_image_url }}/{{ image_file_name_prefix }}-small.jpg{% endcapture %}
+          {% capture medium_img_src %}{{ base_image_url }}/{{ image_file_name_prefix }}-medium.jpg{% endcapture %}
+          {% capture large_img_src %}{{ base_image_url }}/{{ image_file_name_prefix }}-large.jpg{% endcapture %}
+
+          <img src="{{ small_img_src | relative_url }}" alt="{{ image_alt_text }}" data-medium-src="{{ medium_img_src | relative_url }}" data-large-src="{{ large_img_src | relative_url }}">
+        </div>
+      {% endfor %}
+    {% else %}
+      {# 画像がない場合のコメント #}
+    {% endif %}
+    </div>
+    <p class="back-to-top"><a href="#top">↑ 目次へ戻る</a></p>
+
+  {% endfor %}
+  <p><a href="{{ '/kairan/index.html' | relative_url }}">← 回覧板トップページに戻る</a></p>
+</main>
