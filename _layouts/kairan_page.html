@@ -7,7 +7,8 @@ layout: default
   <h2>目次</h2>
   <ul>
   {% comment %} Page CMSで入力された回覧板項目データをループして目次を生成 {% endcomment %}
-  {% for item in site.data.kairan_items %}
+  {% assign current_kairan_date = page.date | date: "%Y-%m-%d" %} {# 現在のページの日付を取得 #}
+  {% for item in site.kairan_items | where:"date", current_kairan_date %} {# ★ここを変更します #}
     {% comment %} Page CMSのfieldsで設定した名前（item_number, titleなど）でデータにアクセス {% endcomment %}
     {% assign item_pages = item.pages_str | split: ',' %}
     {% assign valid_pages = false %}
@@ -40,7 +41,7 @@ layout: default
   <hr>
   <h2>回覧文書</h2>
   {% comment %} 再度データをループして、各項目の詳細と画像を表示 {% endcomment %}
-  {% for item in site.data.kairan_items %}
+  {% for item in site.kairan_items %}
     {% assign item_pages = item.pages_str | split: ',' %}
     {% assign kairan_date_obj = page.date %} {# ページのフロントマターから日付を取得 #}
     {% assign kairan_year_month = kairan_date_obj | date: "%Y%m" %}
