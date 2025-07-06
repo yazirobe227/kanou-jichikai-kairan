@@ -6,8 +6,8 @@ content:
   - name: kairan_items
     label: 回覧板項目
     type: collection
-    path: "_kairan_items"  # ★ここも変更します！_data/kairan_items から _kairan_items へ
-    format: yaml  # ★ここを json から yaml に変更します
+    path: "_data/kairan_items"  # ★ここが _data/kairan_items になっているか
+    format: yaml  # ★ここが yaml になっているか
     create: true
     slug: "{{item_number}}-{{title | slug}}"
     fields:
