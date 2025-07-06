@@ -8,7 +8,7 @@ content:
     type: collection
     path: "_data/kairan_items"
     format: yaml  # jsonからyamlに変更
-    create: true
+    # create: true  ← 一時的に削除して試す
     slug: "{{item_number}}-{{title | slug}}"
     fields:
       - {name: item_number, label: 項目番号, type: number, min: 1, default: 1}
