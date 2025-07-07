@@ -19,8 +19,6 @@ collections:
   posts:
     output: true
     permalink: /posts/:year/:month/:day/:title.html
-  kairan_items: # ★この部分を追記します
-    output: false # ★個別のページは生成しないため false に設定（Jekyllデータとして使う）
 
 # Jekyllが _redirects ファイルを _site ディレクトリにコピーするように設定
 include: ["_redirects"]
