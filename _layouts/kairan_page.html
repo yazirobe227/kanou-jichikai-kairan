@@ -73,21 +73,28 @@ layout: default
       {% endfor %}
       {% assign pages_array = pages_array | uniq | sort %}
 
-      {% for page_num in pages_array %}
-        {% comment %} ゼロパディングの修正: Liquidは文字列の連結に + ではなく append を使う {% endcomment %}
-        {% assign page_num_str = page_num | append: '' %} {# 数値を文字列に変換 #}
-        {% assign page_num_padded = page_num_str | prepend: '000' | slice: -3 %}
-        {% assign image_alt_text = item.title | append: ' ページ' | append: page_num %}
-        {% capture image_file_name_prefix %}{{ kairan_year_month }}_{{ item.file_id }}_page_{{ page_num_padded }}{% endcapture %}
-        <div class="thumbnail">
-          {% comment %} image src の URL 内の Liquid 構文の修正: captureタグを使用 {% endcomment %}
-          {% capture small_img_src %}{{ base_image_url }}/{{ image_file_name_prefix }}-small.jpg{% endcapture %}
-          {% capture medium_img_src %}{{ base_image_url }}/{{ image_file_name_prefix }}-medium.jpg{% endcapture %}
-          {% capture large_img_src %}{{ base_image_url }}/{{ image_file_name_prefix }}-large.jpg{% endcapture %}
+    {% for page_num in pages_array %}
+      {% assign page_num_str = page_num | append: '' %} {# 数値を文字列に変換 #}
 
-          <img src="{{ small_img_src | relative_url }}" alt="{{ image_alt_text }}" data-medium-src="{{ medium_img_src | relative_url }}" data-large-src="{{ large_img_src | relative_url }}">
-        </div>
-      {% endfor %}
+      {% comment %} 確実なゼロパディング {% endcomment %}
+      {% if page_num_str.size == 1 %}
+        {% assign page_num_padded = '00' | append: page_num_str %}
+      {% elsif page_num_str.size == 2 %}
+        {% assign page_num_padded = '0' | append: page_num_str %}
+      {% else %}
+        {% assign page_num_padded = page_num_str %}
+      {% endif %}
+
+      {% assign image_alt_text = item.title | append: ' ページ' | append: page_num %}
+      {% capture image_file_name_prefix %}{{ kairan_year_month }}_{{ item.file_id }}_page_{{ page_num_padded }}{% endcapture %}
+      <div class="thumbnail">
+        {% capture small_img_src %}{{ base_image_url }}/{{ image_file_name_prefix }}-small.jpg{% endcapture %}
+        {% capture medium_img_src %}{{ base_image_url }}/{{ image_file_name_prefix }}-medium.jpg{% endcapture %}
+        {% capture large_img_src %}{{ base_image_url }}/{{ image_file_name_prefix }}-large.jpg{% endcapture %}
+
+        <img src="{{ small_img_src | relative_url }}" alt="{{ image_alt_text }}" data-medium-src="{{ medium_img_src | relative_url }}" data-large-src="{{ large_img_src | relative_url }}">
+      </div>
+    {% endfor %}
     {% else %}
       {# 画像がない場合のコメント #}
     {% endif %}
