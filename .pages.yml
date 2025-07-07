@@ -11,7 +11,9 @@ content:
     create: true
     slug: "{{item_number}}-{{title | slug}}"
     fields:
-      - {name: item_number, label: 項目番号, type: number, min: 1, default: 1}
-      - {name: title, label: 目次タイトル, type: string}
-      - {name: file_id, label: ファイルID, type: string, required: false}
-      - {name: pages_str, label: ページ番号, type: string, required: false}
+      - {label: '項目番号', name: 'item_number', type: 'number', min: 1, default: 1}
+      - {label: '目次タイトル', name: 'title', type: 'string'}
+      - {label: 'ファイルID', name: 'file_id', type: 'string', required: false}
+      - {label: 'ページ番号 (例: 1,3-5)', name: 'pages_str', type: 'string', required: false}
+      - {label: '発行年月日', name: 'date', type: 'datetime'} # ★この行を追加！
+      - {label: '発行回数 (月内)', name: 'issue_number', type: 'number', min: 1, default: 1}
