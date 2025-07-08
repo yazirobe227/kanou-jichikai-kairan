@@ -1,0 +1,22 @@
+---
+layout: default
+title: 回覧板まとめ（テスト版）
+description: 神納東区の回覧板を月ごとに閲覧できます。（テスト版）
+permalink: /kairan/index-test.html # このページのURLを設定
+---
+<main>
+  <h1>回覧板一覧（テスト版）</h1>
+  <p>神納東区の回覧板を月ごとにご覧いただけます。</p>
+  <ul class="kairan-list">
+  {%- assign sorted_kairan_items = site.kairan_items | sort: "date" | reverse -%} {# 日付でソートし、新しい順に並べる #}
+  {%- assign unique_months = sorted_kairan_items | map:"date" | map:"%Y-%m" | uniq -%} {# ユニークな年月の文字列を抽出 #}
+
+  {%- for month_str in unique_months -%}
+    {%- assign year = month_str | slice: 0, 4 -%}
+    {%- assign month = month_str | slice: 5, 2 -%}
+    {%- assign month_page_date = year | append: '-' | append: month | append: '-01' -%} {# 各月のページのdate形式を生成 #}
+    <li><a href="{{ '/kairan/' | append: month_page_date | append: '/index.html' | relative_url }}">{{ year }}年{{ month }}月 回覧板</a></li>
+  {%- endfor -%}
+  </ul>
+  <p>過去の回覧板も順次公開予定です。</p>
+</main>
