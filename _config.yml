@@ -19,6 +19,9 @@ collections:
   posts:
     output: true
     permalink: /posts/:year/:month/:day/:title.html
+  kawaraban:
+    output: true
+    permalink: /kawaraban/:name.html
 
 # Jekyllが _redirects ファイルを _site ディレクトリにコピーするように設定
 include: ["_redirects"]
