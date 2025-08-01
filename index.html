@@ -17,8 +17,26 @@ layout_type: top # これを追加することで、_layouts/default.htmlでト�
     <div class="card">
       <h2><a href="{{ '/garbage/index.html' | relative_url }}">ごみカレンダー</a></h2>
       <ul>
-        <li><a href="{{ '/garbage/full.html' | relative_url }}">2025年版</a></li>
-        <li><a href="{{ '/garbage/q1.html' | relative_url }}">4〜6月</a></li>
+        <li><a href="{{ '/garbage/full.html' | relative_url }}">2025年版</a></li>       
+        {% assign current_date = "now" | date: "%Y-%m-%d" %}
+        {% assign current_year = "now" | date: "%Y" %}
+        {% assign q1_date = current_year | append: "-07-01" %}
+        {% assign q2_date = current_year | append: "-10-01" %}
+        {% assign q3_date = current_year | append: "-01-01" %}
+        
+        <!-- 4〜6月: 現在の日時が7月1日より前なら表示 -->
+        {% if current_date < q1_date %}
+          <li><a href="{{ '/garbage/' | append: current_year | append: '/q1.html' | relative_url }}">4〜6月</a></li>
+        <!-- 7〜9月: 現在の日時が7月1日以降なら表示 -->
+        {% elsif current_date >= q1_date and current_date < q2_date %}
+          <li><a href="{{ '/garbage/' | append: current_year | append: '/q2.html' | relative_url }}">7〜9月</a></li>
+        <!-- 10〜12月: 現在の日時が10月1日以降なら表示 -->
+        {% elsif current_date >= q2_date and current_date < q3_date %}
+          <li><a href="{{ '/garbage/' | append: current_year | append: '/q3.html' | relative_url }}">10〜12月</a></li>
+        <!-- 1〜3月: 現在の日時が1月1日以降なら表示 -->
+        {% elsif current_date >= q3_date %}
+          <li><a href="{{ '/garbage/' | append: current_year | append: '/q4.html' | relative_url }}">1〜3月</a></li>
+        {% endif %}
       </ul>
     </div>
 
