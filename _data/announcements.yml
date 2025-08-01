@@ -1,0 +1,27 @@
+- title: ソフトボール大会
+  start_date: 2025-08-01
+  end_date: 2025-11-10
+  content: 1X月10日、ソフトボール大会！詳細は
+  link_text: こちら
+  link_url: /softball/index.html
+
+- title: グラウンド・ゴルフ大会
+  start_date: 2025-08-03
+  end_date: 2025-12-07
+  content: 11月XX日、グラウンド・ゴルフ大会！詳細は
+  link_text: こちら
+  link_url: /groundgolf/index.html
+
+- title: 市内一斉清掃（秋）
+  start_date: 2025-10-20
+  end_date: 2025-11-30
+  content: 5月25日（日）は
+  link_text: 市内一斉清掃
+  link_url: /kairan/2025-10-01/202510_kairan11.jpg
+  
+- title: 市内一斉清掃（春）
+  start_date: 2025-05-25
+  end_date: 2025-05-30
+  content: 5月25日（日）は
+  link_text: 市内一斉清掃
+  link_url: /kairan/2025-04-01/202504_kairan11.jpg
