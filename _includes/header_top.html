@@ -15,10 +15,37 @@
   </nav>
 </header>
 <div class="announcement area line-height-1">
-  <div class="announcement-text">
-    <p>【お知らせ】50月10日～38日、ソフトボール大会！詳細は<a href="{{ '/softball/index.html' | relative_url }}">こちら</a></p>
-  </div>
-  <div class="announcement-text">
-    <p>【お知らせ】5月25日（日）は<a href="{{ '/kairan/2025-04-01/202504_kairan11.jpg' | relative_url }}">市内一斉清掃</a></p>
-  </div>
+  {% comment %}
+    _data/announcements.yml からのお知らせデータを取得
+    有効期間内のおしらせをフィルタリング
+    最新の2つを表示する
+  {% endcomment %}
+  
+  {% assign now = "now" | date: "%Y-%m-%d" %}
+  {% assign all_announcements = site.data.announcements %}
+  {% assign visible_announcements = "" | split: ',' %}
+
+  {% for announcement in all_announcements %}
+    {% if announcement.start_date %}
+      {% assign start_date = announcement.start_date | date: "%Y-%m-%d" %}
+      {% if announcement.end_date %}
+        {% assign end_date = announcement.end_date | date: "%Y-%m-%d" %}
+        {% if now >= start_date and now <= end_date %}
+          {% assign visible_announcements = visible_announcements | push: announcement %}
+        {% endif %}
+      {% else %}
+        {% if now >= start_date %}
+          {% assign visible_announcements = visible_announcements | push: announcement %}
+        {% endif %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+
+  {% assign sorted_announcements = visible_announcements | sort: "start_date" | reverse %}
+  
+  {% for announcement in sorted_announcements limit: 4 %}
+    <div class="announcement-text">
+      <p>【お知らせ】{{ announcement.content }}<a href="{{ announcement.link_url | relative_url }}">{{ announcement.link_text }}</a></p>
+    </div>
+  {% endfor %}
 </div>
