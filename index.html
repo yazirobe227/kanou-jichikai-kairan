@@ -26,16 +26,16 @@ layout_type: top # これを追加することで、_layouts/default.htmlでト�
         
         <!-- 4〜6月: 現在の日時が7月1日より前なら表示 -->
         {% if current_date < q1_date %}
-          <li><a href="{{ '/garbage/' | append: current_year | append: '/q1.html' | relative_url }}">4〜6月</a></li>
+          <li><a href="{{ '/garbage/q1.html' | relative_url }}">4〜6月</a></li>
         <!-- 7〜9月: 現在の日時が7月1日以降なら表示 -->
         {% elsif current_date >= q1_date and current_date < q2_date %}
-          <li><a href="{{ '/garbage/' | append: current_year | append: '/q2.html' | relative_url }}">7〜9月</a></li>
+          <li><a href="{{ '/garbage/q2.html' | relative_url }}">7〜9月</a></li>
         <!-- 10〜12月: 現在の日時が10月1日以降なら表示 -->
         {% elsif current_date >= q2_date and current_date < q3_date %}
-          <li><a href="{{ '/garbage/' | append: current_year | append: '/q3.html' | relative_url }}">10〜12月</a></li>
+          <li><a href="{{ '/garbage/q3.html' | relative_url }}">10〜12月</a></li>
         <!-- 1〜3月: 現在の日時が1月1日以降なら表示 -->
         {% elsif current_date >= q3_date %}
-          <li><a href="{{ '/garbage/' | append: current_year | append: '/q4.html' | relative_url }}">1〜3月</a></li>
+          <li><a href="{{ '/garbage/q4.html' | relative_url }}">1〜3月</a></li>
         {% endif %}
       </ul>
     </div>
