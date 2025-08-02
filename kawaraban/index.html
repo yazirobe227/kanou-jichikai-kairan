@@ -7,34 +7,34 @@ description: こちらは かわら版 のページです。
  <h1>かわら版（1分区パトロール隊）</h1>
     <div class="card full-width">
         <h2>最新かわら版</h2>
-        {% comment %}
+        {%- comment -%}
           日付でソートして、最新のものを1件取得
-        {% endcomment %}
-        {% assign latest_kawaraban = site.kawaraban | sort: "date" | reverse | first %}
-        {% if latest_kawaraban %}
+        {%- endcomment -%}
+        {%- assign latest_kawaraban = site.kawaraban | sort: "date" | reverse | first -%}
+        {%- if latest_kawaraban -%}
             <a href="{{ latest_kawaraban.url | relative_url }}">
                 <h3>{{ latest_kawaraban.title }}</h3>
             </a>
-            {% comment %}日付表示の行を削除します{% endcomment %}
-        {% endif %}
+            {%- comment -%}日付表示の行を削除します{%- endcomment -%}
+        {%- endif -%}
     </div>
 
     <div class="card full-width">
         <h2>過去のかわら版</h2>
         <ul>
-            {% comment %}
+            {%- comment -%}
               最新以外のものを取得し、リストとして表示
-            {% endcomment %}
-            {% assign past_kawaraban = site.kawaraban | sort: "date" | reverse | slice: 1, site.kawaraban.size %}
-            {% for past in past_kawaraban %}
+            {%- endcomment -%}
+            {%- assign past_kawaraban = site.kawaraban | sort: "date" | reverse | slice: 1, site.kawaraban.size -%}
+            {%- for past in past_kawaraban %}
                 <li>
-                    {% if past.type == "external" %}
+                    {%- if past.type == "external" -%}
                         <a href="{{ past.external_url }}" target="_blank" rel="noopener noreferrer">{{ past.title }}</a>
-                    {% else %}
+                    {%- else -%}
                         <a href="{{ past.url | relative_url }}">{{ past.title }}</a>
-                    {% endif %}
+                    {%- endif -%}
                 </li>
-            {% endfor %}
+            {% endfor -%}
         </ul>
     </div>
 </main>

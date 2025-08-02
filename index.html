@@ -7,46 +7,48 @@ layout_type: top # これを追加することで、_layouts/default.htmlでト�
   <div class="grid-container">
 
     <div class="card">
-      <h2><a href="{{ '/kairan/index.html' | relative_url }}">回覧板</a><small>＜過去分＞</small></h2>
+      <h2><a href="/kanou-jichikai-kairan/kairan/index.html">回覧板</a><small>＜過去分＞</small></h2>
       <ul>
-        {% assign current_year = "now" | date: "%Y" | plus: 0 %}
-        {% assign current_month = "now" | date: "%m" | plus: 0 %}
+        {% assign current_year = "now" | date: "%Y" | plus: 0 -%}
+        {%- assign current_month = "now" | date: "%m" | plus: 0 -%}
         
-        {% assign current_month_padded = current_month | prepend: "0" | slice: -2, 2 %}
-        {% assign current_date = current_year | append: '-' | append: current_month_padded | append: '-01' %}
+        {%- comment %} 現在の月のフォルダが存在するか確認 {% endcomment -%}
+        {%- assign current_month_padded = current_month | prepend: "0" | slice: -2, 2 -%}
+        {%- assign current_date = current_year | append: '-' | append: current_month_padded | append: '-01' -%}
 
-        {% assign current_folder = '/kairan/' | append: current_date %}
-        {% assign current_folder_check = site.pages | where: "url", current_folder %}
+        {%- assign current_folder = '/kairan/' | append: current_date -%}
+        {%- assign current_folder_check = site.pages | where: "url", current_folder -%}
         
-        {% if current_folder_check.size > 0 %}
+        {%- if current_folder_check.size > 0 -%}
           <li><a href="{{ current_folder | append: '/index.html' | relative_url }}">{{ current_year }}年{{ current_month_padded }}月分</a></li>
-        {% else %}
-          {% assign previous_month = current_month | minus: 1 %}
-          {% if previous_month <= 0 %}
-            {% assign previous_month = 12 %}
-            {% assign previous_year = current_year | minus: 1 %}
-          {% else %}
-            {% assign previous_year = current_year %}
-          {% endif %}
-          {% assign previous_month_padded = previous_month | prepend: "0" | slice: -2, 2 %}
-          {% assign previous_date = previous_year | append: '-' | append: previous_month_padded | append: '-01' %}
+        {%- else -%}
+          {%- assign previous_month = current_month | minus: 1 -%}
+          {%- if previous_month <= 0 -%}
+            {%- assign previous_month = 12 -%}
+            {%- assign previous_year = current_year | minus: 1 -%}
+          {%- else -%}
+            {%- assign previous_year = current_year -%}
+          {%- endif -%}
+          {%- assign previous_month_padded = previous_month | prepend: "0" | slice: -2, 2 -%}
+          {%- assign previous_date = previous_year | append: '-' | append: previous_month_padded | append: '-01' %}
           
+          {%- comment -%} 1ヶ月前 {%- endcomment -%}
           <li><a href="{{ '/kairan/' | append: previous_date | append: '/index.html' | relative_url }}">{{ previous_year }}年{{ previous_month_padded }}月分</a></li>
           
-          {% assign two_months_ago_calc = current_month | minus: 2 %}
-          {% if two_months_ago_calc <= 0 %}
-            {% assign two_months_ago = 12 | plus: two_months_ago_calc %}
-            {% assign two_months_ago_year = current_year | minus: 1 %}
-          {% else %}
-            {% assign two_months_ago = two_months_ago_calc %}
-            {% assign two_months_ago_year = current_year %}
-          {% endif %}
-          
-          {% assign two_months_ago_padded = two_months_ago | prepend: "0" | slice: -2, 2 %}
-          {% assign two_months_ago_date = two_months_ago_year | append: '-' | append: two_months_ago_padded | append: '-01' %}
+          {%- comment -%} 2ヶ月前 {%- endcomment -%}
+          {%- assign two_months_ago_calc = current_month | minus: 2 -%}
+          {%- if two_months_ago_calc <= 0 -%}
+            {%- assign two_months_ago = 12 | plus: two_months_ago_calc -%}
+            {%- assign two_months_ago_year = current_year | minus: 1 -%}
+          {%- else -%}
+            {%- assign two_months_ago = two_months_ago_calc -%}
+            {%- assign two_months_ago_year = current_year -%}
+          {%- endif -%}
+          {%- assign two_months_ago_padded = two_months_ago | prepend: "0" | slice: -2, 2 -%}
+          {%- assign two_months_ago_date = two_months_ago_year | append: '-' | append: two_months_ago_padded | append: '-01' %}
           
           <li><a href="{{ '/kairan/' | append: two_months_ago_date | append: '/index.html' | relative_url }}">{{ two_months_ago_year }}年{{ two_months_ago_padded }}月分</a></li>
-        {% endif %}
+        {%- endif %}
       </ul>
     </div>
 
@@ -54,25 +56,25 @@ layout_type: top # これを追加することで、_layouts/default.htmlでト�
       <h2><a href="{{ '/garbage/index.html' | relative_url }}">ごみカレンダー</a></h2>
       <ul>
         <li><a href="{{ '/garbage/full.html' | relative_url }}">2025年版</a></li>       
-        {% assign current_date = "now" | date: "%Y-%m-%d" %}
-        {% assign current_year = "now" | date: "%Y" %}
-        {% assign q1_date = current_year | append: "-07-01" %}
-        {% assign q2_date = current_year | append: "-10-01" %}
-        {% assign q3_date = current_year | append: "-01-01" %}
+        {%- assign current_date = "now" | date: "%Y-%m-%d" -%}
+        {%- assign current_year = "now" | date: "%Y" -%}
+        {%- assign q1_date = current_year | append: "-07-01" -%}
+        {%- assign q2_date = current_year | append: "-10-01" -%}
+        {%- assign q3_date = current_year | append: "-01-01" -%}
         
         <!-- 4〜6月: 現在の日時が7月1日より前なら表示 -->
-        {% if current_date < q1_date %}
+        {%- if current_date < q1_date %}
           <li><a href="{{ '/garbage/q1.html' | relative_url }}">4〜6月</a></li>
         <!-- 7〜9月: 現在の日時が7月1日以降なら表示 -->
-        {% elsif current_date >= q1_date and current_date < q2_date %}
+        {%- elsif current_date >= q1_date and current_date < q2_date %}
           <li><a href="{{ '/garbage/q2.html' | relative_url }}">7〜9月</a></li>
         <!-- 10〜12月: 現在の日時が10月1日以降なら表示 -->
-        {% elsif current_date >= q2_date and current_date < q3_date %}
+        {%- elsif current_date >= q2_date and current_date < q3_date %}
           <li><a href="{{ '/garbage/q3.html' | relative_url }}">10〜12月</a></li>
         <!-- 1〜3月: 現在の日時が1月1日以降なら表示 -->
-        {% elsif current_date >= q3_date %}
+        {%- elsif current_date >= q3_date %}
           <li><a href="{{ '/garbage/q4.html' | relative_url }}">1〜3月</a></li>
-        {% endif %}
+        {%- endif -%}
       </ul>
     </div>
 
@@ -89,45 +91,45 @@ layout_type: top # これを追加することで、_layouts/default.htmlでト�
     <div class="card full-width">
       <h2>神納東区の運営</h2>
       <ul>
-        {% assign current_year = "now" | date: "%Y" | plus: 0 %}
-        {% assign current_month = "now" | date: "%m" | plus: 0 %}
+        {%- assign current_year = "now" | date: "%Y" | plus: 0 -%}
+        {%- assign current_month = "now" | date: "%m" | plus: 0 -%}
         
-        {% assign current_month_padded = current_month | prepend: "0" | slice: -2, 2 %}
-        {% assign current_date_str = current_year | append: '-' | append: current_month_padded | append: '-01' %}
-        {% assign current_record_url = '/kairan/east/' | append: current_date_str | append: '.html' %}
+        {%- assign current_month_padded = current_month | prepend: "0" | slice: -2, 2 -%}
+        {%- assign current_date_str = current_year | append: '-' | append: current_month_padded | append: '-01' -%}
+        {%- assign current_record_url = '/kairan/east/' | append: current_date_str | append: '.html' -%}
 
-        {% assign previous_month_calc = current_month | minus: 1 %}
-        {% if previous_month_calc <= 0 %}
-          {% assign previous_month = 12 %}
-          {% assign previous_year = current_year | minus: 1 %}
-        {% else %}
-          {% assign previous_month = previous_month_calc %}
-          {% assign previous_year = current_year %}
-        {% endif %}
-        {% assign previous_month_padded = previous_month | prepend: "0" | slice: -2, 2 %}
-        {% assign previous_date_str = previous_year | append: '-' | append: previous_month_padded | append: '-01' %}
-        {% assign previous_record_url = '/kairan/east/' | append: previous_date_str | append: '.html' %}
+        {%- assign previous_month_calc = current_month | minus: 1 -%}
+        {%- if previous_month_calc <= 0 -%}
+          {%- assign previous_month = 12 -%}
+          {%- assign previous_year = current_year | minus: 1 -%}
+        {%- else -%}
+          {%- assign previous_month = previous_month_calc -%}
+          {%- assign previous_year = current_year -%}
+        {%- endif -%}
+        {%- assign previous_month_padded = previous_month | prepend: "0" | slice: -2, 2 -%}
+        {%- assign previous_date_str = previous_year | append: '-' | append: previous_month_padded | append: '-01' -%}
+        {%- assign previous_record_url = '/kairan/east/' | append: previous_date_str | append: '.html' -%}
         
-        {% assign two_months_ago_calc = current_month | minus: 2 %}
-        {% if two_months_ago_calc <= 0 %}
-            {% assign two_months_ago = 12 | plus: two_months_ago_calc %}
-            {% assign two_months_ago_year = current_year | minus: 1 %}
-        {% else %}
-            {% assign two_months_ago = two_months_ago_calc %}
-            {% assign two_months_ago_year = current_year %}
-        {% endif %}
-        {% assign two_months_ago_padded = two_months_ago | prepend: "0" | slice: -2, 2 %}
-        {% assign two_months_ago_date_str = two_months_ago_year | append: '-' | append: two_months_ago_padded | append: '-01' %}
-        {% assign two_months_ago_record_url = '/kairan/east/' | append: two_months_ago_date_str | append: '.html' %}
+        {%- assign two_months_ago_calc = current_month | minus: 2 -%}
+        {%- if two_months_ago_calc <= 0 -%}
+            {%- assign two_months_ago = 12 | plus: two_months_ago_calc -%}
+            {%- assign two_months_ago_year = current_year | minus: 1 -%}
+        {%- else -%}
+            {%- assign two_months_ago = two_months_ago_calc -%}
+            {%- assign two_months_ago_year = current_year -%}
+        {%- endif -%}
+        {%- assign two_months_ago_padded = two_months_ago | prepend: "0" | slice: -2, 2 -%}
+        {%- assign two_months_ago_date_str = two_months_ago_year | append: '-' | append: two_months_ago_padded | append: '-01' -%}
+        {%- assign two_months_ago_record_url = '/kairan/east/' | append: two_months_ago_date_str | append: '.html' -%}
 
-        {% assign current_record_check = site.pages | where: "url", current_record_url %}
-        {% if current_record_check.size > 0 %}
+        {%- assign current_record_check = site.pages | where: "url", current_record_url -%}
+        {%- if current_record_check.size > 0 -%}
           <li><a href="{{ current_record_url | relative_url }}">会議録 {{ current_month_padded }}月分</a></li>
           <li><a href="{{ previous_record_url | relative_url }}">会議録 {{ previous_month_padded }}月分</a></li>
-        {% else %}
+        {%- else %}
           <li><a href="{{ previous_record_url | relative_url }}">会議録 {{ previous_month_padded }}月分</a></li>
           <li><a href="{{ two_months_ago_record_url | relative_url }}">会議録 {{ two_months_ago_padded }}月分</a></li>
-        {% endif %}
+        {%- endif %}
 
         <li><a href="{{ '/kagurabayashi/index.html' | relative_url }}">🔒 東区 規約</a></li>
         <li><a href="{{ '/kagurabayashi/index.html' | relative_url }}">🔒 東区 総会資料</a></li>

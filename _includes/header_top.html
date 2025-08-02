@@ -15,37 +15,37 @@
   </nav>
 </header>
 <div class="announcement area line-height-1">
-  {% comment %}
+  {%- comment -%}
     _data/announcements.yml からのお知らせデータを取得
     有効期間内のおしらせをフィルタリング
     最新の2つを表示する
-  {% endcomment %}
+  {%- endcomment -%}
   
-  {% assign now = "now" | date: "%Y-%m-%d" %}
-  {% assign all_announcements = site.data.announcements %}
-  {% assign visible_announcements = "" | split: ',' %}
+  {%- assign now = "now" | date: "%Y-%m-%d" -%}
+  {%- assign all_announcements = site.data.announcements -%}
+  {%- assign visible_announcements = "" | split: ',' -%}
 
-  {% for announcement in all_announcements %}
-    {% if announcement.start_date %}
-      {% assign start_date = announcement.start_date | date: "%Y-%m-%d" %}
-      {% if announcement.end_date %}
-        {% assign end_date = announcement.end_date | date: "%Y-%m-%d" %}
-        {% if now >= start_date and now <= end_date %}
-          {% assign visible_announcements = visible_announcements | push: announcement %}
-        {% endif %}
-      {% else %}
-        {% if now >= start_date %}
-          {% assign visible_announcements = visible_announcements | push: announcement %}
-        {% endif %}
-      {% endif %}
-    {% endif %}
-  {% endfor %}
+  {%- for announcement in all_announcements -%}
+    {%- if announcement.start_date -%}
+      {%- assign start_date = announcement.start_date | date: "%Y-%m-%d" -%}
+      {%- if announcement.end_date -%}
+        {%- assign end_date = announcement.end_date | date: "%Y-%m-%d" -%}
+        {%- if now >= start_date and now <= end_date -%}
+          {%- assign visible_announcements = visible_announcements | push: announcement -%}
+        {%- endif -%}
+      {%- else -%}
+        {%- if now >= start_date -%}
+          {%- assign visible_announcements = visible_announcements | push: announcement -%}
+        {%- endif -%}
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
 
-  {% assign sorted_announcements = visible_announcements | sort: "start_date" | reverse %}
+  {%- assign sorted_announcements = visible_announcements | sort: "start_date" | reverse -%}
   
-  {% for announcement in sorted_announcements limit: 4 %}
+  {%- for announcement in sorted_announcements limit: 4 -%}
     <div class="announcement-text">
       <p>【お知らせ】{{ announcement.content }}<a href="{{ announcement.link_url | relative_url }}">{{ announcement.link_text }}</a></p>
     </div>
-  {% endfor %}
+  {%- endfor -%}
 </div>
