@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 市内で空き巣発生中！ 2024年 10月
+title: 市内で空き巣発生中！
 description: こちらは 2024年10月 犯罪・交通事故の情報ページです。
 date: 2024-10-01
 permalink: /bohan/security-measures-202410.html

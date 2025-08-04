@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 市内で空き巣発生中！ 2025年 3月
+title: 市内で空き巣発生中！ 
 description: こちらは 2025年3月 犯罪・交通事故の情報ページです。
 date: 2025-03-01
 permalink: /bohan/security-measures-202503.html

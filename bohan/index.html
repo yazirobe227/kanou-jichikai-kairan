@@ -5,32 +5,29 @@ description: こちらは 神納東区 防災・防犯活動のページです�
 --- 
  <main>
   <h1>防犯活動</h1>
-    <!-- 主な活動セクション -->
+  <!-- 犯罪・交通事故情報ページ -->
    <div class="section">
-    <h2>地域活動</h2>
-     <!-- 以下文言ダミー -->
+   <h2>犯罪・交通事故情報</h2>
+    <p>木更津警察署・袖ケ浦交番・袖ケ浦市防災協会まとめ</p>
+     <ul class="bohan-list">
+      {%- assign sorted_bohan_items = site.bohan_items | sort: "date" | reverse -%}
+      {% for item in sorted_bohan_items -%}
+        <li>
+          <a href="{{ item.url | relative_url }}">{{ item.title }} - {{ item.date | date: '%Y年 %-m月' }}</a>
+        </li>
+      {%- endfor %}
+     </ul>
+    </div>
+  <!-- 主な活動セクション -->
+   <div class="section">
+    <h2>災害情報</h2>
 		<ul>
-			<li><a href="{{ 'sottojinja/index.html' | relative_url }}">防災活動 A</a></li>
-			<li><a href="{{ 'softball/index.html' | relative_url }}">防災活動 B</a></li>
 			<li><a href="http://chb1018.hs.plala.or.jp/chiba119/Web/sodegaura/annai.html" target="_blank" rel="noopener noreferrer">袖ケ浦市消防本部 災害発生情報</a></li>
 			<li><a href="http://www.chb1018.hs.plala.or.jp/chiba119/Web/sodegaura/annai_past.html" target="_blank" rel="noopener noreferrer">袖ケ浦市消防本部 過去の火災・事故発生情報（約1週間）</a></li>
     </ul>
 	 </div>
-<!-- 犯罪・交通事故情報ページ -->
- 	 <div class="section">
-   <h2>犯罪・交通事故情報</h2>
-    <p>木更津警察署・袖ケ浦交番・袖ケ浦市防災協会まとめ</p>
-			<ul class="bohan-list">
-				{%- assign sorted_bohan_items = site.bohan_items | sort: "date" | reverse -%}
-				{%- for item in sorted_bohan_items -%}
-					<li>
-						<a href="{{ item.url | relative_url }}">{{ item.title }} - {{ item.date | date: '%Y年 %-m月' }}</a>
-					</li>
-				{%- endfor %}
-			</ul>
-    </div>
-<!-- 袖ケ浦市 防災ページ -->
-		<div class="section">
+  <!-- 袖ケ浦市 防災ページ -->
+	 <div class="section">
 			<h4>千葉県・袖ケ浦市 防災情報</h4>
 			<ul>
 				<li><a href="https://www.city.sodegaura.lg.jp/soshiki/bousai/" target="_blank" rel="noopener noreferrer">袖ケ浦市 防災安全課</a></li>
