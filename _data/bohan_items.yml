@@ -1,0 +1,44 @@
+# _data/bohan_items.yml
+- title: "市内で空き巣発生中！"
+  date: 2025-04-01 # 発行された月（4月）を記述
+  item_number: 7 # 発行された月（4月）の項目番号を記述
+  file_id: "41524"
+  page_number: "017"
+  image_path: "/kairan/2025-05-01/images/202505_41524_page_017-small.jpg" 
+
+- title: "不審者・詐欺情報を発信！"
+  date: 2025-03-01 # 発行された月（4月）を記述
+  item_number: 6 # 発行された月（4月）の項目番号を記述
+  file_id: "-"
+  page_number: "27"
+  image_path: "/kairan/2025-04-01/202504_kairan17.jpg" # 1ヶ月ずれたフォルダのパスを記述
+
+- title: "千葉県警・不審者・詐欺情報を発信！"
+  date: 2025-02-01
+  item_number: 99
+  image_path: "/kairan/2025-03-01/images/202503_XXXXX_page_XXX-small.jpg"
+
+- title: "市内で自転車盗増加！"
+  date: 2024-12-01
+  item_number: 99
+  image_path: "/kairan/2025-01-01/images/202501_XXXXX_page_XXX-small.jpg"
+
+- title: "自分の街は自分たちで守る！"
+  date: 2024-12-01
+  item_number: 99
+  image_path: "/kairan/2024-12-01/images/202412_XXXXX_page_XXX-small.jpg"
+
+- title: "市内で自転車盗増加！"
+  date: 2024-11-01
+  item_number: 99
+  image_path: "/kairan/2024-11-01/images/202411_XXXXX_page_XXX-small.jpg"
+
+- title: "市内で空き巣発生中！"
+  date: 2024-10-01
+  item_number: 99
+  image_path: "/kairan/2024-10-01/images/202410_XXXXX_page_XXX-small.jpg"
+
+- title: "市内で空き巣発生中！"
+  date: 2024-09-01
+  item_number: 99
+  image_path: "/kairan/2024-09-01/images/202409_XXXXX_page_XXX-small.jpg"
