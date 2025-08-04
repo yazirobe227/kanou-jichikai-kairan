@@ -2,6 +2,8 @@
 layout: default
 title: 自転車盗が増加中！ 2025年 1月
 description: こちらは 2025年1月 犯罪・交通事故の情報ページです。
+date: 2025-01-01
+permalink: /bohan/security-measures-202412.html
 ---
  <main>
   <h1>不審者・詐欺情報を発信！ 2025年 1月</h1>

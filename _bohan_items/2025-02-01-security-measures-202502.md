@@ -2,6 +2,8 @@
 layout: default
 title: 不審者・詐欺情報を発信！ 2025年 2月
 description: こちらは 2025年2月 犯罪・交通事故の情報ページです。
+date: 2025-02-01
+permalink: /bohan/security-measures-202502.html
 ---
  <main>
   <h1>不審者・詐欺情報を発信！ 2025年 2月</h1>

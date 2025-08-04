@@ -2,6 +2,8 @@
 layout: default
 title: 不審者・詐欺情報を発信！ 2024年 11月
 description: こちらは 2024年11月 犯罪・交通事故の情報ページです。
+date: 2024-11-01
+permalink: /bohan/security-measures-202411.html
 ---
  <main>
   <h1>不審者・詐欺情報を発信！ 2024年 11月</h1>

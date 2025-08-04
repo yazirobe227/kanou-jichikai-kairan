@@ -2,6 +2,8 @@
 layout: default
 title: 自分の街は自分たちで守る！ 2024年 12月
 description: こちらは 2024年12月 犯罪・交通事故の情報ページです。
+date: 2024-12-01
+permalink: /bohan/security-measures-202412.html
 ---
  <main>
   <h1>不審者・詐欺情報を発信！ 2024年 12月</h1>

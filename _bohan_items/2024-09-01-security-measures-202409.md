@@ -1,7 +1,9 @@
 ---
 layout: default
-title: 不審者・詐欺情報を発信！ 2024年 9月
-description: こちらは 2024年9月 犯罪・交通事故の情報ページです。
+title: 市内で空き巣発生中！ 2024年 09月
+description: こちらは 2024年09月 犯罪・交通事故の情報ページです。
+date: 2024-09-01
+permalink: /bohan/security-measures-202409.html
 ---
  <main>
   <h1>不審者・詐欺情報を発信！ 2024年 9月</h1>
