@@ -1,17 +1,47 @@
 ---
 layout: default
-title: 神納東区 2025年度 主なイベント予定
-description: こちらは 神納東区 2025年度 主なイベント予定 のページです。
+title: 年間イベント
+description: 神納東区の年間イベント情報です。
 ---
 <main>
- <h1>神納東区 2025年度 主なイベント予定</h1>
-  <p>Googleドキュメント</p>
-   <iframe src="https://docs.google.com/document/d/1btbbFLNMi_RN1QoH1pyXiL4oiSJOK6_uFQE7iI2Ks-o/preview" width="100%" height="600" frameborder="0"></iframe>
-  <p>Googleスプレッドシート</p>
-   <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ4cMTbiek3T0mWKExPh4i7Bjo4A1qB3k2GwjYutFuU-g7guHOjFKOXCuluiRZgNrtviLA931JZ-gAc/pubhtml?widget=true&amp;headers=false" width="100%" height="600" frameborder="0"></iframe>
-   <!-- イベントの表などはここに挿入 -->
+  <h1>年間イベント</h1>
+  <p>こちらは神納東区の年間イベント情報です。</p>
+  
+  <table class="event-table">
+    <thead>
+      <tr>
+        <th>日時</th>
+        <th>イベント名</th>
+        <th>場所</th>
+        <th>備考</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%- for event in site.data.events -%}
+        {%- assign event_date = event.date | date: '%d' | plus: 0 -%}
+        {%- assign event_date_text = "" -%}
+
+        {%- if event_date == 1 or event_date <= 10 -%}
+          {%- assign event_date_text = event.date | date: '%-m月上旬' -%}
+        {%- elsif event_date >= 11 and event_date <= 20 -%}
+          {%- assign event_date_text = event.date | date: '%-m月中旬' -%}
+        {%- elsif event_date >= 21 and event_date <= 31 -%}
+          {%- assign event_date_text = event.date | date: '%-m月下旬' -%}
+        {%- else -%}
+          {%- assign event_date_text = event.date | date: '%-m月%-d日' -%}
+        {%- endif -%}
+
+        <tr>
+          <td>{{ event_date_text }}</td>
+          <td>{{ event.event }}</td>
+          <td>{{ event.place }}</td>
+          <td>{{ event.remarks }}</td>
+        </tr>
+      {%- endfor -%}
+    </tbody>
+  </table>
      <ul>
-       <li><small>注1）予定の記載があります</small></li>
+       <li><small>注1）いずれも例年の主な予定です</small></li>
        <li><small>注2）予告なく中止、順延等の可能性があります</small></li>
        <li><small>注3）情報の掲載は細心の注意を払っておりますが、最終確認はご自身でお願いいたします</small></li>
      </ul>
