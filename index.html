@@ -6,7 +6,7 @@ layout_type: top # これを追加することで、_layouts/default.htmlでト�
 <section class="grid-section">
   <div class="grid-container">
 
-    <div class="card">
+    <!-- <div class="card">
       <h2><a href="{{ '/kairan/index.html' | relative_url }}">回覧板</a><small>＜過去分＞</small></h2>
       <ul>
         {%- assign sorted_kairan_items = site.kairan | sort: "date" | reverse | limit: 2 -%}
@@ -14,8 +14,8 @@ layout_type: top # これを追加することで、_layouts/default.htmlでト�
           <li><a href="{{ '/kairan/' | append: item.date | date: '%Y-%m-%d' | append: '/index.html' | relative_url }}">{{ item.date | date: '%Y年 %-m月' }}分</a></li>
         {%- endfor %}
       </ul>
-    </div>
-    <!-- <div class="card">
+    </div> -->
+    <div class="card">
       <h2><a href="/kanou-jichikai-kairan/kairan/index.html">回覧板</a><small>＜過去分＞</small></h2>
       <ul>
         {% assign current_year = "now" | date: "%Y" | plus: 0 -%}
@@ -59,7 +59,7 @@ layout_type: top # これを追加することで、_layouts/default.htmlでト�
           <li><a href="{{ '/kairan/' | append: two_months_ago_date | append: '/index.html' | relative_url }}">{{ two_months_ago_year }}年{{ two_months_ago_padded }}月分</a></li>
         {%- endif %}
       </ul>
-    </div> -->
+    </div>
 
     <div class="card">
       <h2><a href="{{ '/garbage/index.html' | relative_url }}">ごみカレンダー</a></h2>
