@@ -19,6 +19,9 @@ collections:
   posts:
     output: true
     permalink: /posts/:year/:month/:day/:title.html
+  kairan:
+    output: true
+    permalink: /kairan/:name.html # /kairan/YYYY-MM-DD.html のようなURLを生成
   kawaraban:
     output: true
     permalink: /kawaraban/:name.html
