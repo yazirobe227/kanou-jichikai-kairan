@@ -6,16 +6,16 @@ layout_type: top # これを追加することで、_layouts/default.htmlでト�
 <section class="grid-section">
   <div class="grid-container">
 
-    <!-- <div class="card">
+    <div class="card">
       <h2><a href="{{ '/kairan/index.html' | relative_url }}">回覧板</a><small>＜過去分＞</small></h2>
       <ul>
-        {%- assign sorted_kairan_items = site.kairan | sort: "date" | reverse | limit: 2 -%}
-        {% for item in sorted_kairan_items -%}
-          <li><a href="{{ '/kairan/' | append: item.date | date: '%Y-%m-%d' | append: '/index.html' | relative_url }}">{{ item.date | date: '%Y年 %-m月' }}分</a></li>
+        {%- assign sorted_kairan_items = site.kairan | sort: "date" | reverse -%}
+        {% for item in sorted_kairan_items limit: 2 -%}
+          <li><a href="{{ item.url | relative_url }}">{{ item.date | date: '%Y年 %-m月' }}分</a></li>
         {%- endfor %}
       </ul>
-    </div> -->
-    <div class="card">
+    </div>
+    <!-- <div class="card">
       <h2><a href="/kanou-jichikai-kairan/kairan/index.html">回覧板</a><small>＜過去分＞</small></h2>
       <ul>
         {% assign current_year = "now" | date: "%Y" | plus: 0 -%}
@@ -59,31 +59,22 @@ layout_type: top # これを追加することで、_layouts/default.htmlでト�
           <li><a href="{{ '/kairan/' | append: two_months_ago_date | append: '/index.html' | relative_url }}">{{ two_months_ago_year }}年{{ two_months_ago_padded }}月分</a></li>
         {%- endif %}
       </ul>
-    </div>
+    </div> -->
 
     <div class="card">
       <h2><a href="{{ '/garbage/index.html' | relative_url }}">ごみカレンダー</a></h2>
       <ul>
         <li><a href="{{ '/garbage/full.html' | relative_url }}">2025年版</a></li>       
-        {%- assign current_date = "now" | date: "%Y-%m-%d" -%}
-        {%- assign current_year = "now" | date: "%Y" -%}
-        {%- assign q1_date = current_year | append: "-07-01" -%}
-        {%- assign q2_date = current_year | append: "-10-01" -%}
-        {%- assign q3_date = current_year | append: "-01-01" -%}
-        
-        <!-- 4〜6月: 現在の日時が7月1日より前なら表示 -->
-        {%- if current_date < q1_date %}
-          <li><a href="{{ '/garbage/q1.html' | relative_url }}">4〜6月</a></li>
-        <!-- 7〜9月: 現在の日時が7月1日以降なら表示 -->
-        {%- elsif current_date >= q1_date and current_date < q2_date %}
-          <li><a href="{{ '/garbage/q2.html' | relative_url }}">7〜9月</a></li>
-        <!-- 10〜12月: 現在の日時が10月1日以降なら表示 -->
-        {%- elsif current_date >= q2_date and current_date < q3_date %}
-          <li><a href="{{ '/garbage/q3.html' | relative_url }}">10〜12月</a></li>
-        <!-- 1〜3月: 現在の日時が1月1日以降なら表示 -->
-        {%- elsif current_date >= q3_date %}
-          <li><a href="{{ '/garbage/q4.html' | relative_url }}">1〜3月</a></li>
-        {%- endif -%}
+          {%- assign m = "now" | date: "%-m" | plus: 0 -%}
+          {%- if m >= 4 and m <= 6 -%}
+            <li><a href="{{ '/garbage/q1.html' | relative_url }}">4〜6月</a></li>
+          {%- elsif m >= 7 and m <= 9 -%}
+            <li><a href="{{ '/garbage/q2.html' | relative_url }}">7〜9月</a></li>
+          {%- elsif m >= 10 and m <= 12 -%}
+            <li><a href="{{ '/garbage/q3.html' | relative_url }}">10〜12月</a></li>
+          {%- else -%}
+            <li><a href="{{ '/garbage/q4.html' | relative_url }}">1〜3月</a></li>
+          {%- endif -%}
       </ul>
     </div>
 
@@ -97,8 +88,26 @@ layout_type: top # これを追加することで、_layouts/default.htmlでト�
       </ul>
     </div>
 
-    <div class="card full-width">
-      <h2>神納東区の運営</h2>
+<div class="card full-width">
+  <h2>神納東区の運営</h2>
+  <ul>
+    {%- assign all_east_docs = site.east | sort: "date" | reverse -%}
+    {%- assign filtered_east_docs = "" | split: "," -%}
+    {%- for doc in all_east_docs -%}
+      {%- assign doc_day = doc.date | date: '%d' | plus: 0 -%}
+      {%- if doc_day == 1 -%}
+        {%- assign filtered_east_docs = filtered_east_docs | push: doc -%}
+      {%- endif -%}
+    {%- endfor -%}
+    
+    {%- for item in filtered_east_docs limit: 2 -%}
+      <li><a href="{{ item.url | relative_url }}">会議録 {{ item.date | date: '%-m' }}月分</a></li>
+    {%- endfor -%}
+    <li><a href="{{ '/kagurabayashi/index.html' | relative_url }}">🔒 東区 規約</a></li>
+    <li><a href="{{ '/kagurabayashi/index.html' | relative_url }}">🔒 東区 総会資料</a></li>
+  </ul>
+</div>
+      <!-- <h2>神納東区の運営</h2>
       <ul>
         {%- assign current_year = "now" | date: "%Y" | plus: 0 -%}
         {%- assign current_month = "now" | date: "%m" | plus: 0 -%}
@@ -143,7 +152,7 @@ layout_type: top # これを追加することで、_layouts/default.htmlでト�
         <li><a href="{{ '/kagurabayashi/index.html' | relative_url }}">🔒 東区 規約</a></li>
         <li><a href="{{ '/kagurabayashi/index.html' | relative_url }}">🔒 東区 総会資料</a></li>
       </ul>
-    </div>
+    </div> -->
 
     <div class="card">
       <h2>おもな活動</h2>
