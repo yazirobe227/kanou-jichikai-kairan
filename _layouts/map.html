@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }}</title>
+    
+    <link rel="stylesheet" href="{{ site.baseurl }}/css/style.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    
+    <style>
+        body { 
+            margin: 0;
+            padding-top: 135px;
+            padding-bottom: 115px;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #fff;
+            z-index: 999;
+            border-bottom: 1px solid #ddd;
+        }
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #2c3e50;
+            z-index: 999;
+        }
+        main {
+            max-width: none;
+            margin: 0;
+            padding: 0;
+        }
+        #map_container {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            z-index: 1;
+        }
+        #header-container {
+            position: fixed; /* position: absolute -> position: fixed に変更 */
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #title {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        #legend {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+            margin-left: auto;
+        }
+        #legend img {
+            width: 25px;
+            height: 41px;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+        .legend-item {
+            display: inline-block;
+            margin-right: 15px;
+        }
+        .sub-logo {
+            text-align: center;
+            margin-top: 0;
+            padding-top: 0;
+            display: block !important;
+        }
+        .sub-logo img {
+            max-width: 120px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        @media (max-width: 600px) {
+          .sub-logo img {
+            max-width: 80px;
+          }
+        }
+    </style>
+</head>
+<body>
+    {% include header_sub.html %}
+    <main>
+        {{ content }}
+    </main>
+    {% include footer.html %}
+    <script src="{{ site.baseurl }}/js/script.js"></script>
+</body>
+</html>
