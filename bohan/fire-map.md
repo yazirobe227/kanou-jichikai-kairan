@@ -18,7 +18,7 @@ title: 消火栓・防火水槽マップ
 <div id="map_container"></div>
 
 <script>
-    var map = L.map('map_container').setView([35.4265, 139.97267], 17); /* ズームレベルを16から17に調整 */
+    var map = L.map('map_container').setView([35.4265, 139.97267], 15); /* ズームレベルを再調整 */
 
     var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -102,7 +102,7 @@ title: 消火栓・防火水槽マップ
     var baseMaps = {
         "OpenStreetMap": osm,
         "国土地理院 標準地図": gsi_std,
-        "国土地理院 淡色地図": gsi_pale
+        "国土地理院 淡色地図": gsi_pale"
     };
 
     L.control.layers(baseMaps).addTo(map);
