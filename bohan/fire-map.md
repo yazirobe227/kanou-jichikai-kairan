@@ -102,8 +102,10 @@ title: 消火栓・防火水槽マップ
     var baseMaps = {
         "OpenStreetMap": osm,
         "国土地理院 標準地図": gsi_std,
-        "国土地理院 淡色地図": gsi_pale"
+        "国土地理院 淡色地図": gsi_pale
     };
 
     L.control.layers(baseMaps).addTo(map);
 </script>
+
+[← トップページに戻る]({{ '/' | relative_url }})
