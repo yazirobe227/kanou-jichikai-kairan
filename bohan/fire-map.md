@@ -5,7 +5,7 @@ title: 消火栓・防火水槽マップ
 ---
 
 <div id="header-container">
-    <div id="title">神納東区 消火栓・防火水槽・AED・避難所マップ</div>
+    <div id="title">神納東区 防災施設マップ <br><small>消火栓・防火水槽・AED・避難所</small></div>
 </div>
 <div id="map_container"></div>
 
@@ -236,4 +236,4 @@ title: 消火栓・防火水槽マップ
     L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
 </script>
 
-[← トップページに戻る]({{ '/' | relative_url }})
+[← 防災・防犯活動のページに戻る]({{ 'bohan/index.html' | relative_url }})
