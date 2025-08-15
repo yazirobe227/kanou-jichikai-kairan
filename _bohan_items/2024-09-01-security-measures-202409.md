@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 市内で空き巣発生中！
+title: 不審者・詐欺情報を発信！
 description: こちらは 2024年09月 犯罪・交通事故の情報ページです。
 date: 2024-09-01
 permalink: /bohan/security-measures-202409.html
