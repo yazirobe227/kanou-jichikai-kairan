@@ -1,0 +1,37 @@
+# _data/history_docs.yml
+- number: 1
+  title: "ふるさと神納"
+  description: "　神納在住の多田憲美さんが長年にわたって調べた神納の歴史を一冊の本にして下さいました。神納の歴史を知るバイブル的一冊です。"
+  link_url: ""
+- number: 2
+  title: "鎮守の神についての常識と、わが率土神社とその周辺について"
+  description: "　元率土神社責任役員の多田憲美さんが平成19年10月15日「率土神社拝殿屋根工事落慶記念」に行った講和の原稿です。"
+  link_url: "/documents/sottojinja.html"
+- number: 3
+  title: "土と花を愛でて～神納花の15会 13年の記録～"
+  description: "　平成15年に発足したボランティア団体、「神納花の15会」の13年間の活動記録をまとめたものです。新日鐵君津製鉄所から「クローバー賞」をいただいたのを機に一区切りとしてまとめました。"
+  link_url: "/documents/hana15-13year.html"
+- number: 4
+  title: "神納谷団地の建て替えについての経緯"
+  description: "　元袖ケ浦市議会議員・石井俊夫さん（奈良輪在住）が議員在職中に集めた関連資料を、令和元年9月、当時の三浦区長に譲渡して下さいました。将来、跡地利用に際して参考になる貴重な資料で、永久保存とするものです。"
+  link_url: "/documents/kannou-yatsu.html"
+- number: 5
+  title: "神納中辻台疎開者の歴史"
+  description: "　昭和19年。出身地新潟県から神納中辻台に疎開して来られた5家族の皆様方の現在までの歴史を星野光春さんがまとめて冊子を作って下さいました。"
+  link_url: "/documents/sokai.html"
+- number: 6
+  title: "9.09 台風15号による神納地区の被害について～記録～"
+  description: "　2019年（令和元年）9月9日 東京湾を直撃した台風15号、10月12日の台風19号そして10月25日の大雨と連続した災害の記録をまとめたものです。"
+  link_url: "/documents/typhoon-2019.html"
+- number: 7
+  title: "「神納東区」誕生の経緯"
+  description: "　神納地区が現在の一区、東区に分かれた経緯、東区が１～3分区に分かれた経緯を当時の関係者や尽力された皆さんから伺って整理したものです。"
+  link_url: "/documents/east-history.html"
+- number: 8
+  title: "浮戸川改修の記録"
+  description: "　関巌さんの祖父が浮戸川改修の経緯をまとめた記録です。原本は1ページと短いものですが当時の経緯が良く分ります。"
+  link_url: "/documents/ukitogawa.html"
+- number: 9
+  title: "東区総会資料等一式"
+  description: "　長年の総会資料の重要な部分を年度ごとに一冊のファイルにまとめたものです。"
+  link_url: ""
