@@ -3,12 +3,126 @@ layout: default
 title: お問い合わせ
 description: こちらは お問い合わせ のページです。
 ---
- <main>
+
+<style>
+  #contactForm {
+  max-width: 500px;   /* フォームの幅を中央寄せに */
+  margin: 20px auto;
+}
+
+#contactForm .form-group {
+  display: flex;
+  flex-direction: column; /* ラベルと入力を縦並びに */
+  margin-bottom: 15px;
+}
+
+#contactForm label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+#contactForm input,
+#contactForm select,
+#contactForm textarea {
+  padding: 8px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#contactForm textarea {
+  min-height: 150px; /* 本文欄を大きく */
+  resize: vertical;  /* ユーザーが高さ調整可能に */
+}
+
+#sendBtn {
+  background-color: #004080;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#sendBtn:hover {
+  background-color: #0066cc;
+}
+
+</style>
+
+<main>
       <h1>お問い合わせ</h1>
-    <section>
-      <p>　回覧板</p>
-      <p>　区の行事</p>
-      <p>　区の事業</p>
-    </section>
+      <p>　神納東区の活動に関するご質問・ご意見などがありましたら、下記フォームよりお寄せください。<br><br>
+        下記フォームは氏名、メールアドレスを全てご入力をいただかないと、送信されません。<br>
+        なお、内容によっては回答できない場合や、回答までにお時間をいただく場合がありますので、あらかじめご了承ください。</p>
+      <form id="contactForm" onsubmit="return false;">
+    <div class="form-group">
+      <label for="category">お問い合わせ分類</label>
+      <select id="category" name="category" required>
+        <option>回覧板：電子化の問い合わせ</option>
+        <option>回覧板</option>
+        <option>区の行事</option>
+        <option>区の事業</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="name">お名前</label>
+      <input id="name" name="name" required>
+    </div>
+
+    <div class="form-group">
+      <label for="email">メールアドレス</label>
+      <input id="email" name="email" type="email" required
+            pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$"
+            title="メール形式で入力してください">
+    </div>
+
+    <div class="form-group">
+      <label for="message">本文</label>
+      <textarea id="message" name="message" rows="8" required></textarea>
+    </div>
+
+    <button id="sendBtn">送信</button>
+    <p id="result" aria-live="polite"></p>
+  </form>
+
+<script>
+const ENDPOINT = 'https://script.google.com/macros/s/AKfycbx-bcn7QrBSvQgNuFyjuUurcd92CtJt28lOK4cnul1m6bbkwzDrxoOcD6vqSz0_ZNqpHw/exec';
+
+document.getElementById('sendBtn').addEventListener('click', async () => {
+  const form = document.getElementById('contactForm');
+  const data = Object.fromEntries(new FormData(form).entries());
+  const btn = document.getElementById('sendBtn');
+  const result = document.getElementById('result');
+
+  btn.disabled = true; result.textContent = '送信中…';
+
+  try {
+    const res = await fetch(ENDPOINT, {
+      method: 'POST',
+      // ★プリフライト回避：application/json は使わない
+      headers: {'Content-Type': 'text/plain;charset=utf-8'},
+      body: JSON.stringify(data)
+    });
+    const json = await res.json();
+
+    if (json.ok) {
+      result.textContent = '送信しました。ご入力ありがとうございました。';
+      form.reset();
+    } else {
+      result.textContent = '送信に失敗しました：' + (json.error || '');
+      console.error(json);
+    }
+  } catch (e) {
+    result.textContent = '通信エラーが発生しました。';
+    console.error(e);
+  } finally {
+    btn.disabled = false;
+  }
+});
+</script>
+
       <p><a href="{{ '/' | relative_url }}">← トップページに戻る</a></p>
   </main>
