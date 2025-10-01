@@ -101,8 +101,8 @@ layout_type: top # これを追加することで、_layouts/default.htmlでト�
     {%- for item in filtered_east_docs limit: 2 -%}
       <li><a href="{{ item.url | relative_url }}">会議録 {{ item.date | date: '%-m' }}月分</a></li>
     {%- endfor -%}
-    <li><a href="{{ '/kagurabayashi/index.html' | relative_url }}">🔒 東区 規約</a></li>
-    <li><a href="{{ '/kagurabayashi/index.html' | relative_url }}">🔒 東区 総会資料</a></li>
+    <li><a href="{{ '/kairan/east/secure.html?doc=east-rule' | relative_url }}">🔒 東区 規約</a></li>
+    <li><a href="{{ '/kairan/east/secure.html?doc=general' | relative_url }}">🔒 東区 総会資料</a></li>
   </ul>
 </div>
       <!-- <h2>神納東区の運営</h2>

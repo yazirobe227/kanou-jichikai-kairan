@@ -1,0 +1,19 @@
+---
+layout: default
+title: 会員専用（規約・総会資料）
+---
+<main>
+  <h1>会員専用（規約・総会資料）</h1>
+  <div id="frame-wrap" style="min-height:80vh">
+    <iframe id="secure-frame" src="" style="width:100%;min-height:80vh;border:0" loading="lazy"></iframe>
+  </div>
+</main>
+<script>
+  (function(){
+    // 親ページの ?doc= を拾って、そのまま iframe の URL に付与する
+    const params = new URLSearchParams(location.search);
+    const doc = params.get('doc') || 'east-rule'; // ← このページの既定
+    const GAS = 'https://script.google.com/macros/s/AKfycbzxF_viak5iI8OgKwykbKubTDK9vu0nDLgw7jnWaFHWPYlEo71_mhyXNWvoHGJIIqH2/exec';
+    document.getElementById('secure-frame').src = GAS + '?doc=' + encodeURIComponent(doc);
+  })();
+</script>
