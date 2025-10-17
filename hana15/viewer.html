@@ -1,0 +1,33 @@
+---
+layout: default
+title: フォトビューア
+---
+
+<main style="background:#000;min-height:100vh;display:flex;align-items:center;justify-content:center">
+  <img id="big" alt="" style="max-width:100%;max-height:100vh;display:block">
+</main>
+
+<script>
+  // ギャラリーと同じ GAS URL
+  const GAS = 'https://script.google.com/macros/s/AKfycbzSrIs7r7mf82Amk2YiRu06yLaKUyxB4S4UwjEUaWmub5uvP4daFA1DW6l41nUH48Q8/exec';
+
+  const params = new URLSearchParams(location.search);
+  const k = params.get('k');
+
+  (async () => {
+    if (!k) { document.title = '画像が見つかりません'; return; }
+    try {
+      const r = await fetch(`${GAS}?k=${encodeURIComponent(k)}`);
+      const j = await r.json();
+      if (!j || !j.ok) { document.title = '読み込み失敗'; return; }
+      // dataURL → blob: にしてブラウザ負荷軽減
+      const blob = await (await fetch(j.dataUrl)).blob();
+      const url  = URL.createObjectURL(blob);
+      document.getElementById('big').src = url;
+      document.title = k;
+    } catch (e) {
+      console.error(e);
+      document.title = 'エラー';
+    }
+  })();
+</script>

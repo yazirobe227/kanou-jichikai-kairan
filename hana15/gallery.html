@@ -9,6 +9,7 @@ description: こちらは 神納花の15会 のページです。
   .card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;box-shadow:0 4px 10px rgba(0,0,0,.05)}
   .card img{width:100%;height:auto;display:block;aspect-ratio:4/3;object-fit:cover}
   .belowfold{content-visibility:auto;contain-intrinsic-size:1px 400px;}
+  .modal-link a#enlargeLink{ display:none !important; } /* 既存の拡大リンクは使わない */
   @media (min-width:1024px){.gallery{grid-template-columns:repeat(3,1fr)}}
 </style>
 
@@ -21,6 +22,8 @@ description: こちらは 神納花の15会 のページです。
 <script>
   // ★あなたのWebアプリURLに置換
   const GAS = 'https://script.google.com/macros/s/AKfycbzSrIs7r7mf82Amk2YiRu06yLaKUyxB4S4UwjEUaWmub5uvP4daFA1DW6l41nUH48Q8/exec';
+  // ★viewer.html（“大”表示ページ）
+  const VIEWER = "{{ '/hana15/viewer.html' | relative_url }}"; // ← Jekyll でサイト内URLに
 
   // 表示したいキー（DriveのIDは公開しない）
   const KEYS = [
@@ -50,17 +53,43 @@ description: こちらは 神納花の15会 のページです。
 
   const box = document.getElementById('gallery');
 
-  // 先に枠だけ並べる（LCP向上 & 遅延読み込み）
+  // 1) 先に枠だけ並べる（a の href は最初から viewer.html?k=… にする）
   box.innerHTML = KEYS.map((k,i)=>`
     <figure class="card ${i>9?'belowfold':''}">
-      <a href="${GAS}?k=${encodeURIComponent(k)}" target="_blank" rel="noopener">
+      <a class="viewer"
+         data-k="${k}"
+         href="${VIEWER}?k=${encodeURIComponent(k)}"
+         target="_blank" rel="noopener">
         <img id="img-${k}" alt="${k}" loading="lazy" decoding="async" ${i<6?'fetchpriority="high"':''}>
       </a>
       <figcaption>${k}</figcaption>
     </figure>
   `).join('');
 
-  // 画像を順次ロード（dataURL を取得して <img>.src にセット）
+  // 2) サムネイル用 data:URL を取得してセット（“中表示”は blob を使う）
+  (async () => {
+    for (const k of KEYS) {
+      try {
+        const r = await fetch(`${GAS}?k=${encodeURIComponent(k)}`);
+        const j = await r.json();
+        const el = document.getElementById(`img-${k}`);
+        const a  = el?.closest('a');
+        if (j && j.ok && el && a) {
+          // サムネ（小表示）：data:URL
+          el.src = j.dataUrl;
+          // モーダル用（中表示）：blob:URL を仕込む（リンクの href は触らない！）
+          const blob = await (await fetch(j.dataUrl)).blob();
+          a.dataset.url = URL.createObjectURL(blob); // “中”はこれを使う
+        } else if (el) {
+          el.alt = (j && j.msg) || 'load error';
+        }
+      } catch (e) {
+        console.error(k, e);
+      }
+    }
+  })();
+
+  // 画像を順次ロード（サムネ <img> は dataURL／モーダル用には blob URL も用意）
   (async () => {
     for (const k of KEYS) {
       try {
@@ -69,6 +98,14 @@ description: こちらは 神納花の15会 のページです。
         const el = document.getElementById(`img-${k}`);
         if (j && j.ok) {
           el.src = j.dataUrl;
+
+          // モーダル用の blob URL を作って <a data-url> に覚えさせる
+          const a = el.closest('a');
+          if (a) {
+            const blob = await (await fetch(j.dataUrl)).blob();
+            const objUrl = URL.createObjectURL(blob);
+            a.dataset.url = objUrl; // ← モーダルはこれを使う
+          }
         } else {
           el.alt = (j && j.msg) || 'load error';
         }
@@ -77,6 +114,95 @@ description: こちらは 神納花の15会 のページです。
       }
     }
   })();
+
+</script>
+  (function () {
+    const modal = document.getElementById('modal');
+    const img   = document.getElementById('modalImage');
+
+    // ① 自前の「さらに拡大表示」ボタンを挿入（viewer 用）
+    const holder = document.querySelector('.modal-link') || modal;
+    const myBtn  = document.createElement('a');
+    myBtn.id = 'galleryEnlarge';
+    myBtn.textContent = '▶ さらに拡大表示';
+    myBtn.target = '_blank';
+    myBtn.rel = 'noopener';
+    myBtn.style.display = 'inline-block';
+    myBtn.style.margin  = '8px 0 0';
+    holder.appendChild(myBtn);
+
+    let zoomLevel = 1;
+
+    // ② ギャラリー内カードクリック → モーダルを“中”で開く（blob）、拡大ボタンは viewer.html に
+    document.addEventListener('click', (ev) => {
+      const a = ev.target.closest('a.viewer');
+      if (!a) return;
+
+      ev.preventDefault();                 // ここでは新規タブを開かない（モーダルを開く）
+      const blobUrl = a.dataset.url;
+      if (blobUrl) img.src = blobUrl;
+
+      // viewer.html?k=… を“普通のリンク”としてセット（ポップアップ扱いにならない）
+      myBtn.href = a.href;
+
+      zoomLevel = 1;
+      applyZoom();
+      modal.classList.add('show');
+    });
+
+    // ③ 閉じる
+    window.closeModal = function () {
+      modal.classList.remove('show');
+      img.src = '';
+    };
+
+    // ④ 3段階ズーム
+    img.addEventListener('click', () => {
+      zoomLevel = (zoomLevel + 1) % 3;
+      applyZoom();
+    });
+    function applyZoom() {
+      img.style.objectFit = 'contain';
+      img.style.width     = '100%';
+      img.style.height    = 'auto';
+      img.style.maxHeight = (zoomLevel === 2) ? 'none' : '90vh';
+      img.style.maxWidth  = (zoomLevel === 0) ? '720px'
+                          : (zoomLevel === 1) ? '1200px'
+                          : 'none';
+      img.style.display   = 'block';
+    }
+  })();
+</script>
+
+<script>
+// ---- 強制上書きパッチ（about:blank#blocked 対策） ----
+(function(){
+  // 既存リスナーを全部剥がす
+  const old = document.getElementById('enlargeLink');
+  if (!old) return;
+  const clone = old.cloneNode(true);
+  old.replaceWith(clone); // ← 既存の click リスナーを全部除去
+
+  // href を viewer.html?k=.. に毎回セット（モーダル表示時に doc側でセットしているなら不要）
+  // 念のため、モーダル表示処理がセット済みの data-key を見て再セットする保険を入れます
+  function ensureHrefFromModal() {
+    const imgA = document.querySelector('.modal .card a, a[data-key]'); // 適当に拾う
+    const key  = (imgA && imgA.dataset && imgA.dataset.key) || null;
+    if (key) {
+      clone.href   = "{{ '/hana15/viewer.html' | relative_url }}?k=" + encodeURIComponent(key);
+      clone.target = "_blank";
+      clone.rel    = "noopener";
+    }
+  }
+
+  // クリック時は “通常のリンク遷移” をさせる（JS で書き込みしない）
+  clone.addEventListener('click', function(ev){
+    // 他のスクリプトが preventDefault しても勝つように、直前に href を保証
+    ensureHrefFromModal();
+    // ここでは preventDefault しない → 通常の a[target=_blank] ナビに任せる
+    // もし他のスクリプトが stopPropagation 済みでも、ここは直接の要素なので効きます
+  }, {capture:true}); // capture で最優先
+})();
 </script>
 
 </main>
