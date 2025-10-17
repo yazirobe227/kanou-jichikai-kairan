@@ -1,0 +1,82 @@
+---
+layout: default
+title: 神納花の15会
+description: こちらは 神納花の15会 のページです。
+---
+<link rel="preconnect" href="https://script.google.com">
+<style>
+  .gallery{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+  .card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;box-shadow:0 4px 10px rgba(0,0,0,.05)}
+  .card img{width:100%;height:auto;display:block;aspect-ratio:4/3;object-fit:cover}
+  .belowfold{content-visibility:auto;contain-intrinsic-size:1px 400px;}
+  @media (min-width:1024px){.gallery{grid-template-columns:repeat(3,1fr)}}
+</style>
+
+<main>
+  <h1>神納花の15会 活動の様子</h1>
+  <section id="gallery" class="gallery"></section>
+  <p style="margin-top:16px"><a href="{{ '/' | relative_url }}">← トップページに戻る</a></p>
+</main>
+
+<script>
+  // ★あなたのWebアプリURLに置換
+  const GAS = 'https://script.google.com/macros/s/AKfycbzSrIs7r7mf82Amk2YiRu06yLaKUyxB4S4UwjEUaWmub5uvP4daFA1DW6l41nUH48Q8/exec';
+
+  // 表示したいキー（DriveのIDは公開しない）
+  const KEYS = [
+    "081","082","083","084","085","086","087","088","089","090",
+    "091","092","093","094","095","096","097","098",
+    "20140406_1","20140406_2","20140406_3","20140406_4","20140406_5",
+    "20140406_6","20140406_7","20140406_8","20140406_9",
+    "20140518_108","20140518_109","20140518_110","20140518_111","20140518_112",
+    "20140518_113","20140518_114","20140518_115","20140518_116","20140518_117",
+    "20140518_118","20140518_119","20140518_120","20140518_121","20140518_122",
+    "20140518_123","20140518_124","20140518_125","20140518_126","20140518_127",
+    "20140518_128","20140518_129","20140518_130","20140518_131","20140518_132",
+    "20140518_133","20140518_134","20140518_135","20140518_136","20140518_137",
+    "20140518_138","20140518_139","20140518_140","20140518_142",
+    "20140724_18","20140724_19","20140724_20","20140724_21","20140724_22",
+    "20140724_23","20140724_30","20140724_31","20140724_32","20140724_33",
+    "20140724_34","20140724_35","20140724_36","20140724_37","20140724_38",
+    "20140724_39","20140724_40","20140724_41","20140724_42","20140724_43",
+    "20140724_44","20140724_46",
+    "20140821_1","20140821_2","20140821_3","20140821_4","20140821_5",
+    "20140821_6","20140821_7","20140821_9","20140821_10","20140821_11",
+    "20140821_12","20140821_14","20140821_15","20140821_16","20140821_17",
+    "20140821_18","20140821_19","20140821_20","20140821_21","20140821_22",
+    "20140821_23","20140821_24","20140821_25",
+    "20140911_32","20140911_33","20140911_34","20140911_35","20140911_36","20140911_37"
+  ];
+
+  const box = document.getElementById('gallery');
+
+  // 先に枠だけ並べる（LCP向上 & 遅延読み込み）
+  box.innerHTML = KEYS.map((k,i)=>`
+    <figure class="card ${i>9?'belowfold':''}">
+      <a href="${GAS}?k=${encodeURIComponent(k)}" target="_blank" rel="noopener">
+        <img id="img-${k}" alt="${k}" loading="lazy" decoding="async" ${i<6?'fetchpriority="high"':''}>
+      </a>
+      <figcaption>${k}</figcaption>
+    </figure>
+  `).join('');
+
+  // 画像を順次ロード（dataURL を取得して <img>.src にセット）
+  (async () => {
+    for (const k of KEYS) {
+      try {
+        const r = await fetch(`${GAS}?k=${encodeURIComponent(k)}`);
+        const j = await r.json();
+        const el = document.getElementById(`img-${k}`);
+        if (j && j.ok) {
+          el.src = j.dataUrl;
+        } else {
+          el.alt = (j && j.msg) || 'load error';
+        }
+      } catch (e) {
+        console.error(k, e);
+      }
+    }
+  })();
+</script>
+
+</main>
