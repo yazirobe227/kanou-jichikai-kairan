@@ -114,8 +114,9 @@ description: こちらは 神納花の15会 のページです。
       }
     }
   })();
-
 </script>
+
+<script>
   (function () {
     const modal = document.getElementById('modal');
     const img   = document.getElementById('modalImage');
@@ -133,18 +134,16 @@ description: こちらは 神納花の15会 のページです。
 
     let zoomLevel = 1;
 
-    // ② ギャラリー内カードクリック → モーダルを“中”で開く（blob）、拡大ボタンは viewer.html に
+    // ② カードクリック → モーダル“中”で開く（blob）、拡大ボタンは viewer.html に
     document.addEventListener('click', (ev) => {
       const a = ev.target.closest('a.viewer');
       if (!a) return;
 
-      ev.preventDefault();                 // ここでは新規タブを開かない（モーダルを開く）
+      ev.preventDefault();
       const blobUrl = a.dataset.url;
       if (blobUrl) img.src = blobUrl;
 
-      // viewer.html?k=… を“普通のリンク”としてセット（ポップアップ扱いにならない）
-      myBtn.href = a.href;
-
+      myBtn.href = a.href;      // ← viewer.html?k=… をそのままセット
       zoomLevel = 1;
       applyZoom();
       modal.classList.add('show');
@@ -175,34 +174,28 @@ description: こちらは 神納花の15会 のページです。
 </script>
 
 <script>
-// ---- 強制上書きパッチ（about:blank#blocked 対策） ----
-(function(){
-  // 既存リスナーを全部剥がす
-  const old = document.getElementById('enlargeLink');
-  if (!old) return;
-  const clone = old.cloneNode(true);
-  old.replaceWith(clone); // ← 既存の click リスナーを全部除去
+  // ---- 強制上書きパッチ（about:blank#blocked 対策） ----
+  (function(){
+    const old = document.getElementById('enlargeLink');
+    if (!old) return;
+    const clone = old.cloneNode(true);
+    old.replaceWith(clone);
 
-  // href を viewer.html?k=.. に毎回セット（モーダル表示時に doc側でセットしているなら不要）
-  // 念のため、モーダル表示処理がセット済みの data-key を見て再セットする保険を入れます
-  function ensureHrefFromModal() {
-    const imgA = document.querySelector('.modal .card a, a[data-key]'); // 適当に拾う
-    const key  = (imgA && imgA.dataset && imgA.dataset.key) || null;
-    if (key) {
-      clone.href   = "{{ '/hana15/viewer.html' | relative_url }}?k=" + encodeURIComponent(key);
-      clone.target = "_blank";
-      clone.rel    = "noopener";
+    function ensureHrefFromModal() {
+      const anchor = document.querySelector('a.viewer[aria-current="true"]');
+      const key = anchor?.dataset?.k;
+      if (key) {
+        clone.href   = "{{ '/hana15/viewer.html' | relative_url }}?k=" + encodeURIComponent(key);
+        clone.target = "_blank";
+        clone.rel    = "noopener";
+      }
     }
-  }
 
-  // クリック時は “通常のリンク遷移” をさせる（JS で書き込みしない）
-  clone.addEventListener('click', function(ev){
-    // 他のスクリプトが preventDefault しても勝つように、直前に href を保証
-    ensureHrefFromModal();
-    // ここでは preventDefault しない → 通常の a[target=_blank] ナビに任せる
-    // もし他のスクリプトが stopPropagation 済みでも、ここは直接の要素なので効きます
-  }, {capture:true}); // capture で最優先
-})();
+    clone.addEventListener('click', function(){
+      ensureHrefFromModal();
+      // preventDefault しない：通常のリンク遷移に任せる
+    }, {capture:true});
+  })();
 </script>
 
 </main>
