@@ -1,0 +1,200 @@
+---
+layout: default
+title: 率土神社の催し 三区共有神輿の祭礼
+description: こちらは 三区共有神輿の祭礼 のページです。
+---
+<link rel="preconnect" href="https://script.google.com">
+<style>
+  .gallery{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+  .card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;box-shadow:0 4px 10px rgba(0,0,0,.05)}
+  .card img{width:100%;height:auto;display:block;aspect-ratio:4/3;object-fit:cover}
+  .belowfold{content-visibility:auto;contain-intrinsic-size:1px 400px;}
+  .modal-link a#enlargeLink{ display:none !important; } /* 既存の拡大リンクは使わない */
+  @media (min-width:1024px){.gallery{grid-template-columns:repeat(3,1fr)}}
+</style>
+
+<main>
+  <h1>率土神社の催し 三区共有神輿の祭礼</h1>
+  <section id="gallery" class="gallery"></section>
+  <p style="margin-top:16px"><a href="{{ '/' | relative_url }}">← トップページに戻る</a></p>
+</main>
+
+<script>
+  // ★あなたのWebアプリURLに置換
+  const GAS = 'https://script.google.com/macros/s/AKfycbyfT4N08oWVNfCDmIaUqOGh094dvE9t7ArKF5qPg5qzxrI-eigY313GmKnsc8IWZdzpxQ/exec';
+  // ★viewer.html（“大”表示ページ）
+  const VIEWER = "{{ '/sottojinja/viewer.html' | relative_url }}"; // ← Jekyll でサイト内URLに
+
+  // 表示したいキー（DriveのIDは公開しない）
+const KEYS = [
+  "IMG_5640.JPG","IMG_5643.JPG","IMG_5646.JPG","IMG_5647.JPG","IMG_5648.JPG",
+  "IMG_5651.JPG","IMG_5655.JPG","IMG_5656.JPG","IMG_5657.JPG","IMG_5658.JPG",
+  "IMG_5660.JPG","IMG_5661.JPG","IMG_5663.JPG","IMG_5665.JPG","IMG_5671.JPG",
+  "IMG_5672.JPG","IMG_5681.JPG","IMG_5684.JPG","IMG_5685.JPG","IMG_5691.JPG",
+  "IMG_5695.JPG","IMG_5719.JPG","IMG_5728.JPG","IMG_5742.JPG","IMG_5743.JPG",
+  "IMG_5750.JPG","IMG_5787.JPG","IMG_5792.JPG","IMG_5797.JPG","IMG_5798.JPG",
+  "IMG_5806.JPG","IMG_5809.JPG","IMG_5813.JPG","IMG_5835.JPG","IMG_5839.JPG",
+  "IMG_5852.JPG","IMG_5855.JPG","IMG_5859.JPG","IMG_5879.JPG","IMG_5881.JPG",
+  "IMG_5885.JPG","IMG_5889.JPG","IMG_5895.JPG","IMG_5903.JPG","IMG_5908.JPG",
+  "IMG_5977.JPG","IMG_5986.JPG","IMG_5994.JPG","IMG_6002.JPG","IMG_6019.JPG",
+  "IMG_6020.JPG","IMG_6027.JPG","IMG_6036.JPG","IMG_6040.JPG","IMG_6091.JPG",
+  "IMG_6094.JPG","IMG_6095.JPG","IMG_6096.JPG","IMG_6142.JPG","IMG_6236.JPG",
+  "IMG_6243.JPG","IMG_6263.JPG","IMG_6265.JPG","IMG_6266.JPG","IMG_6280.JPG",
+  "IMG_6286.JPG","IMG_6314.JPG","IMG_6318.JPG","IMG_6398.JPG","IMG_6402.JPG",
+  "IMG_6403.JPG","IMG_6404.JPG","IMG_6407.JPG","IMG_6408.JPG","IMG_6432.JPG",
+  "IMG_6435.JPG","IMG_6436.JPG","IMG_6438.JPG","IMG_6484.JPG","IMG_6576.JPG",
+  "IMG_6652.JPG","IMG_6675.JPG","IMG_6737.JPG","IMG_6743.JPG","IMG_6755.JPG",
+  "IMG_6756.JPG","IMG_6758.JPG","IMG_6761.JPG","IMG_6852.JPG","IMG_6904.JPG",
+  "IMG_6909.JPG","IMG_6916.JPG","IMG_6919.JPG","IMG_6935.JPG","IMG_7012.JPG",
+  "IMG_7014.JPG","IMG_7015.JPG","IMG_7071.JPG","IMG_7072.JPG","IMG_7083.JPG",
+  "IMG_7087.JPG","IMG_7088.JPG","IMG_7091.JPG","IMG_7092.JPG"
+];
+
+  const box = document.getElementById('gallery');
+
+  // 1) 先に枠だけ並べる（a の href は最初から viewer.html?k=… にする）
+  box.innerHTML = KEYS.map((k,i)=>`
+    <figure class="card ${i>9?'belowfold':''}">
+      <a class="viewer"
+         data-k="${k}"
+         href="${VIEWER}?k=${encodeURIComponent(k)}"
+         target="_blank" rel="noopener">
+        <img id="img-${k}" alt="${k}" loading="lazy" decoding="async" ${i<6?'fetchpriority="high"':''}>
+      </a>
+      <figcaption>${k}</figcaption>
+    </figure>
+  `).join('');
+
+  // 2) サムネイル用 data:URL を取得してセット（“中表示”は blob を使う）
+  (async () => {
+    for (const k of KEYS) {
+      try {
+        const r = await fetch(`${GAS}?k=${encodeURIComponent(k)}`);
+        const j = await r.json();
+        const el = document.getElementById(`img-${k}`);
+        const a  = el?.closest('a');
+        if (j && j.ok && el && a) {
+          // サムネ（小表示）：data:URL
+          el.src = j.dataUrl;
+          // モーダル用（中表示）：blob:URL を仕込む（リンクの href は触らない！）
+          const blob = await (await fetch(j.dataUrl)).blob();
+          a.dataset.url = URL.createObjectURL(blob); // “中”はこれを使う
+        } else if (el) {
+          el.alt = (j && j.msg) || 'load error';
+        }
+      } catch (e) {
+        console.error(k, e);
+      }
+    }
+  })();
+
+  // 画像を順次ロード（サムネ <img> は dataURL／モーダル用には blob URL も用意）
+  (async () => {
+    for (const k of KEYS) {
+      try {
+        const r = await fetch(`${GAS}?k=${encodeURIComponent(k)}`);
+        const j = await r.json();
+        const el = document.getElementById(`img-${k}`);
+        if (j && j.ok) {
+          el.src = j.dataUrl;
+
+          // モーダル用の blob URL を作って <a data-url> に覚えさせる
+          const a = el.closest('a');
+          if (a) {
+            const blob = await (await fetch(j.dataUrl)).blob();
+            const objUrl = URL.createObjectURL(blob);
+            a.dataset.url = objUrl; // ← モーダルはこれを使う
+          }
+        } else {
+          el.alt = (j && j.msg) || 'load error';
+        }
+      } catch (e) {
+        console.error(k, e);
+      }
+    }
+  })();
+</script>
+
+<script>
+  (function () {
+    const modal = document.getElementById('modal');
+    const img   = document.getElementById('modalImage');
+
+    // ① 自前の「さらに拡大表示」ボタンを挿入（viewer 用）
+    const holder = document.querySelector('.modal-link') || modal;
+    const myBtn  = document.createElement('a');
+    myBtn.id = 'galleryEnlarge';
+    myBtn.textContent = '▶ さらに拡大表示';
+    myBtn.target = '_blank';
+    myBtn.rel = 'noopener';
+    myBtn.style.display = 'inline-block';
+    myBtn.style.margin  = '8px 0 0';
+    holder.appendChild(myBtn);
+
+    let zoomLevel = 1;
+
+    // ② カードクリック → モーダル“中”で開く（blob）、拡大ボタンは viewer.html に
+    document.addEventListener('click', (ev) => {
+      const a = ev.target.closest('a.viewer');
+      if (!a) return;
+
+      ev.preventDefault();
+      const blobUrl = a.dataset.url;
+      if (blobUrl) img.src = blobUrl;
+
+      myBtn.href = a.href;      // ← viewer.html?k=… をそのままセット
+      zoomLevel = 1;
+      applyZoom();
+      modal.classList.add('show');
+    });
+
+    // ③ 閉じる
+    window.closeModal = function () {
+      modal.classList.remove('show');
+      img.src = '';
+    };
+
+    // ④ 3段階ズーム
+    img.addEventListener('click', () => {
+      zoomLevel = (zoomLevel + 1) % 3;
+      applyZoom();
+    });
+    function applyZoom() {
+      img.style.objectFit = 'contain';
+      img.style.width     = '100%';
+      img.style.height    = 'auto';
+      img.style.maxHeight = (zoomLevel === 2) ? 'none' : '90vh';
+      img.style.maxWidth  = (zoomLevel === 0) ? '720px'
+                          : (zoomLevel === 1) ? '1200px'
+                          : 'none';
+      img.style.display   = 'block';
+    }
+  })();
+</script>
+
+<script>
+  // ---- 強制上書きパッチ（about:blank#blocked 対策） ----
+  (function(){
+    const old = document.getElementById('enlargeLink');
+    if (!old) return;
+    const clone = old.cloneNode(true);
+    old.replaceWith(clone);
+
+    function ensureHrefFromModal() {
+      const anchor = document.querySelector('a.viewer[aria-current="true"]');
+      const key = anchor?.dataset?.k;
+      if (key) {
+        clone.href   = "{{ '/hana15/viewer.html' | relative_url }}?k=" + encodeURIComponent(key);
+        clone.target = "_blank";
+        clone.rel    = "noopener";
+      }
+    }
+
+    clone.addEventListener('click', function(){
+      ensureHrefFromModal();
+      // preventDefault しない：通常のリンク遷移に任せる
+    }, {capture:true});
+  })();
+</script>
+
+</main>
