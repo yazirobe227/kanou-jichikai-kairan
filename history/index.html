@@ -3,19 +3,67 @@ layout: default
 title: 神納東区 永久保存版リスト
 description: こちらは 神納東区 の永久保存版リストです。
 ---
+  <style>
+    /* 1列リストのベース */
+  .card.full-width ul.onecol{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .card.full-width ul.onecol li{
+    padding: .6rem .75rem;
+    border-bottom: 1px solid #e5e7eb;   /* 行区切り */
+  }
+  .card.full-width ul.onecol li:last-child{ border-bottom: 0; }
+  .card.full-width ul.onecol li:hover{ background: #f8fafc; } /* 行ホバー */
+
+  /* リンクを強調（色・太字・下線） */
+  .card.full-width ul.onecol a.title-link{
+    color: #0b5cab;                 /* 少し濃い青 */
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: .15em;
+    text-decoration-thickness: .1em;
+  }
+  /* ホバー/フォーカス時の視認性 */
+  .card.full-width ul.onecol a.title-link:hover,
+  .card.full-width ul.onecol a.title-link:focus{
+    color: #063971;
+    background: #eef6ff;
+    outline: none;
+    border-radius: 4px;
+  }
+
+  /* 補助テキストは少し薄く */
+  .card.full-width ul.onecol .desc{
+    color: #4b5563;
+    font-size: .95rem;
+  }
+
+  /* 番号だけ薄めにしたい場合（任意）
+  .card.full-width ul.onecol li { counter-increment: row; }
+  .card.full-width ul.onecol li::marker{ color:#9ca3af; } */
+  </style>
+
 <main>
   <h1>神納東区 永久保存版リスト</h1>
-  <p>こちらは 神納東区の永久保存版 リストです。</p>
-  <ul>
-    {% for item in site.data.history_docs -%}
-      <li>
-        {%- if item.link_url and item.link_url != "" -%}
-          {{ item.number }}. <a href="{{ item.link_url | relative_url }}">{{ item.title }}</a><br>{{ item.description }}
-        {%- else -%}
-          {{ item.number }}. {{ item.title }}<br>{{ item.description }}
-        {%- endif -%}
-      </li>
-    {%- endfor %}
-  </ul>
+  <div class="card full-width">
+    <h2>神納東区 永久保存版 の各原本は、公民館の書庫に格納されています。<br>原本はそちらを参照ください。</h2>
+      <ul class="onecol">
+        {% for item in site.data.history_docs -%}
+          <li>
+            {%- if item.link_url and item.link_url != "" -%}
+              {{ item.number }}.
+              <a class="title-link" href="{{ item.link_url | relative_url }}">{{ item.title }}</a>
+              <br>
+              <span class="desc">{{ item.description }}</span>
+            {%- else -%}
+              {{ item.number }}. <span class="title">{{ item.title }}</span><br>
+              <span class="desc">{{ item.description }}</span>
+            {%- endif -%}
+          </li>
+        {%- endfor %}
+      </ul>
+  </div>
      <p><a href="{{ '/' | relative_url }}">← トップページに戻る</a></p>
 </main>
