@@ -122,6 +122,11 @@
       padding-left: 1em;
       list-style-type: none;
     }
+    /* フル幅カード内のリストを1列にする専用クラス */
+    .card.full-width ul.onecol {
+      grid-template-columns: 1fr !important; /* 2列指定を上書き */
+      gap: .5em 0;                            /* 行間だけ確保（任意） */
+    }
     .card a {
       text-decoration: none;
       color: #2c3e50;

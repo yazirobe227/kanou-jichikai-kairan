@@ -6,10 +6,9 @@ description: こちらは 神納東区 防災・防犯活動のページです�
  <main>
   <h1>防犯活動</h1>
   <!-- 犯罪・交通事故情報ページ -->
-   <div class="section">
-   <h2>犯罪・交通事故情報</h2>
-    <p>木更津警察署・袖ケ浦交番・袖ケ浦市防災協会まとめ</p>
-     <ul class="bohan-list">
+   <div class="card full-width">
+   <h2>犯罪・交通事故情報<small>　〜木更津警察署・袖ケ浦交番・袖ケ浦市防災協会まとめ〜</small></h2>
+     <ul class="onecol" class="bohan-list">
       {%- assign sorted_bohan_items = site.bohan_items | sort: "date" | reverse -%}
       {% for item in sorted_bohan_items -%}
         <li>
@@ -19,25 +18,25 @@ description: こちらは 神納東区 防災・防犯活動のページです�
      </ul>
     </div>
   <!-- 主な地域情報セクション -->
-   <div class="section">
-    <h2>平時に確認を！</h2>
-		<ul>
+  <div class="card full-width">
+    <h2>平時に確認を！<small>　〜緊急時にも焦らず対応〜</small></h2>
+    <ul class="onecol">
 			<li><a href="{{ '/bohan/fire-map.html' | relative_url }}">防災施設マップ（防災関連地点：避難所・AED・消火栓・防火水槽）</a></li>
       <li><a href="{{ '/kairan/east/2025-08-02.html' | relative_url }}">非常時の井戸情報</a>（詳細は区長・分区長へお問い合わせください）</li>
     </ul>
 	 </div>
   <!-- 主な活動セクション -->
-   <div class="section">
-    <h2>災害情報</h2>
-		<ul>
+   <div class="card full-width">
+    <h2>災害情報<small>　〜市による公式情報〜</small></h2>
+		<ul class="onecol">
 			<li><a href="http://chb1018.hs.plala.or.jp/chiba119/Web/sodegaura/annai.html" target="_blank" rel="noopener noreferrer">袖ケ浦市消防本部 災害発生情報</a></li>
 			<li><a href="http://www.chb1018.hs.plala.or.jp/chiba119/Web/sodegaura/annai_past.html" target="_blank" rel="noopener noreferrer">袖ケ浦市消防本部 過去の火災・事故発生情報（約1週間）</a></li>
     </ul>
 	 </div>
   <!-- 袖ケ浦市 防災ページ -->
-	 <div class="section">
+	 <div class="card full-width">
 			<h4>千葉県・袖ケ浦市 防災情報</h4>
-			<ul>
+			<ul class="onecol">
 				<li><a href="https://www.city.sodegaura.lg.jp/soshiki/bousai/" target="_blank" rel="noopener noreferrer">袖ケ浦市 防災安全課</a></li>
 				<li><a href="https://www.bousai.pref.chiba.lg.jp/" target="_blank" rel="noopener noreferrer">千葉県防災ポータルサイト（緊急・地震・避難・交通・ライフライン 情報）</a></li>
 				<li><a href="https://www.city.sodegaura.lg.jp/hazardmap-web/index.html" target="_blank" rel="noopener noreferrer">袖ケ浦市ハザードマップ ウェブ版</a></li>
