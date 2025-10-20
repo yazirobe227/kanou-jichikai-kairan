@@ -3,11 +3,73 @@ layout: default
 title: 年間イベント
 description: 神納東区の年間イベント情報です。
 ---
+
+<style>
+/* ---- events 用：列幅・罫線・表示 ---- */
+.events-table{
+  width:100%;
+  table-layout:fixed;          /* colgroup を尊重 */
+  border-collapse:collapse;    /* 罫線を1本化 */
+  background:#fff;
+  border:1px solid #cbd5e1;    /* 外枠（薄めのグレー） */
+  border-radius:6px;           /* 角丸（任意） */
+}
+
+/* 列幅（colgroup と連動） */
+.events-table .col-date  { width:11ch; }  /* 日時：狭め */
+.events-table .col-name  { width:45%; }   /* イベント名：広め */
+.events-table .col-place { width:22%; }   /* 場所：少し広め */
+.events-table .col-note  { width:22%; }   /* 備考：少し広め */
+
+.events-table th,
+.events-table td{
+  border:1px solid #d1d5db;    /* セル罫線（薄め） */
+  padding:.65rem .85rem;
+  vertical-align:top;
+  line-height:1.6;
+  word-break:break-word;
+}
+
+/* ヘッダー（落ち着いた色＋黒太字） */
+.events-table thead th{
+  background:#e6edf5;   /* 落ち着いた薄いブルーグレー */
+  color:#111827;        /* 黒に近い濃いグレー（黒文字） */
+  font-weight:700;
+  border-bottom:2px solid #9fb3c8;  /* 少し濃い目の区切り線 */
+}
+
+/* ゼブラ＋ホバーで視認性UP */
+.events-table tbody tr:nth-child(odd){  background:#ffffff; }
+.events-table tbody tr:nth-child(even){ background:#f7fafc; }
+.events-table tbody tr:hover{ background:#eef2f7; }
+
+/* 連続スペースを保持（イベント名／場所） */
+.events-table td.name,
+.events-table td.place{
+  white-space:pre-wrap;         /* 複数スペースや改行を保持しつつ折返し */
+}
+
+/* スマホ微調整 */
+@media (max-width:640px){
+  .events-table .col-date  { width:8.5rem; }
+  .events-table .col-place { width:30%; }
+  .events-table .col-note  { width:40%; }
+}
+</style>
+
 <main>
   <h1>年間イベント</h1>
   <p>こちらは神納東区の年間イベント情報です。</p>
   
-  <table class="event-table">
+  <table class="events-table">
+    <!-- 列幅をここで固定（％はお好みで微調整可） -->
+    <colgroup>
+      <col class="col-date" style="width:15%">   <!-- 日時：狭め -->
+      <col class="col-name" style="width:40%">   <!-- イベント名：広め -->
+      <col class="col-place" style="width:25%">   <!-- 場所：少し広め -->
+      <col class="col-note" style="width:20%">   <!-- 備考：少し広め -->
+    </colgroup>
+
     <thead>
       <tr>
         <th>日時</th>
@@ -16,30 +78,33 @@ description: 神納東区の年間イベント情報です。
         <th>備考</th>
       </tr>
     </thead>
+
     <tbody>
       {%- for event in site.data.events -%}
-        {%- assign event_date = event.date | date: '%d' | plus: 0 -%}
-        {%- assign event_date_text = "" -%}
-
-        {%- if event_date == 1 or event_date <= 10 -%}
-          {%- assign event_date_text = event.date | date: '%-m月上旬' -%}
-        {%- elsif event_date >= 11 and event_date <= 20 -%}
-          {%- assign event_date_text = event.date | date: '%-m月中旬' -%}
-        {%- elsif event_date >= 21 and event_date <= 31 -%}
-          {%- assign event_date_text = event.date | date: '%-m月下旬' -%}
-        {%- else -%}
-          {%- assign event_date_text = event.date | date: '%-m月%-d日' -%}
-        {%- endif -%}
+        {%- assign d = event.date | date: '%-d' | plus: 0 -%}
+        {%- capture when -%}
+          {%- if d <= 10 -%}{{ event.date | date: '%-m月上旬' }}
+          {%- elsif d <= 20 -%}{{ event.date | date: '%-m月中旬' }}
+          {%- else -%}{{ event.date | date: '%-m月下旬' }}
+          {%- endif -%}
+        {%- endcapture -%}
 
         <tr>
-          <td>{{ event_date_text }}</td>
-          <td>{{ event.event }}</td>
-          <td>{{ event.place }}</td>
-          <td>{{ event.remarks }}</td>
+          <td class="date">{{ when | strip }}</td>
+          <td class="name">
+            {%- if event.url and event.url != '' -%}
+              <a href="{{ event.url | relative_url }}">{{ event.event }}</a>
+            {%- else -%}
+              {{ event.event }}
+            {%- endif -%}
+          </td>
+          <td class="place">{{ event.place }}</td>
+          <td class="note">{{ event.remarks }}</td>
         </tr>
       {%- endfor -%}
     </tbody>
   </table>
+
      <ul>
        <li><small>注1）いずれも例年の主な予定です</small></li>
        <li><small>注2）予告なく中止、順延等の可能性があります</small></li>
